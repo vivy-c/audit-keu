@@ -1,91 +1,187 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Audit | Log in</title>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-</head>
-<body class="hold-transition login-page">
-<div class="login-box">
-  <!-- /.login-logo -->
-  <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-      <a href="index2.html" class="h1"><b>AUDIT </b>Login</a>
-    </div>
-    <div class="card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="landing/css/style.css">
 
-      <form action="index3.html" method="post">
-        <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Viga" rel="stylesheet">
+
+    <title>AuditKeu | PNC</title>
+  </head>
+  <body>
+
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="#">AuditKeu | PNC</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link btn btn-primary text-white tombol" href="sistem/session/index.php">Sign-in</a>
+            <a class="nav-item nav-link btn btn-primary text-white tombol" data-toggle="modal" data-target="#registrasi"">Sign-Up</a>
           </div>
         </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Remember Me
-              </label>
-            </div>
-          </div>
-          <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-          </div>
-          <!-- /.col -->
-        </div>
-      </form>
-
-      <div class="social-auth-links text-center mt-2 mb-3">
-        <a href="#" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-        </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-        </a>
       </div>
-      <!-- /.social-auth-links -->
+    </nav>
+    <!-- akhir Navbar -->
 
-      <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
-      </p>
-      <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new membership</a>
-      </p>
+     <!-- modal register-->
+     <div class="modal" id="registrasi" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Registrasi</h5>
+            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card card-primary">
+                
+                <div class="card-body">
+                  <div class="form-group">
+                    <input type="hidden" id="id" class="form-control" value="">
+                  </div>
+                  <div class="form-group">
+                    <label for="nip">NIP / NPAK</label>
+                    <input type="text" id="nip" class="form-control" value="">
+                  </div>
+                  <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" id="nama" class="form-control" value="">
+                  </div>
+                  <div class="form-group">
+                    <label for="jabatan">Jabatan</label>
+                    <input type="text" id="jabatan" class="form-control" value="">
+                  </div>
+                  <div class="form-group">
+                    <label for="no_hp">No Telepon</label>
+                    <input type="text" id="no_hp" class="form-control" value="">
+                  </div>
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" class="form-control" value="">
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="text" id="password" class="form-control" value="">
+                  </div>
+                  <div class="form-group">
+                    <p style="color: red;"><i><b>* Upload ttd dengan background transparan*</i></b></p>
+                    <label for="ttd">Pilih tanda tangan</label>
+                    <input type="file" id="ttd" name="ttd">
+                  </div>
+                  
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- /.card-body -->
-  </div>
-  <!-- /.card -->
-</div>
-<!-- /.login-box -->
+      <!-- /.modal register -->
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
-</body>
+    <!-- Jumbotron     background: url(../img/jumbotron-bg.jpg); -->
+    <div class="jumbotron jumbotron-fluid" style="background-image: url('landing/img/jumbotron-bg.jpg');">
+      <div class="container">
+        <h1 class="display-4"><span><br>Aplikasi Audit Keuangan Politeknik Negeri Cilacap</span></h1>
+        <a href="#" class="btn btn-info btn-lg tombol">View Our Work</a>
+      </div>
+    </div>
+    <!-- akhir Jumbotron -->
+
+
+    <!-- container -->
+    <div class="container">
+
+      <!-- info panel -->
+      <div class="row justify-content-center">
+        <div class="col-10 info-panel">
+          <div class="row">
+            <div class="col-sm">
+              <img src="landing/img/clock.png" alt="Employee" class="img-fluid float-left" width="100px">
+              <h4>24 Hours</h4>
+              <p>Access your document anytime & anywhere.</p>
+            </div>
+            <div class="col-sm">
+              <img src="landing/img/file.png" alt="HiRes" class="img-fluid float-left" width="100px">
+              <h4>High-Res</h4>
+              <p>High resolution document.</p>
+            </div>
+            <div class="col-sm">
+              <img src="landing/img/lock.png" alt="Security" class="img-fluid float-left" width="100px">
+              <h4>Security</h4>
+              <p>Your'e data savety with us.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- akhir info panel -->
+
+
+      <!-- Workingspace -->
+      <div class="row workingspace">
+        <div class="col-lg-6">
+          <img src="landing/img/workingspace.png" alt="Working Space" class="img-fluid">
+        </div>
+        <div class="col-lg-5">
+          <h2>today's<span> Research</span> tomorrow's <span>Innovation</span></h2>
+          <p>Make today to be the day we learn something new.</p>
+        </div>
+      </div>
+      <!-- akhir Workingspace -->
+
+
+      <!-- Testimonial -->
+      <section class="testimonial">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <p>"Bekerja dengan suasana hati yang lebih asik dan mempelajari hal baru setiap harinya."</p>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-12 justify-content-center d-flex">
+          </div>
+        </div>
+        <div class="row justify-content-center info-text">
+          <div class="col-lg text-center">
+            <strong>Copyright &copy; 2021</strong>
+            <p></p>
+          </div>
+        </div>
+      </section>
+      <!-- akhir Testimonial -->
+
+
+    </div>
+    <!-- akhir container -->
+
+
+
+
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
 </html>
