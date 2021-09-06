@@ -1,3 +1,29 @@
+<?php
+//error_reporting(0);
+$server = "localhost";
+$user = "root";
+$pass = "";
+$database = "db_audit_keu";
+
+$conn = mysqli_connect($server, $user, $pass, $database);
+
+if (!$conn) {
+    die("<script>alert('Connection Failed.')</script>");
+}
+
+
+function query($query){
+  global $conn;
+  $result = mysqli_query($conn,$query);
+  $rows = [] ;
+  while($row = mysqli_fetch_assoc($result)){
+    $rows[]=$row;
+    
+  }
+  return $rows;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

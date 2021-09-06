@@ -16,7 +16,6 @@
   </head>
   <body>
 
-
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container">
@@ -172,11 +171,6 @@
 
     </div>
     <!-- akhir container -->
-
-
-
-
-    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
