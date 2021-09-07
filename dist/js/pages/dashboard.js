@@ -265,3 +265,4 @@ $(function () {
     options: salesGraphChartOptions
   })
 })
+$('.sidebar-toggle-btn').PushMenu(options);

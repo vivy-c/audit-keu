@@ -1,4 +1,5 @@
 <?php
+session_start();
 //error_reporting(0);
 $server = "localhost";
 $user = "root";
@@ -53,4 +54,18 @@ function query($query){
   <link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.min.css">
+
+  <link rel="stylesheet" type="text/css" href="datatables/datatables.min.css"/>
+  <script type="text/javascript" src="datatables/datatables.min.js"></script>
+    
+  <script src="jquery/jquery-3.3.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="datatables/datatables.min.css"/>
+<script type="text/javascript" src="datatables/datatables.min.js"></script>
+
+  <script type="text/javascript">
+  $(document).ready(function() {
+      $('#datatable').DataTable();
+  });
+  </script>
+
 </head>

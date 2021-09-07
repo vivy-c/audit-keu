@@ -3942,3 +3942,4 @@
 
 })));
 //# sourceMappingURL=bootstrap.js.map
+$('.sidebar-toggle-btn').PushMenu(options);

@@ -92,35 +92,104 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item ">
-            <a href="#" class="nav-link active">
+               <li class="nav-item ">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
+                Data User
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="v_tb_auditee.php" class="nav-link ">
+                <a href="../kepala_spi/v_tb_auditor.php" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Auditor</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../kepala_spi/v_tb_auditee.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Auditee</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
-                </a>
-              </li>
             </ul>
           </li>
+
+          <li class="nav-item ">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Konfirmasi User
+                <i class=""></i>
+              </p>
+            </a>            
+          </li>
+          <li class="nav-item ">
+            <a href="../kepala_spi/v_pka.php" class="nav-link">
+            <i class="nav-icon far fa-calendar-alt"></i>
+              <p>
+                PKA
+                <i class=""></i>
+              </p>
+            </a>            
+          </li>
+          <li class="nav-item ">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-list-alt"></i>
+              <p>
+                Data Desk
+                <i class=""></i>
+              </p>
+            </a>            
+          </li>
+          <li class="nav-item ">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-list-ul"></i>
+              <p>
+                Data Visit
+                <i class=""></i>
+              </p>
+            </a>            
+          </li>
+          <li class="nav-item ">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-pen-square"></i>
+              <p>
+                THA
+                <i class=""></i>
+              </p>
+            </a>            
+          </li>
+          <li class="nav-item ">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-poll"></i>
+              <p>
+                LHA
+                <i class=""></i>
+              </p>
+            </a>            
+          </li>
+          <li class="nav-item ">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-flag"></i>
+              <p>
+                Berita Acara
+                <i class=""></i>
+              </p>
+            </a>            
+          </li>
+          <li class="nav-item ">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-sign-out-alt"></i>
+              <p>
+                Log Out
+                <i class=""></i>
+              </p>
+            </a>            
+          </li>
+
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

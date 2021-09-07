@@ -1,5 +1,5 @@
 <?php include('../template/header.php');  ?>
-<?php include('../template/sidebar.php'); ?>
+<?php include('../template/sidebar_auditee.php'); ?>
 
 
 <!-- Main content -->

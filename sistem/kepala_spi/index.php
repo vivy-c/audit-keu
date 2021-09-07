@@ -1,5 +1,5 @@
 <?php include('../template/header.php');  ?>
-<?php include('../template/sidebar.php'); ?>
+<?php include('../template/sidebar_kepala_spi.php'); ?>
 
 
     <!-- Main content -->
