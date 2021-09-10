@@ -23,6 +23,8 @@ function query($query){
   }
   return $rows;
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +32,7 @@ function query($query){
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>User | Dashboard</title>
+  <title><?=$judul;?></title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -60,12 +62,23 @@ function query($query){
     
   <script src="../../../jquery/jquery-3.3.1.min.js"></script>
   <link rel="stylesheet" type="text/css" href="../../../datatables/datatables.min.css"/>
-<script type="text/javascript" src="../../../datatables/datatables.min.js"></script>
+  <script type="text/javascript" src="../../../datatables/datatables.min.js"></script>
 
+  <link rel="stylesheet" type="text/css" href="DataTables/Bootstrap-4-4.1.1/css/bootstrap.min.css"/>
+  <link href="../../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="../../../jquery/jquery-3.3.1.min.js"></script>
+  <script src="../../../bootstrap/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <!-- Untuk datatable -->
+  <link rel="stylesheet" type="text/css" href="../../../datatables/datatables.min.css"/>
+  <script type="text/javascript" src="../../../datatables/datatables.min.js"></script>
+    
   <script type="text/javascript">
   $(document).ready(function() {
       $('#datatable').DataTable();
   });
-  </script>
+
+</script>
 
 </head>

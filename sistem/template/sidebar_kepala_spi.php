@@ -102,13 +102,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../kepala_spi/v_tb_auditor.php" class="nav-link ">
+                <a href="../auditor/index.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Auditor</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../kepala_spi/v_tb_auditee.php" class="nav-link">
+                <a href="../auditee/index.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Auditee</p>
                 </a>
@@ -117,7 +117,7 @@
           </li>
 
           <li class="nav-item ">
-            <a href="#" class="nav-link">
+            <a href="../konfirmasi_user/index.php" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Konfirmasi User
@@ -126,7 +126,7 @@
             </a>            
           </li>
           <li class="nav-item ">
-            <a href="../kepala_spi/v_pka.php" class="nav-link">
+            <a href="../pka/index.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 PKA

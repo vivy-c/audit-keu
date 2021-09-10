@@ -12,6 +12,7 @@ function query($query)
     return $rows;
 }
 
+
 function login($data)
 {
     global $conn;
@@ -38,7 +39,7 @@ function login($data)
     if ($s3 == 1) {
         session_start();
 		$_SESSION['username'] = $username;
-        $_SESSION['user_id'] = $s3['id_auditee'];
+        $_SESSION['user_id'] = $s3['id_auditor'];
         $_SESSION['username'] = $s3['username'];
         $_SESSION['password'] = $s3['password'];
         $_SESSION['status'] = 'Aktif';
@@ -57,7 +58,7 @@ function login($data)
     elseif ($s1 == 1) {
         session_start();
 		$_SESSION['username'] = $username;
-        $_SESSION['user_id'] = $s1['id_auditor'];
+        $_SESSION['user_id'] = $s1['id'];
         $_SESSION['username'] = $s1['username'];
         $_SESSION['password'] = $s1['password'];
         $_SESSION['status'] = 'Aktif';
@@ -81,3 +82,6 @@ function login($data)
 
     return mysqli_affected_rows($conn);
 }
+
+
+?>
