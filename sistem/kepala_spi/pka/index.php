@@ -2,10 +2,7 @@
 include('../../template/header.php');
 include('../../template/sidebar_kepala_spi.php');
 
-$no = 0;
-$modal = mysqli_query($conn, "SELECT * FROM tb_pka ORDER BY id_pka DESC");
-while ($r = mysqli_fetch_array($modal)) {
-    $no++;
+
 ?>
 
     <!-- Main content -->
@@ -47,6 +44,12 @@ while ($r = mysqli_fetch_array($modal)) {
                                                 </tr>
                                             </thead>
                                             <tbody id="modal-data">
+                                            <?php 
+                                                $no = 0;
+                                                $modal = mysqli_query($conn, "SELECT * FROM tb_pka ORDER BY id_pka DESC");
+                                                while ($r = mysqli_fetch_array($modal)) {
+                                                    $no++;
+                                            ?>
                                                 <?php foreach ($modal as $r) : ?>
                                                     <tr>
                                                         <td><?php echo $r['id_pka']; ?></td>
