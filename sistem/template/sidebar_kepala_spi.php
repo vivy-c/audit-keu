@@ -102,9 +102,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../auditor/index.php" class="nav-link ">
+                <a href="../user/index.php" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Auditor</p>
+                  <p>User</p>
                 </a>
               </li>
               <li class="nav-item">

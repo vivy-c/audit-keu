@@ -6,7 +6,7 @@ $id = $_GET["id"];
 function hapus($id)
 {
 	global $conn;
-	mysqli_query($conn,"DELETE FROM tb_auditee WHERE id = $id");
+	mysqli_query($conn,"DELETE FROM tb_auditee WHERE id_auditee = $id");
 	return mysqli_affected_rows($conn);
 }
 
