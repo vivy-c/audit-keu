@@ -34,7 +34,6 @@
         return false;
       }
 
-
       $ttd = upload_ttd();
       if (!$ttd) {
         return false;
@@ -84,14 +83,14 @@
 
       if (strlen($password) <= 2) {
         echo "<script>
-          alert('password trlalu pendek');
+          alert('password terlalu pendek');
           document.location.href='index.php';
           </script>";
         return false;
       }
 
       $query = "INSERT INTO tb_user VALUES 
-	('id','$username','$password','$password2','$nama','$nip_npak','$email','$no_hp','$status','$level','$foto','$ttd')";
+	('id','$username','$password','$password2','$nama','$nip_npak','$status','$level','$no_hp','$email','$foto','$ttd')";
 
 
       mysqli_query($conn, $query);
@@ -144,7 +143,7 @@
       $namaFileBaru .= $ekstensi;
 
 
-      move_uploaded_file($tmpName, 'img/user/' . $namaFileBaru);
+      move_uploaded_file($tmpName, 'sistem/img/user/' . $namaFileBaru);
       return $namaFileBaru;
     }
 
@@ -194,7 +193,7 @@
       $namaFileBaru .= $ekstensi;
 
 
-      move_uploaded_file($tmpName, 'img/user/' . $namaFileBaru);
+      move_uploaded_file($tmpName, 'sistem/img/user/' . $namaFileBaru);
       return $namaFileBaru;
     }
 

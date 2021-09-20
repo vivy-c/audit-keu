@@ -28,7 +28,7 @@ function login($data)
 	$gagal = mysqli_query($conn, "SELECT username FROM tb_user WHERE username = '$username' AND password = '$password' AND level = '$level' AND status = 0  ");
 
 	if (mysqli_fetch_array($login)) {
-
+ 
 
 		$re1 = mysqli_query($conn, "SELECT username FROM tb_user WHERE $level=1 ");
 		$re2 = mysqli_query($conn, "SELECT username FROM tb_user WHERE $level=2 ");
@@ -39,8 +39,6 @@ function login($data)
 
 			session_start();
 			$_SESSION['username'] = $username;
-
-
 			header('location:../direktur/index.php');
 		}
 
@@ -60,7 +58,7 @@ function login($data)
 		if (mysqli_fetch_assoc($re4)) {
 			session_start();
 			$_SESSION['username'] = $username;
-			header('location:../kepala_spi/auditor/index.php');
+			header('location:../kepala_spi/user/index.php');
 		}
 	}
 
@@ -75,9 +73,7 @@ function login($data)
 		document.location.href='index.php';
 		</script>";
 	}
-
-
-
+	
 	return mysqli_affected_rows($conn);
 }
 

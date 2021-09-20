@@ -9,12 +9,6 @@ if (isset($_POST["login"])) {
   }
 }
 
-if (isset($_POST["login"])) {
-  if (login($_POST) > 0) {
-  } else {
-    echo mysqli_error($conn);
-  }
-}
 
 ?>
 
@@ -49,9 +43,9 @@ if (isset($_POST["login"])) {
         <a href="#" class="h1"><b>AuditKeu | PNC </b>Login</a>
       </div>
       <div class="card-body">
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="" method="post" enctype="multipart/form-data" class="main-form">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Username" name="username">
+            <input type="text" class="form-control" placeholder="Username" name="username" required>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -59,7 +53,7 @@ if (isset($_POST["login"])) {
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Password" name="password">
+            <input type="password" class="form-control" placeholder="Password" name="password" required>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -72,15 +66,16 @@ if (isset($_POST["login"])) {
               <option style="color: black;" value="1">Direktur</option>
               <option style="color: black;" value="2">Auditee</option>
               <option style="color: black;" value="3">Auditor</option>
-              <option style="color: black;" value="4">Kepala SPI</option>
+              <option style="color: black;" value="4">Ketua SPI</option>
             </select>
-            <input type="hidden" name="status">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-layer-group"></span>
               </div>
             </div>
+            <input type="hidden" name="status">
           </div>
+
           <div class="row">
             <div class="col-8">
               <div class="icheck-primary">
@@ -92,7 +87,7 @@ if (isset($_POST["login"])) {
             </div>
             <!-- /.col -->
             <div class="col-4">
-              <button type="submit" name="login" class="btn btn-primary btn-block">Sign In</button>
+              <button type="submit" name="login" id="login" class="btn btn-primary btn-block">Sign In</button>
             </div>
             <!-- /.col -->
           </div>

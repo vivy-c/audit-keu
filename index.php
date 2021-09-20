@@ -47,7 +47,7 @@ if (isset($_POST["register"])) {
         <div class="navbar-nav ml-auto">
           <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link btn btn-primary text-white tombol" href="sistem/session/index.php">Sign-in</a>
-          <a class="nav-item nav-link btn btn-primary text-white tombol" data-toggle="modal" data-target="#registrasi"">Sign-Up</a>
+          <a class="nav-item nav-link btn btn-primary text-white tombol" data-toggle="modal" data-target="#registrasi">Sign-Up</a>
           </div>
         </div>
       </div>
@@ -57,7 +57,7 @@ if (isset($_POST["register"])) {
 
 
      <!-- modal register-->
-     <div class=" modal fade" id="registrasi" tabindex="-1">
+     <div class=" modal fade"  id="registrasi" tabindex="-1">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
                 <div class="modal-header">
@@ -69,37 +69,39 @@ if (isset($_POST["register"])) {
                     <div class="col-md-12">
                       <div class="card card-primary">
 
+                      <form class="main_form" method="post" action="" enctype="multipart/form-data">
+                  
                         <div class="card-body">
                           <div class="form-group">
-                            <input type="hidden" id="id" class="form-control" value="">
+                            <input type="hidden" id="id" class="form-control" value="" name="id" required>
                           </div>
                           <div class="form-group">
                             <label for="nip">NIP / NPAK</label>
-                            <input type="text" id="nip" class="form-control" value="">
+                            <input type="text" id="nip" class="form-control" value="" name="nip_npak" required>
                           </div>
                           <div class="form-group">
                             <label for="nama">Nama</label>
-                            <input type="text" id="nama" class="form-control" value="">
+                            <input type="text" id="nama" class="form-control" value="" name="nama" required>
                           </div>
                           <div class="form-group">
                             <label for="no_hp">No Telepon</label>
-                            <input type="text" id="no_hp" class="form-control" value="">
+                            <input type="text" id="no_hp" class="form-control" value="" name="no_hp" required>
                           </div>
                           <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" class="form-control" value="">
+                            <input type="email" id="email" class="form-control" value="" name="email" required>
                           </div>
                           <div class="form-group">
                             <label for="username">Username</label>
-                            <input type="text" id="username" class="form-control" value="">
+                            <input type="text" id="username" class="form-control" value="" name="username" required>
                           </div>
                           <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" id="password" class="form-control" value="">
+                            <input type="password" id="password" class="form-control" value="" name="password" required>
                           </div>
                           <div class="form-group">
                             <label for="password2">Konfirmasi Password</label>
-                            <input type="password" id="password2" class="form-control" value="">
+                            <input type="password" id="password2" class="form-control " value="" name="password2" required>
                           </div>
                           <div class="form-group">
                             <label for="foto">Pilih Foto</label><br>
@@ -110,7 +112,8 @@ if (isset($_POST["register"])) {
                             <input type="file" id="ttd" name="ttd">
                             <p style="color: red;"><i><b>* Upload ttd dengan background transparan*</i></b></p>
                           </div>
-
+                          <input type="hidden" id="status" name="status" value="0">
+                          <input type="hidden" id="level" name="level" value="0">
                         </div>
                         <!-- /.card-body -->
                       </div>
@@ -119,9 +122,11 @@ if (isset($_POST["register"])) {
                   </div>
                 </div>
                 <div class="modal-footer">
+                  <!-- <input type="submit" class="btn btn-primary send_btn" name="register" value="register"> -->
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   <button class="btn btn-primary send_btn" type="submit" name="register" >Registrasi</button>
                 </div>
+                </form>
               </div>
             </div>
         </div>
