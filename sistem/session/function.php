@@ -16,10 +16,10 @@ function query($query)
 function login($data)
 {
 	global $conn;
-	$username = strtolower(htmlspecialchars($data["username"]));
-	$password = md5($data["password"]);
-	$level = strtolower(htmlspecialchars($data["level"]));
-	$status = strtolower(htmlspecialchars($data["status"]));
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+	$level = $_POST['level'];
+	$status = $_POST['status'];
 
 
 
@@ -46,26 +46,26 @@ function login($data)
 		if (mysqli_fetch_assoc($re2)) {
 			session_start();
 			$_SESSION['username'] = $username;
-			header('location:../auditee/index.php');
+			header('location:../auditee/profile/index.php');
 		}
 
 		if (mysqli_fetch_assoc($re3)) {
 			session_start();
 			$_SESSION['username'] = $username;
-			header('location:../auditor/index.php');
+			header('location:../auditor/profile/index.php');
 		}
 
 		if (mysqli_fetch_assoc($re4)) {
 			session_start();
 			$_SESSION['username'] = $username;
-			header('location:../kepala_spi/user/index.php');
+			header('location:../kepala_spi/profile/index.php');
 		}
 	}
 
 	if (mysqli_fetch_array($gagal)) {
 		echo "<script>
-		alert('belum terkonfirmasi');
-		document.location.href='notif/index.php';
+		alert('akun belum terkonfirmasi');
+		document.location.href='index.php';
 		</script>";
 	} else {
 		echo "<script>

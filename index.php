@@ -27,6 +27,8 @@ if (isset($_POST["register"])) {
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="landing/css/style.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css'><link rel="stylesheet" href="./dist/css/style.css">
+
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Viga" rel="stylesheet">
@@ -69,39 +71,60 @@ if (isset($_POST["register"])) {
                     <div class="col-md-12">
                       <div class="card card-primary">
 
-                      <form class="main_form" method="post" action="" enctype="multipart/form-data">
+                      <form class="main_form" method="post" id="form" action="" enctype="multipart/form-data">
                   
                         <div class="card-body">
                           <div class="form-group">
-                            <input type="hidden" id="id" class="form-control" value="" name="id" required>
+                            <input type="hidden" id="id" class="form-control" value="" name="id" >
                           </div>
                           <div class="form-group">
                             <label for="nip">NIP / NPAK</label>
-                            <input type="text" id="nip" class="form-control" value="" name="nip_npak" required>
+                            <input type="text" id="nip" class="form-control" value="" name="nip_npak" >
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
                           </div>
                           <div class="form-group">
                             <label for="nama">Nama</label>
-                            <input type="text" id="nama" class="form-control" value="" name="nama" required>
+                            <input type="text" id="nama" class="form-control" value="" name="nama" >
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
                           </div>
                           <div class="form-group">
                             <label for="no_hp">No Telepon</label>
-                            <input type="text" id="no_hp" class="form-control" value="" name="no_hp" required>
+                            <input type="text" id="no_hp" class="form-control" value="" name="no_hp" >
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
                           </div>
                           <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" class="form-control" value="" name="email" required>
+                            <input type="email" id="email" class="form-control" value="" name="email" >
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
                           </div>
                           <div class="form-group">
                             <label for="username">Username</label>
-                            <input type="text" id="username" class="form-control" value="" name="username" required>
+                            <input type="text" id="username" class="form-control" value="" name="username" >
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
                           </div>
                           <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" id="password" class="form-control" value="" name="password" required>
+                            <input type="password" id="password" class="form-control" value="" name="password" >
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
                           </div>
                           <div class="form-group">
                             <label for="password2">Konfirmasi Password</label>
-                            <input type="password" id="password2" class="form-control " value="" name="password2" required>
+                            <input type="password" id="password2" class="form-control " value="" name="password2" >
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
                           </div>
                           <div class="form-group">
                             <label for="foto">Pilih Foto</label><br>
@@ -124,7 +147,7 @@ if (isset($_POST["register"])) {
                 <div class="modal-footer">
                   <!-- <input type="submit" class="btn btn-primary send_btn" name="register" value="register"> -->
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button class="btn btn-primary send_btn" type="submit" name="register" >Registrasi</button>
+                  <button class="btn btn-primary send_btn" type="submit" name="register" >Daftar</button>
                 </div>
                 </form>
               </div>
@@ -209,6 +232,9 @@ if (isset($_POST["register"])) {
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+        <script src="./dist/js/script.js"></script>
+
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

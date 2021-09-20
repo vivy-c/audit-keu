@@ -32,7 +32,7 @@ function query($query){
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><?=$judul;?></title>
+  <title><?= $data['judul']; ?></title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -70,6 +70,7 @@ function query($query){
   <script src="../../../bootstrap/js/bootstrap.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="../../../dist/js/script.js"></script>
   <!-- Untuk datatable -->
   <link rel="stylesheet" type="text/css" href="../../../datatables/datatables.min.css"/>
   <script type="text/javascript" src="../../../datatables/datatables.min.js"></script>

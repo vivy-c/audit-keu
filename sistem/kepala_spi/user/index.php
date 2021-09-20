@@ -3,6 +3,7 @@ include('../../template/header.php');
 include('../../template/sidebar_kepala_spi.php');
 
 $tb_user = query("SELECT * FROM tb_user");
+$judul='Data User';
 
 // // untuk alert
 // if (isset($_POST["edit"])) {
@@ -66,138 +67,86 @@ $tb_user = query("SELECT * FROM tb_user");
     <div class="row">
       <!-- Left col -->
       <section class="col-md-12 connectedSortable">
-        <div class="container-fluid">
+
+        <div class="card card-solid">
+        <div class="card-body pb-0">
           <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <!-- /.card-header -->
-                <div class="card-body">
-                  <table id="datatable" class="table table-striped table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th>
-                          ID
-                        </th>
-                        <th>
-                          Nama
-                        </th>
-                        <th>
-                          NIP / NPAK
-                        </th>
-                        <th>
-                          Level
-                        </th>
-                        <th>
-                          Aksi
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody id="modal-data">
-                      <?php foreach ($tb_user as $r) : ?>
-                        <tr>
-                          <td><?php echo  $r['id']; ?></td>
-                          <td><?php echo $r['nama']; ?></td>
-                          <td><?php echo  $r['nip_npak']; ?></td>
-                          <td><?php echo  $r['level']; ?></td>
-                          <td>
-                            <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<?php echo $r['id']; ?>">
-                              Detail
-                            </a>
-
-                            <!-- tampilan modal jadi-->
-                            <div class="modal fade" id="myModal<?php echo $r['id']; ?>">
-                              <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h4 class="modal-title">Detail Data User</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <div class="modal-body">
-                                    <!-- form start -->
-                                    <form action="" method="POST">
-                                      <?php
-                                      $id = $r["id"];
-                                      $data = mysqli_query($conn, "SELECT * FROM tb_user WHERE id = '$id'");
-                                      while ($cb = mysqli_fetch_array($data)) {
-                                      ?>
-                                        <div class="form-group">
-                                          <!-- <label for="id">ID User</label> -->
-                                          <input type="hidden" class="form-control" id="id" name="id" value="<?= $cb["id"]; ?>">
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="username">Username</label>
-                                          <input type="read" class="form-control" id="username" name="username" value="<?= $cb["username"]; ?>" required readonly>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="password">Password</label>
-                                          <input type="password" class="form-control" id="password" name="password" value="<?= $cb["nama"]; ?>" required readonly>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="nip_npak">nip_npak</label>
-                                          <input type="number" class="form-control" id="nip_npak" name="nip_npak" value="<?= $cb["password"]; ?>" required readonly>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="nama">nama</label>
-                                          <input type="text" class="form-control" id="nama" name="nama" value="<?= $cb["nama"]; ?>" required readonly>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="no_hp">no_hp</label>
-                                          <input type="number" class="form-control" id="no_hp" name="no_hp" value="<?= $cb["no_hp"]; ?>" required readonly>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="email">email</label>
-                                          <input type="email" class="form-control" id="email" name="email" value="<?= $cb["email"]; ?>" required readonly>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="level">level</label>
-                                          <input type="text" class="form-control" id="level" name="level" value="<?= $cb["level"]; ?>" required readonly>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="foto">foto</label><br>
-                                          <?php echo "<img src='../img/user/$cb[foto]' width='70' height='90' />";?>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="ttd">ttd</label><br>
-                                          <?php echo "<img src='../img/user/$cb[ttd]' width='70' height='90' />";?>
-                                        </div>
-
-                                      <?php
-                                      }
-                                      ?>
-
-                                  </div>
-                                  <div class="modal-footer float-right">
-                                    <a href="index.php" type="submit" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
-                                    <!-- <button type="edit" id="edit" name="edit" value="edit" class="btn btn-primary">Simpan Perubahan</button> -->
-                                    </form>
-                                  </div>
-                                </div>
-                                <!-- /.modal-content -->
-                              </div>
-                              <!-- /.modal-dialog -->
-                            </div>
-                            <!-- /.modal -->
-
-                            <a class="btn btn-danger btn-sm" name="hapus" href="hapus.php?id=<?= $r["id"]; ?>" onclick="return confirm('Hapus?');">Hapus</a>
-                          </td>
-                        </tr>
-                      <?php endforeach; ?>
-                    </tbody>
-                    <?php  ?>
-                  </table>
-
+            <?php foreach ($tb_user as $r) : ?>
+            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+              <div class="card bg-light d-flex flex-fill">
+                <div class="card-header text-muted border-bottom-0">
+                  User Profile 
+                </div>
+                <div class="card-body pt-0">
+                  <div class="row">
+                    <div class="col-7">
+                      <h2 class="lead mt-2"><b><?php echo $r['nama']; ?></b></h2>
+                      <?php
+                          if ($r['level'] == 1) {
+                            $level = 'Direktur';
+                            $badge = 'primary';
+                          } elseif ($r['level'] == 2)  {
+                            $level = 'Auditee';
+                            $badge = 'success';
+                          } elseif ($r['level'] == 3)  {
+                            $level = 'Auditor';
+                            $badge = 'warning';
+                          } elseif ($r['level'] == 4)  {
+                            $level = 'Ketua SPI';
+                            $badge = 'info';
+                          } else {
+                            $level = 'Belum dikonfirmasi';
+                            $badge = 'danger';
+                          }
+                          ?>
+                    
+                      <p class="text-muted text-sm"><b>Level: </b> <span class="badge badge-<?= $badge; ?>"><?= $level; ?></span></p>
+                      <ul class="ml-4 mb-0 fa-ul text-muted">
+                        <li class="small mt-1"><span class="fa-li"><i class="fas fa-md fa-building"></i></span>Email Address: <?=$r['email'];?></li>
+                        <li class="small mt-1"><span class="fa-li"><i class="fas fa-md fa-phone"></i></span> Phone #: <?=$r['no_hp'];?></li>
+                      </ul>
+                    </div>
+                    <div class="col-5 text-center">
+                      <img src="../../img/user/foto_<?=$r['username'];?>.png" alt="user-avatar" class="img-circle img-fluid">
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="text-right">
+                  <?php
+                          if ($r['level'] == 1) {
+                            $konfirm= 'Sudah aktif';
+                            $badge = 'secondary';
+                          } elseif ($r['level'] == 2)  {
+                            $konfirm= 'Sudah aktif';
+                            $badge = 'secondary';
+                          } elseif ($r['level'] == 3)  {
+                            $konfirm= 'Sudah aktif';
+                            $badge = 'secondary';
+                          } elseif ($r['level'] == 4)  {
+                            $konfirm= 'Sudah aktif';
+                            $badge = 'secondary';
+                          } else {
+                            $konfirm= 'Aktifkan';
+                            $badge = 'teal';
+                          }
+                          ?>
+                    <a href="#" class="btn btn-sm bg-<?=$badge;?>">
+                      <i class="fas fa-comments"> <?=$konfirm;?></i>
+                    </a>
+                    <a href="#" class="btn btn-sm btn-danger">
+                      <i class="fas fa-user"></i> Hapus
+                    </a>
+                  </div>
                 </div>
               </div>
-
-
-
-
             </div>
+            <?php endforeach; ?>
           </div>
         </div>
-
+        <!-- /.card-body -->
+        <!-- /.card-footer -->
+      </div>
       </section>
       <!-- /.Left col -->
       <!-- right col (We are only adding the ID to make the widgets sortable)-->

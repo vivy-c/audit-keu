@@ -68,10 +68,27 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        <?php
+                
+                $username = $_SESSION["username"];
+
+                $sql = "SELECT * FROM tb_user WHERE username='$username'";
+                $result = mysqli_query($conn, $sql);
+                ?>
+          <img src="../../img/user/foto_<?=$username;?>.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+        
+          <a href="#" class="d-block"><?php
+                
+                $username = $_SESSION["username"];
+
+                $sql = "SELECT * FROM tb_user WHERE username='$username'";
+                $result = mysqli_query($conn, $sql);
+                while ($row = $result->fetch_assoc()) {
+                  echo $row['nama'];
+                }
+                ?></a>
         </div>
       </div>
 
@@ -92,6 +109,16 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+               
+          <li class="nav-item ">
+            <a href="../profile/index.php" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Profile
+                <i class=""></i>
+              </p>
+            </a>            
+          </li>
                <li class="nav-item ">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>

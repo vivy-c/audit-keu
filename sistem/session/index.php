@@ -45,7 +45,7 @@ if (isset($_POST["login"])) {
       <div class="card-body">
         <form action="" method="post" enctype="multipart/form-data" class="main-form">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Username" name="username" required>
+            <input type="text" class="form-control" placeholder="Username" name="username" id="username" required>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -53,7 +53,7 @@ if (isset($_POST["login"])) {
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Password" name="password" required>
+            <input type="password" class="form-control" placeholder="Password" name="password" id="password" required>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -61,7 +61,7 @@ if (isset($_POST["login"])) {
             </div>
           </div>
           <div class="input-group mb-3">
-            <select name="level" class="form-control">
+            <select name="level" id="level" class="form-control">
               <option style="color: white;">Level User</option>
               <option style="color: black;" value="1">Direktur</option>
               <option style="color: black;" value="2">Auditee</option>
