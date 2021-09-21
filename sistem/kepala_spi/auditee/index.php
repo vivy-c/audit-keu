@@ -2,8 +2,7 @@
 include('../../template/header.php');
 include('../../template/sidebar_kepala_spi.php');
 
-$tb_auditee = query("SELECT * FROM tb_auditee");
-
+$tb_auditee = query("SELECT a.id_auditee,b.nama,a.nama_unit,a.tanggal from tb_auditee as a,tb_user as b where a.id_user=b.id_user");
 // // untuk alert
 // if (isset($_POST["edit"])) {
 //   if (edit($_POST) > 0) {
@@ -95,7 +94,7 @@ $tb_auditee = query("SELECT * FROM tb_auditee");
                       <?php foreach ($tb_auditee as $r) : ?>
                         <tr>
                           <th scope="row"><?= $no; ?></th>
-                          <td><?php echo $r['id_user']; ?></td>
+                          <td><?php echo $r['nama']; ?></td>
                           <td><?php echo $r['nama_unit']; ?></td>
                           <td><?php echo  $r['tanggal']; ?></td>
                           <td>
@@ -119,7 +118,7 @@ $tb_auditee = query("SELECT * FROM tb_auditee");
                                     <form action="" method="POST">
                                       <?php
                                       $id = $r["id_auditee"];
-                                      $data = mysqli_query($conn, "SELECT * FROM tb_auditee WHERE id_auditee = '$id'");
+                                      $data = mysqli_query($conn, "SELECT b.foto,a.id_auditee,b.nama,a.nama_unit,a.tanggal from tb_auditee as a,tb_user as b where a.id_user=b.id_user");
                                       while ($cb = mysqli_fetch_array($data)) {
                                       ?>
                                         <div class="form-group">
@@ -127,8 +126,11 @@ $tb_auditee = query("SELECT * FROM tb_auditee");
                                           <input type="hidden" class="form-control" id="id_auditee" name="id_auditee" value="<?= $cb["id_auditee"]; ?>">
                                         </div>
                                         <div class="form-group">
-                                          <label for="id">nama_ketua</label>
-                                          <input type="text" class="form-control" id="id" name="id" value="<?= $cb["id"]; ?>" required readonly>
+                                          <img src="../../img/user/<?= $cb["foto"]; ?>" alt="foto ketua unit" width="50" >
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="nama">Nama Ketua</label>
+                                          <input type="text" class="form-control" id="nama" name="nama" value="<?= $cb["nama"]; ?>" required readonly>
                                         </div>
                                         <div class="form-group">
                                           <label for="nama_unit">nama_unit</label>
