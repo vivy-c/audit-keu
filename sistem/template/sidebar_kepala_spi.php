@@ -4,7 +4,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="../../../dist/img/auditKeu-pnc.png" alt="PncLogo" height="60" width="134">
+    <img class="loader" src="../../../dist/img/loading-buffering.gif" alt="loader" height="60" width="60" style="color: white;">
   </div>
 
   <!-- Navbar -->
