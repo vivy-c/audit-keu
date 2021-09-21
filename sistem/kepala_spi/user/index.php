@@ -75,7 +75,7 @@ $judul='Data User';
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
               <div class="card bg-light d-flex flex-fill">
                 <div class="card-header text-muted border-bottom-0">
-                  User Profile 
+                  <!-- User Profile  -->
                 </div>
                 <div class="card-body pt-0">
                   <div class="row">
@@ -117,25 +117,27 @@ $judul='Data User';
                           if ($r['level'] == 1) {
                             $konfirm= 'Sudah aktif';
                             $badge = 'secondary';
+                            $a_tag = '#';
                           } elseif ($r['level'] == 2)  {
                             $konfirm= 'Sudah aktif';
                             $badge = 'secondary';
+                            $a_tag = '#';
                           } elseif ($r['level'] == 3)  {
                             $konfirm= 'Sudah aktif';
                             $badge = 'secondary';
+                            $a_tag = '#';
                           } elseif ($r['level'] == 4)  {
                             $konfirm= 'Sudah aktif';
                             $badge = 'secondary';
+                            $a_tag = '#';
                           } else {
                             $konfirm= 'Aktifkan';
                             $badge = 'teal';
+                            $a_tag = '../konfirmasi_user/index.php';
                           }
                           ?>
-                    <a href="#" class="btn btn-sm bg-<?=$badge;?>">
-                      <i class="fas fa-comments"> <?=$konfirm;?></i>
-                    </a>
-                    <a href="#" class="btn btn-sm btn-danger">
-                      <i class="fas fa-user"></i> Hapus
+                    <a href="<?=$a_tag;?>" class="btn btn-sm bg-<?=$badge;?>">
+                      <!-- <i class="fas fa-user"><?=$konfirm;?></i> --><?=$konfirm;?>
                     </a>
                   </div>
                 </div>
