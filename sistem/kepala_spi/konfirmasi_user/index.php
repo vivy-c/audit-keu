@@ -208,7 +208,7 @@ function edit1($data)
               <div class="card">
                 <!-- /.card-header -->
                 <div class="card-body">
-                  <table id="datatable" class="table table-striped table-bordered table-hover">
+                  <table id="datatable" class="table table-striped table-bordered table-hover table-wrapped">
                     <thead>
                       <tr>
                         <th>

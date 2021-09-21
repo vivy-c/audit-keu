@@ -119,7 +119,7 @@
               </p>
             </a>            
           </li>
-               <li class="nav-item ">
+          <li class="nav-item ">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -140,10 +140,16 @@
                   <p>Auditee</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="../konfirmasi_user/index.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Konfirmasi User</p>
+                </a>
+              </li>
             </ul>
           </li>
 
-          <li class="nav-item ">
+          <!-- <li class="nav-item ">
             <a href="../konfirmasi_user/index.php" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
@@ -151,7 +157,7 @@
                 <i class=""></i>
               </p>
             </a>            
-          </li>
+          </li> -->
           <li class="nav-item ">
             <a href="../pka/index.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
@@ -161,7 +167,44 @@
               </p>
             </a>            
           </li>
+
           <li class="nav-item ">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-list-alt"></i>
+              <p>
+                Data Audit
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../desk/index.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Desk</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Visit</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>THA</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>LHA</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- <li class="nav-item ">
             <a href="../desk/index.php" class="nav-link">
             <i class="nav-icon fas fa-list-alt"></i>
               <p>
@@ -196,7 +239,7 @@
                 <i class=""></i>
               </p>
             </a>            
-          </li>
+          </li> -->
           <li class="nav-item ">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-flag"></i>

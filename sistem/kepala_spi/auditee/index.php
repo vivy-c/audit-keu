@@ -3,53 +3,6 @@ include('../../template/header.php');
 include('../../template/sidebar_kepala_spi.php');
 
 $tb_auditee = query("SELECT a.id_auditee,b.nama,a.nama_unit,a.tanggal from tb_auditee as a,tb_user as b where a.id_user=b.id_user");
-// // untuk alert
-// if (isset($_POST["edit"])) {
-//   if (edit($_POST) > 0) {
-//     echo "
-//       <script>
-//       alert('Data Berhasil Diedit!');
-//       document.location.href = 'index.php';
-//       </script>
-//       ";
-//   } else {
-//     echo "
-//       <script>
-//           alert('Data Gagal Diedit!');
-//           document.location.href = 'index.php';
-//       </script>
-//       ";
-//   }
-// }
-
-// function edit($data)
-// {
-//   global $conn;
-//   $id = $data["id"];
-//   $username = $data["username"];
-//   $password = $data["password"];
-//   $nama_unit = $data["nama_unit"];
-//   $id = $data["id"];
-//   $nip_npak = $data["nip_npak"];
-//   $no_hp = $data["no_hp"];
-//   $email = $data["email"];
-//   $status = $data["status"];
-//   $ttd = $data["ttd"];
-
-//   $query = "UPDATE tb_auditee SET
-//     username='$username',
-//     password='$password',
-//     nama_unit='$nama_unit',
-//     id='$id',
-//     nip_npak='$nip_npak',
-//     email='$email',
-//     status='$status',
-//     ttd='$ttd'
-//     WHERE id ='$id'";
-//   mysqli_query($conn, $query);
-//   return mysqli_affected_rows($conn);
-// }
-
 
 ?>
 
