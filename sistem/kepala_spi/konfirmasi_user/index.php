@@ -11,8 +11,8 @@ $page='Konfirmasi User';
         $data['page']=$page;
     }
 
-$tampil = query("SELECT * FROM tb_user WHERE status = 0 ");
-$tb_user = query("SELECT * FROM tb_user");
+// $tampil = query("SELECT * FROM tb_user WHERE status = 0 ");
+$tb_user = query("SELECT * FROM tb_user WHERE status = 0 ");
 // untuk alert
 if (isset($_POST["edit1"])) {
   if (edit1($_POST) > 0) {
@@ -82,132 +82,6 @@ function edit1($data)
                 <!-- /.card-header -->
                 <div class="card-body">
                   <h5>Tabel Konfirmasi User</h5>
-                  <table id="datatable" class="table table-striped table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th>
-                          No
-                        </th>
-                        <th>
-                          Nama
-                        </th>
-                        <th>
-                          NIP / NPAK
-                        </th>
-                        <th>
-                          Aksi
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody id="modal-data">
-                      <?php $no = 1; ?>
-                      <?php foreach ($tampil as $r) : ?>
-                        <tr>
-                          <th scope="row"><?= $no; ?></th>
-                          <td><?php echo $r['nama']; ?></td>
-                          <td><?php echo  $r['nip_npak']; ?></td>
-                          <td>
-                            <a class="btn btn-primary btn-sm mb-1" data-toggle="modal" data-target="#myModal<?php echo $r['id']; ?>">
-                              Detail
-                            </a>
-
-                            <!-- tampilan modal jadi-->
-                            <div class="modal fade" id="myModal<?php echo $r['id']; ?>">
-                              <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h4 class="modal-title">Detail Data User</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <div class="modal-body">
-                                    <!-- form start -->
-                                    <form action="" method="POST">
-                                      <?php
-                                      $id = $r["id"];
-                                      $data = mysqli_query($conn, "SELECT * FROM tb_user WHERE id = '$id'");
-                                      while ($cb = mysqli_fetch_array($data)) {
-                                      ?>
-                                        <div class="form-group">
-                                          <!-- <label for="id_user">ID User</label> -->
-                                          <input type="hidden" class="form-control" id="id" name="id" value="<?= $cb["id"]; ?>">
-                                        </div>
-                                        <img src='../../img/user/$cb["foto"]' width='70' height='90' />
-                                        <div class="form-group">
-                                          <label for="username">Username</label>
-                                          <input type="read" class="form-control" id="username" name="username" value="<?= $cb["username"]; ?>" required readonly>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="password">Password</label>
-                                          <input type="password" class="form-control" id="password" name="password" value="<?= $cb["password"]; ?>" required readonly>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="nip_npak">nip_npak</label>
-                                          <input type="number" class="form-control" id="nip_npak" name="nip_npak" value="<?= $cb["nip_npak"]; ?>" required readonly>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="nama">nama</label>
-                                          <input type="text" class="form-control" id="nama" name="nama" value="<?= $cb["nama"]; ?>" required readonly>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="no_hp">no_hp</label>
-                                          <input type="number" class="form-control" id="no_hp" name="no_hp" value="<?= $cb["no_hp"]; ?>" required readonly>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="email">email</label>
-                                          <input type="email" class="form-control" id="email" name="email" value="<?= $cb["email"]; ?>" required readonly>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="status">status</label>
-                                          <input type="text" class="form-control" id="status" name="status" value="<?= $cb["status"]; ?>" required readonly>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="level">level</label>
-                                          <input type="text" class="form-control" id="level" name="level" value="<?= $cb["level"]; ?>" required readonly>
-                                        </div>
-
-                                      <?php
-                                      }
-                                      ?>
-
-                                  </div>
-                                  <div class="modal-footer float-right">
-                                    <a href="index.php" type="submit" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
-                                    <!-- <button type="edit" id="edit" name="edit" value="edit" class="btn btn-primary">Simpan Perubahan</button> -->
-                                    </form>
-                                  </div>
-                                </div>
-                                <!-- /.modal-content -->
-                              </div>
-                              <!-- /.modal-dialog -->
-                            </div>
-                            <!-- /.modal -->
-
-
-                            <a class="btn btn-success btn-sm mb-1" href="notif/index.php?id=<?= $row["id"]; ?>">Konfirmasi</a>
-
-                            <a class="btn btn-danger btn-sm mb-1" name="hapus" href="hapus.php?id=<?= $r["id_auditor"]; ?>" onclick="return confirm('Mengabaikan bererti menghapus data auditor, yakin ingin melanjutkan?');">Abaikan</a>
-                          </td>
-                        </tr>
-                      <?php endforeach; ?>
-                    </tbody>
-                    <?php  ?>
-                  </table>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <!-- /.card-header -->
-                <div class="card-body">
                   <table id="datatable" class="table table-striped table-bordered table-hover table-wrapped">
                     <thead>
                       <tr>
@@ -256,13 +130,12 @@ function edit1($data)
                           ?>
                     
                           <td><span class="badge badge-<?= $badge; ?>"><?= $level; ?></span></td>
-
                           <td class="">
                           <div class="btn-group btn-group-sm">
-                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal<?php echo $r['id']; ?>"><i class="fas fa-eye"></i></a>
+                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal<?php echo $r['id_user']; ?>"><i class="fas fa-eye"></i></a>
 
                             <!-- tampilan modal jadi-->
-                            <div class="modal fade" id="myModal<?php echo $r['id']; ?>">
+                            <div class="modal fade" id="myModal<?php echo $r['id_user']; ?>">
                               <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                   <div class="modal-header">
@@ -275,13 +148,17 @@ function edit1($data)
                                     <!-- form start -->
                                     <form action="" method="POST">
                                       <?php
-                                      $id = $r["id"];
-                                      $data = mysqli_query($conn, "SELECT * FROM tb_user WHERE id = '$id'");
+                                      $id_user = $r["id_user"];
+                                      $data = mysqli_query($conn, "SELECT * FROM tb_user WHERE id_user = '$id_user'");
                                       while ($cb = mysqli_fetch_array($data)) {
                                       ?>
                                         <div class="form-group">
                                           <!-- <label for="id">ID User</label> -->
-                                          <input type="hidden" class="form-control" id="id" name="id" value="<?= $cb["id"]; ?>">
+                                          <input type="hidden" class="form-control" id="id_user" name="id_user" value="<?= $cb["id_user"]; ?>">
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="foto">foto</label><br>
+                                          <?php echo "<img src='../../img/user/$cb[foto]' width='70'  />"; ?>
                                         </div>
                                         <div class="form-group">
                                           <label for="username">Username</label>
@@ -293,7 +170,7 @@ function edit1($data)
                                         </div>
                                         <div class="form-group">
                                           <label for="nip_npak">nip_npak</label>
-                                          <input type="number" class="form-control" id="nip_npak" name="nip_npak" value="<?= $cb["password"]; ?>" required readonly>
+                                          <input type="number" class="form-control" id="nip_npak" name="nip_npak" value="<?= $cb["nip_npak"]; ?>" required readonly>
                                         </div>
                                         <div class="form-group">
                                           <label for="nama">nama</label>
@@ -312,12 +189,8 @@ function edit1($data)
                                           <input type="text" class="form-control" id="level" name="level" value="<?= $cb["level"]; ?>" required readonly>
                                         </div>
                                         <div class="form-group">
-                                          <label for="foto">foto</label><br>
-                                          <?php echo "<img src='../img/user/$cb[foto]' width='70' height='90' />"; ?>
-                                        </div>
-                                        <div class="form-group">
                                           <label for="ttd">ttd</label><br>
-                                          <?php echo "<img src='../img/user/$cb[ttd]' width='70' height='90' />"; ?>
+                                          <?php echo "<img src='../../img/user/$cb[ttd]' width='70'  />"; ?>
                                         </div>
 
                                       <?php
@@ -337,7 +210,7 @@ function edit1($data)
                             </div>
                             <!-- /.modal -->
 
-                            <a href="hapus.php?id=<?= $r["id"]; ?>" name="hapus" class="btn btn-danger" onclick="return confirm('Hapus?');"><i class="fas fa-trash"></i></a>
+                            <a href="hapus.php?id=<?= $r["id_user"]; ?>" name="hapus" class="btn btn-danger" onclick="return confirm('Yakin menghapus permanen?');"><i class="fas fa-trash"></i></a>
                             </div>
                           </td>
                         </tr>
@@ -349,15 +222,9 @@ function edit1($data)
 
                 </div>
               </div>
-
-
-
-
             </div>
           </div>
         </div>
-
-
 
       </section>
 

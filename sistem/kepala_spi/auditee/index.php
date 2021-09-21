@@ -43,7 +43,7 @@ $tb_auditee = query("SELECT a.id_auditee,b.nama,a.nama_unit,a.tanggal from tb_au
                       </tr>
                     </thead>
                     <tbody id="modal-data">
-                    <?php $no = 1; ?>
+                      <?php $no = 1; ?>
                       <?php foreach ($tb_auditee as $r) : ?>
                         <tr>
                           <th scope="row"><?= $no; ?></th>
@@ -51,69 +51,68 @@ $tb_auditee = query("SELECT a.id_auditee,b.nama,a.nama_unit,a.tanggal from tb_au
                           <td><?php echo $r['nama_unit']; ?></td>
                           <td><?php echo  $r['tanggal']; ?></td>
                           <td>
-                            <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<?php echo $r['id_auditee']; ?>">
-                              Detail
-                            </a> 
+                            <div class="btn-group btn-group-sm">
+                              <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal<?php echo $r['id_auditee']; ?>"><i class="fas fa-eye"></i></a>
 
-                            <!-- tampilan modal jadi-->
-                            <div class="modal fade" id="myModal<?php echo $r['id_auditee']; ?>">
-                              <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h4 class="modal-title">Detail Data Auditee</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  
-                                  <div class="modal-body">
-                                    <!-- form start -->
-                                    <form action="" method="POST">
-                                      <?php
-                                      $id = $r["id_auditee"];
-                                      $data = mysqli_query($conn, "SELECT b.foto,a.id_auditee,b.nama,a.nama_unit,a.tanggal from tb_auditee as a,tb_user as b where a.id_user=b.id_user");
-                                      while ($cb = mysqli_fetch_array($data)) {
-                                      ?>
-                                        <div class="form-group">
-                                          <!-- <label for="id_user">ID User</label> -->
-                                          <input type="hidden" class="form-control" id="id_auditee" name="id_auditee" value="<?= $cb["id_auditee"]; ?>">
-                                        </div>
-                                        <div class="form-group">
-                                          <img src="../../img/user/<?= $cb["foto"]; ?>" alt="foto ketua unit" width="50" >
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="nama">Nama Ketua</label>
-                                          <input type="text" class="form-control" id="nama" name="nama" value="<?= $cb["nama"]; ?>" required readonly>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="nama_unit">nama_unit</label>
-                                          <input type="text" class="form-control" id="nama_unit" name="nama_unit" value="<?= $cb["nama_unit"]; ?>" required readonly>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="tanggal">tanggal</label>
-                                          <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $cb["tanggal"]; ?>" required readonly>
-                                        </div>
-                                        
+                              <!-- tampilan modal jadi-->
+                              <div class="modal fade" id="myModal<?php echo $r['id_auditee']; ?>">
+                                <div class="modal-dialog modal-lg">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h4 class="modal-title">Detail Data Auditee</h4>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
 
-                                      <?php
-                                      }
-                                      ?>
+                                    <div class="modal-body">
+                                      <!-- form start -->
+                                      <form action="" method="POST">
+                                        <?php
+                                        $id = $r["id_auditee"];
+                                        $data = mysqli_query($conn, "SELECT b.foto,a.id_auditee,b.nama,a.nama_unit,a.tanggal from tb_auditee as a,tb_user as b where a.id_user=b.id_user");
+                                        while ($cb = mysqli_fetch_array($data)) {
+                                        ?>
+                                          <div class="form-group">
+                                            <!-- <label for="id_user">ID User</label> -->
+                                            <input type="hidden" class="form-control" id="id_auditee" name="id_auditee" value="<?= $cb["id_auditee"]; ?>">
+                                          </div>
+                                          <div class="form-group justify-content-center">
+                                            <img src="../../img/user/<?= $cb["foto"]; ?>" alt="foto ketua unit" width="50" class="img-circle elevation-2">
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="nama">Nama Ketua</label>
+                                            <input type="text" class="form-control" id="nama" name="nama" value="<?= $cb["nama"]; ?>" required readonly>
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="nama_unit">nama_unit</label>
+                                            <input type="text" class="form-control" id="nama_unit" name="nama_unit" value="<?= $cb["nama_unit"]; ?>" required readonly>
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="tanggal">tanggal</label>
+                                            <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $cb["tanggal"]; ?>" required readonly>
+                                          </div>
 
+
+                                        <?php
+                                        }
+                                        ?>
+
+                                    </div>
+                                    <div class="modal-footer float-right">
+                                      <a href="index.php" type="submit" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
+                                      <!-- <button type="edit" id="edit" name="edit" value="edit" class="btn btn-primary">Simpan Perubahan</button> -->
+                                      </form>
+                                    </div>
                                   </div>
-                                  <div class="modal-footer float-right">
-                                    <a href="index.php" type="submit" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
-                                    <!-- <button type="edit" id="edit" name="edit" value="edit" class="btn btn-primary">Simpan Perubahan</button> -->
-                                    </form>
-                                  </div>
+                                  <!-- /.modal-content -->
                                 </div>
-                                <!-- /.modal-content -->
+                                <!-- /.modal-dialog -->
                               </div>
-                              <!-- /.modal-dialog -->
+                              <!-- /.modal -->
+                              <a href="hapus.php?id=<?= $r["id_auditee"]; ?>" name="hapus" class="btn btn-danger" onclick="return confirm('Yakin mengapus data?');"><i class="fas fa-trash"></i></a>
+
                             </div>
-                            <!-- /.modal -->
-
-                            <a class="btn btn-danger btn-sm" name="hapus" href="hapus.php?id=<?= $r["id"]; ?>" onclick="return confirm('Yakin mengapus data?');">Hapus</a>
-
 
                           </td>
                         </tr>
