@@ -107,7 +107,7 @@ $judul='Data User';
                       </ul>
                     </div>
                     <div class="col-5 text-center">
-                      <img src="../../img/user/foto_<?=$r['username'];?>.png" alt="user-avatar" class="img-circle img-fluid">
+                      <img src="../../img/user/<?=$r['foto'];?>" alt="user-avatar" class="img-circle img-fluid">
                     </div>
                   </div>
                 </div>

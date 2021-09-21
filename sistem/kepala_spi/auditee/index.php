@@ -74,6 +74,9 @@ $tb_auditee = query("SELECT * FROM tb_auditee");
                     <thead>
                       <tr>
                         <th>
+                          No
+                        </th>
+                        <th>
                           Nama ketua
                         </th>
                         <th>
@@ -88,18 +91,20 @@ $tb_auditee = query("SELECT * FROM tb_auditee");
                       </tr>
                     </thead>
                     <tbody id="modal-data">
+                    <?php $no = 1; ?>
                       <?php foreach ($tb_auditee as $r) : ?>
                         <tr>
-                          <td><?php echo $r['id']; ?></td>
+                          <th scope="row"><?= $no; ?></th>
+                          <td><?php echo $r['id_user']; ?></td>
                           <td><?php echo $r['nama_unit']; ?></td>
                           <td><?php echo  $r['tanggal']; ?></td>
                           <td>
-                            <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<?php echo $r['id']; ?>">
+                            <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<?php echo $r['id_auditee']; ?>">
                               Detail
-                            </a>
+                            </a> 
 
                             <!-- tampilan modal jadi-->
-                            <div class="modal fade" id="myModal<?php echo $r['id']; ?>">
+                            <div class="modal fade" id="myModal<?php echo $r['id_auditee']; ?>">
                               <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                   <div class="modal-header">
@@ -157,6 +162,7 @@ $tb_auditee = query("SELECT * FROM tb_auditee");
 
                           </td>
                         </tr>
+                        <?php $no++;  ?>
                       <?php endforeach; ?>
                     </tbody>
                     <?php  ?>

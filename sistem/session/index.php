@@ -36,9 +36,7 @@ if (isset($_POST["login"])) {
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
       <hr>
-      <img src="../../dist/img/pnc.png" alt="PncLogo" width="50" height="50" style=" margin:auto;">
-      <div class="card-header text-center">
-      </div>
+      <img src="../../dist/img/pnc.png" alt="PncLogo" width="60" height="60" style=" margin:auto;">
       <div class="card-header text-center">
         <a href="#" class="h1"><b>AuditKeu | PNC </b>Login</a>
       </div>

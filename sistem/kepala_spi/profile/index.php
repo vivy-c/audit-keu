@@ -23,7 +23,7 @@ $result = mysqli_query($conn, $sql);
               <div class="card-body box-profile">
                 <div class="text-center">
                 
-                  <img class="profile-user-img img-fluid img-circle" src="../../img/user/foto_<?=$username;?>.png" alt="User profile picture">
+                  <img class="profile-user-img img-fluid img-circle" src="../../img/user/<?=$foto;?>" alt="User profile picture">
                 </div>
 
                 <h3 class="profile-username text-center"><?php
