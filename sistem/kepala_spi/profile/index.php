@@ -1,12 +1,30 @@
 <?php
 include('../../template/header.php');
 include('../../template/sidebar_kepala_spi.php');
+include('functions.php');
 
 $data['judul'] = 'Profile Kepala';
 
 $username = $_SESSION["username"];
 
 $sql = query("SELECT * FROM tb_user WHERE username='$username'");
+
+
+
+if (isset($_POST["ubah"])) {
+  if (ubah($_POST) > 0) {
+     echo "<script>
+     alert('data berhasil ditambahkan');
+     document.location.href='../profile/index.php';
+     </script>";
+  } else {
+     echo "<script>
+     alert('data gagal ditambahkan');
+     document.location.href='../profile/index.php';
+     </script>";
+  }
+}
+
 
 ?>
 <style>
@@ -78,13 +96,13 @@ $sql = query("SELECT * FROM tb_user WHERE username='$username'");
 
                         <p class="text-muted text-center"><?= $level; ?></p>
 
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" method="post" >
                           <div class="form-group">
-                            <input type="hidden" id="id" class="form-control" value="<?= $r['id_user']; ?>" name="id">
+                            <input type="hidden" id="id_user" class="form-control" value="<?= $r['id_user']; ?>" name="id_user">
                           </div>
                           <div class="form-group">
                             <label for="nip">NIP / NPAK</label>
-                            <input type="text" id="nip" class="form-control" value="<?= $r['nip_npak']; ?>" name="nip_npak">
+                            <input type="text" id="nip_npak" class="form-control" value="<?= $r['nip_npak']; ?>" name="nip_npak">
                           </div>
                           <div class="form-group">
                             <label for="nama">Nama</label>
@@ -100,7 +118,7 @@ $sql = query("SELECT * FROM tb_user WHERE username='$username'");
                           </div>
                           <div class="form-group row  float-left">
                             <div class="col-sm-4">
-                              <button type="submit" class="btn btn-success">Perbarui</button>
+                              <button type="submit" name="ubah" class="btn btn-success">Perbarui</button>
                             </div>
                           </div>
                         </form>
@@ -123,7 +141,7 @@ $sql = query("SELECT * FROM tb_user WHERE username='$username'");
                   <div class="card card-default card-outline">
                     <div class="card-body box-profile">
 
-                      <form class="form-horizontal">
+                      <form class="form-horizontal" method="post" >
                         <div class="form-group">
                           <label for="username">Username</label>
                           <input type="text" id="username" class="form-control" value="<?= $r['username']; ?>" name="username">
@@ -134,11 +152,11 @@ $sql = query("SELECT * FROM tb_user WHERE username='$username'");
                         </div>
                         <div class="form-group">
                           <label for="password2">Konfirmasi Password</label>
-                          <input type="password" id="password2" class="form-control " value="<?= $r['password2']; ?>" name="password2">
+                          <input type="password" id="password2" class="form-control " value="<?= $r['password']; ?>" name="password2">
                         </div>
                         <div class="form-group row  float-left">
                           <div class="col-sm-4">
-                            <button type="submit" class="btn btn-success">Perbarui</button>
+                            <button type="submit" name="ubah" class="btn btn-success">Perbarui</button>
                           </div>
                         </div>
                       </form>
@@ -157,7 +175,7 @@ $sql = query("SELECT * FROM tb_user WHERE username='$username'");
                   <div class="card card-default card-outline">
                     <div class="card-body box-profile">
                       <div class="tab-pane active" id="settings">
-                        <form class="form-horizontal container">
+                        <form class="form-horizontal container" method="post" >
                           <div class="form-group">
                             <p><b>Foto anda sekarang:</b></p>
                             <div class="box">
@@ -166,7 +184,7 @@ $sql = query("SELECT * FROM tb_user WHERE username='$username'");
                           </div>
                           <div class="form-group">
                             <label for="foto">Ubah Foto</label>
-                            <input type="file" id="foto" name="foto">
+                            <input type="file" id="fotoLama" name="foto">
                           </div>
                           <div class="form-group">
                             <p><b>Ttd anda sekarang:</b></p>
@@ -175,13 +193,14 @@ $sql = query("SELECT * FROM tb_user WHERE username='$username'");
                             </div>
                           <div class="form-group">
                             <label for="ttd">Ubah tanda tangan</label>
-                            <input type="file" id="ttd" name="ttd">
+                            <input type="checkbox" name="ubah_foto" value="true"> Ceklis jika ingin mengubah foto<br>
+                            <input type="file" id="ttdLama" name="ttd">
                             <p style="color: red;"><i>* Upload ttd dengan background transparan*</i></p>
                           </div>
                       </div>
                       <div class="form-group row  float-right">
                           <div class="col-sm-4">
-                            <button type="submit" class="btn btn-success">Perbarui</button>
+                            <button type="submit" name="ubah" class="btn btn-success">Perbarui</button>
                           </div>
                         </div>
                       </form>
