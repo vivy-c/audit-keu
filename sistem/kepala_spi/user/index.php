@@ -94,12 +94,27 @@ $judul='Data User';
                             $level = 'Ketua SPI';
                             $badge = 'info';
                           } else {
-                            $level = 'Belum dikonfirmasi';
+                            $level = 'Tidak tersedia';
                             $badge = 'danger';
                           }
                           ?>
                     
                       <p class="text-muted text-sm"><b>Level: </b> <span class="badge badge-<?= $badge; ?>"><?= $level; ?></span></p>
+
+                      <?php
+                          if ($r['status'] == 1) {
+                            $status = 'Aktif';
+                            $badge = 'success';
+                          } elseif ($r['status'] == 0)  {
+                            $status = 'Belum Aktif';
+                            $badge = 'danger';
+                          } else {
+                            $status = 'Tidak tersedia';
+                            $badge = 'danger';
+                          }
+                          ?>
+
+                      <p class="text-muted text-sm"><b>Status: </b> <span class="badge badge-<?= $badge; ?>"><?= $status; ?></span></p>
                       <ul class="ml-4 mb-0 fa-ul text-muted">
                         <li class="small mt-1"><span class="fa-li"><i class="fas fa-md fa-building"></i></span>Email Address: <?=$r['email'];?></li>
                         <li class="small mt-1"><span class="fa-li"><i class="fas fa-md fa-phone"></i></span> Phone #: <?=$r['no_hp'];?></li>
@@ -113,19 +128,7 @@ $judul='Data User';
                 <div class="card-footer">
                   <div class="text-right">
                   <?php
-                          if ($r['level'] == 1) {
-                            $konfirm= 'Sudah aktif';
-                            $badge = 'secondary';
-                            $a_tag = '#';
-                          } elseif ($r['level'] == 2)  {
-                            $konfirm= 'Sudah aktif';
-                            $badge = 'secondary';
-                            $a_tag = '#';
-                          } elseif ($r['level'] == 3)  {
-                            $konfirm= 'Sudah aktif';
-                            $badge = 'secondary';
-                            $a_tag = '#';
-                          } elseif ($r['level'] == 4)  {
+                          if ($r['status'] == 1) {
                             $konfirm= 'Sudah aktif';
                             $badge = 'secondary';
                             $a_tag = '#';

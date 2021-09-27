@@ -98,6 +98,9 @@ function edit1($data)
                           Level
                         </th>
                         <th>
+                          Status
+                        </th>
+                        <th>
                           Aksi
                         </th>
                       </tr>
@@ -124,12 +127,27 @@ function edit1($data)
                             $level = 'Ketua SPI';
                             $badge = 'info';
                           } else {
-                            $level = 'Belum dikonfirmasi';
+                            $level = 'Tidak tersedia';
                             $badge = 'danger';
                           }
                           ?>
                     
                           <td><span class="badge badge-<?= $badge; ?>"><?= $level; ?></span></td>
+
+                          <?php
+                          if ($r['status'] == 1) {
+                            $status = 'Aktif';
+                            $badge = 'success';
+                          } elseif ($r['status'] == 0)  {
+                            $status = 'Belum Aktif';
+                            $badge = 'danger';
+                          } else {
+                            $status = 'Tidak tersedia';
+                            $badge = 'danger';
+                          }
+                          ?>
+                    
+                          <td><span class="badge badge-<?= $badge; ?>"><?= $status; ?></span></td>
                           <td class="">
                           <div class="btn-group btn-group-sm">
                             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal<?php echo $r['id_user']; ?>"><i class="fas fa-eye"></i></a>
