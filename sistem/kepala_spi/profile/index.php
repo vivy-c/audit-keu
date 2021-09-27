@@ -118,7 +118,7 @@ if (isset($_POST["ubah"])) {
                           </div>
                           <div class="form-group row  float-left">
                             <div class="col-sm-4">
-                              <button type="submit" name="ubah" class="btn btn-success">Perbarui</button>
+                              <button type="submit" name="ubahBio" class="btn btn-success">Perbarui</button>
                             </div>
                           </div>
                         </form>
@@ -142,6 +142,9 @@ if (isset($_POST["ubah"])) {
                     <div class="card-body box-profile">
 
                       <form class="form-horizontal" method="post" >
+                      <div class="form-group">
+                            <input type="hidden" id="id_user" class="form-control" value="<?= $r['id_user']; ?>" name="id_user">
+                          </div>
                         <div class="form-group">
                           <label for="username">Username</label>
                           <input type="text" id="username" class="form-control" value="<?= $r['username']; ?>" name="username">
@@ -156,7 +159,7 @@ if (isset($_POST["ubah"])) {
                         </div>
                         <div class="form-group row  float-left">
                           <div class="col-sm-4">
-                            <button type="submit" name="ubah" class="btn btn-success">Perbarui</button>
+                            <button type="submit" name="ubahPw" class="btn btn-success">Perbarui</button>
                           </div>
                         </div>
                       </form>
@@ -176,6 +179,9 @@ if (isset($_POST["ubah"])) {
                     <div class="card-body box-profile">
                       <div class="tab-pane active" id="settings">
                         <form class="form-horizontal container" method="post" >
+                        <div class="form-group">
+                            <input type="hidden" id="id_user" class="form-control" value="<?= $r['id_user']; ?>" name="id_user">
+                          </div>
                           <div class="form-group">
                             <p><b>Foto anda sekarang:</b></p>
                             <div class="box">
@@ -200,7 +206,7 @@ if (isset($_POST["ubah"])) {
                       </div>
                       <div class="form-group row  float-right">
                           <div class="col-sm-4">
-                            <button type="submit" name="ubah" class="btn btn-success">Perbarui</button>
+                            <button type="submit" name="ubahFoto" class="btn btn-success">Perbarui</button>
                           </div>
                         </div>
                       </form>

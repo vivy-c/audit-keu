@@ -31,7 +31,7 @@ if (isset($_POST["login"])) {
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 </head>
 
-<body class="hold-transition login-page">
+<body class="hold-transition login-page"> 
   <div class="login-box">
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
