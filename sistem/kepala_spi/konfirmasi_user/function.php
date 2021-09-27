@@ -1,16 +1,4 @@
 <?php
-$conn = mysqli_connect("localhost","root","","db_audit_keu");
-
-function query($query){
-	global $conn;
-	$tampil = mysqli_query($conn,$query);
-	$rows = [];
-	while ($row = mysqli_fetch_array($tampil)){
-		$rows[]=$row;
-	} return $rows;
-}
-
-
 
 function status($data){
 

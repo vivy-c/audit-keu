@@ -198,6 +198,7 @@ if (isset($_POST["simpan"])){
                               <!-- /.modal-dialog -->
                             </div>
                             <!-- /.modal -->
+
                             <input type="hidden" name="id_user" value="<?=$r["id_user"];?>">
 	                          <input type="hidden" name="status" value="1">
                             <a type="submit" name="simpan" class="btn btn-outline-success" alt="konfirmasi" onclick="return confirm('Yakin mengaktifkan user ini?');"><i class="fas fa-check" ></i></a>
