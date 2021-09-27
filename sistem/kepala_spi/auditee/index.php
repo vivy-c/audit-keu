@@ -52,7 +52,7 @@ $tb_auditee = query("SELECT a.id_auditee,b.nama,a.nama_unit,a.tanggal from tb_au
                           <td><?php echo  $r['tanggal']; ?></td>
                           <td>
                             <div class="btn-group btn-group-sm">
-                              <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal<?php echo $r['id_auditee']; ?>"><i class="fas fa-eye"></i></a>
+                              <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal<?php echo $r['id_auditee']; ?>"><i class="fas fa-eye"></i></a>
 
                               <!-- tampilan modal jadi-->
                               <div class="modal fade" id="myModal<?php echo $r['id_auditee']; ?>">
@@ -110,7 +110,7 @@ $tb_auditee = query("SELECT a.id_auditee,b.nama,a.nama_unit,a.tanggal from tb_au
                                 <!-- /.modal-dialog -->
                               </div>
                               <!-- /.modal -->
-                              <a href="hapus.php?id=<?= $r["id_auditee"]; ?>" name="hapus" class="btn btn-danger" onclick="return confirm('Yakin mengapus data?');"><i class="fas fa-trash"></i></a>
+                              <a href="hapus.php?id=<?= $r["id_auditee"]; ?>" name="hapus" class="btn btn-outline-danger" onclick="return confirm('Yakin mengapus data?');"><i class="fas fa-trash"></i></a>
 
                             </div>
 

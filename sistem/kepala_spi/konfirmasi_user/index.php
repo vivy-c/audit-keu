@@ -1,6 +1,7 @@
 <?php
 include('../../template/header.php');
 include('../../template/sidebar_kepala_spi.php');
+include('./function.php');
 $judul='KEPALA-SPI';
 $page='Konfirmasi User';
 
@@ -13,52 +14,22 @@ $page='Konfirmasi User';
 
 // $tampil = query("SELECT * FROM tb_user WHERE status = 0 ");
 $tb_user = query("SELECT * FROM tb_user WHERE status = 0 ");
-// untuk alert
-if (isset($_POST["edit1"])) {
-  if (edit1($_POST) > 0) {
-    echo "
-      <script>
-      alert('Data Berhasil Diedit!');
-      document.location.href = 'index.php';
-      </script>
-      ";
-  } else {
-    echo "
-      <script>
-          alert('Data Gagal Diedit!');
-          document.location.href = 'index.php';
-      </script>
-      ";
-  }
-}
+// $id_user=$_GET["id_user"];
+// $q=query("SELECT * FROM tb_user WHERE id_user = $id_user")[0];
 
-function edit1($data)
-{
-  global $conn;
-  $id = $data["id_auditor"];
-  $username = $data["username"];
-  $password = $data["password"];
-  $nama = $data["nama"];
-  $nama = $data["nama"];
-  $jabatan = $data["jabatan"];
-  $no_hp = $data["no_hp"];
-  $email = $data["email"];
-  $status = $data["status"];
-  $level = $data["level"];
 
-  $query = "UPDATE tb_auditor SET
-    username='$username',
-    password='$password',
-    nama='$nama',
-    nama='$nama',
-    jabatan='$jabatan',
-    no_hp='$no_hp',
-    email='$email',
-    status='$status',
-    level='$level'
-    WHERE id_auditor ='$id'";
-  mysqli_query($conn, $query);
-  return mysqli_affected_rows($conn);
+if (isset($_POST["simpan"])){
+		if (status($_POST)>0){
+		echo "<script>
+		alert('data berhasil disimpan');
+		document.location.href='index.php';
+		</script>";
+	}else{
+		echo "<script>
+		alert('data gagal disimpan');
+		document.location.href='index.php';
+		</script>";
+	}
 }
 
 
@@ -150,7 +121,7 @@ function edit1($data)
                           <td><span class="badge badge-<?= $badge; ?>"><?= $status; ?></span></td>
                           <td class="">
                           <div class="btn-group btn-group-sm">
-                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal<?php echo $r['id_user']; ?>"><i class="fas fa-eye"></i></a>
+                            <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal<?php echo $r['id_user']; ?>"><i class="fas fa-eye"></i></a>
 
                             <!-- tampilan modal jadi-->
                             <div class="modal fade" id="myModal<?php echo $r['id_user']; ?>">
@@ -227,8 +198,10 @@ function edit1($data)
                               <!-- /.modal-dialog -->
                             </div>
                             <!-- /.modal -->
-
-                            <a href="hapus.php?id=<?= $r["id_user"]; ?>" name="hapus" class="btn btn-danger" onclick="return confirm('Yakin menghapus permanen?');"><i class="fas fa-trash"></i></a>
+                            <input type="hidden" name="id_user" value="<?=$r["id_user"];?>">
+	                          <input type="hidden" name="status" value="1">
+                            <a type="submit" name="simpan" class="btn btn-outline-success" alt="konfirmasi" onclick="return confirm('Yakin mengaktifkan user ini?');"><i class="fas fa-check" ></i></a>
+                            <a href="hapus.php?id=<?= $r["id_user"]; ?>" name="hapus" class="btn btn-outline-danger" onclick="return confirm('Yakin menghapus permanen?');"><i class="fas fa-trash"></i></a>
                             </div>
                           </td>
                         </tr>
