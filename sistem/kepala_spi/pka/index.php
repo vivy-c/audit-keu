@@ -91,8 +91,9 @@ if (isset($_POST["tambahDataPka"])) {
                                                         <td><?php echo  $r['status']; ?></td>
                                                         <td><?php echo  $r['tanggal']; ?></td>
                                                         <td>
-                                                            <a class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModaldetail<?php echo $r['id_pka']; ?>">
-                                                                Detail
+                                                        <div class="btn-group btn-group-sm">
+                                                            <a class="btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#myModaldetail<?php echo $r['id_pka']; ?>">
+                                                            <i class="fas fa-eye"></i>
                                                             </a>
 
                                                             <!-- tampilan modal jadi-->
@@ -155,8 +156,8 @@ if (isset($_POST["tambahDataPka"])) {
                                                             <!-- /.modal -->
 
 
-                                                            <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal<?php echo $r['id_pka']; ?>">
-                                                                Ubah
+                                                            <a class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#myModal<?php echo $r['id_pka']; ?>">
+                                                            <i class="fas fa-pen"></i>
                                                             </a>
 
                                                             <!-- tampilan modal jadi-->
@@ -234,9 +235,9 @@ if (isset($_POST["tambahDataPka"])) {
                                                             </div>
                                                             <!-- /.modal -->
 
-                                                            <a class="btn btn-danger btn-sm" name="hapus" href="hapus.php?id=<?= $r["id"]; ?>" onclick="return confirm('Yakin mengapus data?');">Hapus</a>
+                                                            <a class="btn btn-outline-danger btn-sm" name="hapus" href="hapus.php?id=<?= $r["id"]; ?>" onclick="return confirm('Yakin mengapus data?');"><i class="fas fa-trash"></i></a>
 
-
+                                                        </div>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>
