@@ -11,8 +11,34 @@ $sql = query("SELECT * FROM tb_user WHERE username='$username'");
 
 
 
-if (isset($_POST["ubah"])) {
-  if (ubah($_POST) > 0) {
+if (isset($_POST["ubahBio"])) {
+  if (ubahBio($_POST) > 0) {
+     echo "<script>
+     alert('data berhasil ditambahkan');
+     document.location.href='../profile/index.php';
+     </script>";
+  } else {
+     echo "<script>
+     alert('data gagal ditambahkan');
+     document.location.href='../profile/index.php';
+     </script>";
+  }
+}
+if (isset($_POST["ubahPw"])) {
+  if (ubahPw($_POST) > 0) {
+     echo "<script>
+     alert('data berhasil ditambahkan');
+     document.location.href='../profile/index.php';
+     </script>";
+  } else {
+     echo "<script>
+     alert('data gagal ditambahkan');
+     document.location.href='../profile/index.php';
+     </script>";
+  }
+}
+if (isset($_POST["ubahFoto"])) {
+  if (ubahFoto($_POST) > 0) {
      echo "<script>
      alert('data berhasil ditambahkan');
      document.location.href='../profile/index.php';
@@ -190,7 +216,7 @@ if (isset($_POST["ubah"])) {
                           </div>
                           <div class="form-group">
                             <label for="foto">Ubah Foto</label>
-                            <input type="file" id="fotoLama" name="foto">
+                            <input type="file" id="foto" name="foto">
                           </div>
                           <div class="form-group">
                             <p><b>Ttd anda sekarang:</b></p>
@@ -198,9 +224,8 @@ if (isset($_POST["ubah"])) {
                             <img src="../../img/user/<?= $r['ttd']; ?>" alt="foto anda sekarang" width="100" >
                             </div>
                           <div class="form-group">
-                            <label for="ttd">Ubah tanda tangan</label>
-                            <input type="checkbox" name="ubah_foto" value="true"> Ceklis jika ingin mengubah foto<br>
-                            <input type="file" id="ttdLama" name="ttd">
+                            <label for="ttd">Ubah tanda tangan</label> -->
+                            <input type="file" id="ttd" name="ttd">
                             <p style="color: red;"><i>* Upload ttd dengan background transparan*</i></p>
                           </div>
                       </div>

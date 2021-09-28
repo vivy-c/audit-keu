@@ -191,6 +191,8 @@ function ubahPw($data){
 	
 	global $conn;
 	$id_user =htmlspecialchars($data["id_user"]);
+	$status =htmlspecialchars($data["status"]);
+	$level =htmlspecialchars($data["level"]);
 	$username =htmlspecialchars($data["username"]);
 	$password =htmlspecialchars($data["password"]);
 	$password2 =htmlspecialchars($data["password"]);
@@ -205,7 +207,8 @@ function ubahFoto($data){
 	
 	global $conn;
 	$id_user =htmlspecialchars($data["id_user"]);
-
+	$status =htmlspecialchars($data["status"]);
+	$level =htmlspecialchars($data["level"]);
 	$fotoLama = htmlspecialchars($data(["fotoLama"]));
 	$ttdLama = htmlspecialchars($data(["ttdLama"]));
 	
