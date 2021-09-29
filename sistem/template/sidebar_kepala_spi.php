@@ -135,17 +135,17 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../auditee/index.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Auditee</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="../konfirmasi_user/index.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Konfirmasi User</p>
-                </a>
-              </li>
+                <i class="far fa-circle nav-icon"></i>
+                <p>Konfirmasi User</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="../auditee/index.php" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Auditee</p>
+              </a>
+            </li>
             </ul>
           </li>
 

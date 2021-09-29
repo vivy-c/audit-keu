@@ -210,12 +210,11 @@ if (isset($_POST["tambahDataPka"])) {
                                                                                             <option value="">Terealisasi</option>
                                                                                             <option value="">Tidak Terealisasi</option>
                                                                                         </select>
-                                                                                    </div>vis
+                                                                                    </div>
                                                                                     <div class="form-group">
                                                                                         <label for="tanggal">tanggal</label>
                                                                                         <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $cb["tanggal"]; ?>" required readonly>
                                                                                     </div>
-
 
                                                                                 <?php
                                                                                 }

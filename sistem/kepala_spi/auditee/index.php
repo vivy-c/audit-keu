@@ -4,6 +4,9 @@ include('../../template/sidebar_kepala_spi.php');
 
 $tb_auditee = query("SELECT a.id_auditee,b.nama,a.nama_unit,a.tanggal from tb_auditee as a,tb_user as b where a.id_user=b.id_user");
 
+$tb_user = query("SELECT * FROM tb_user  ORDER BY tb_user.nama ASC");
+$tb_auditee = query("SELECT * FROM tb_auditee  ORDER BY tb_auditee.nama_unit ASC");
+
 ?>
 
 
@@ -18,6 +21,9 @@ $tb_auditee = query("SELECT a.id_auditee,b.nama,a.nama_unit,a.tanggal from tb_au
       <section class="col-md-12 connectedSortable">
         <div class="container-fluid">
           <div class="row">
+            <div class="col-md-12">
+              <button href="javascript.void(0)" class="btn btn-primary mb-3" data-target="#addAuditee" data-toggle="modal">Tambah data</button>
+            </div>
             <div class="col-12">
               <div class="card">
                 <!-- /.card-header -->
@@ -85,11 +91,11 @@ $tb_auditee = query("SELECT a.id_auditee,b.nama,a.nama_unit,a.tanggal from tb_au
                                             <input type="text" class="form-control" id="nama" name="nama" value="<?= $cb["nama"]; ?>" required readonly>
                                           </div>
                                           <div class="form-group">
-                                            <label for="nama_unit">nama_unit</label>
+                                            <label for="nama_unit">Nama Unit</label>
                                             <input type="text" class="form-control" id="nama_unit" name="nama_unit" value="<?= $cb["nama_unit"]; ?>" required readonly>
                                           </div>
                                           <div class="form-group">
-                                            <label for="tanggal">tanggal</label>
+                                            <label for="tanggal">Tanggal</label>
                                             <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $cb["tanggal"]; ?>" required readonly>
                                           </div>
 
@@ -125,6 +131,54 @@ $tb_auditee = query("SELECT a.id_auditee,b.nama,a.nama_unit,a.tanggal from tb_au
                 </div>
               </div>
 
+              <!-- modal tambah data auditee-->
+              <div class=" modal fade" id="addAuditee" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Tambah Data Auditee</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="card card-primary">
+
+                            <form class="main_form" method="post" id="form" action="" enctype="multipart/form-data">
+
+                              <div class="card-body">
+                                <div class="form-group">
+                                  <input type="hidden" id="id_auditee" class="form-control" value="" name="id_auditee">
+                                </div>
+                                <div class="form-group">
+                                  <label for="nip">Nama Ketua Unit</label>
+                                  <input type="text" id="nip" class="form-control" value="" name="nip_npak">
+                                </div>
+                                <div class="form-group">
+                                  <label for="nama">Nama Unit</label>
+                                  <input type="text" id="nama" class="form-control" value="" name="nama">
+                                </div>
+                                <div class="form-group">
+                                  <label for="nama">Nama Unit</label>
+                                  <input type="date" id="nama" class="form-control" value="" name="nama">
+                                </div>
+                              </div>
+                              <!-- /.card-body -->
+                          </div>
+                          <!-- /.card -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <!-- <input type="submit" class="btn btn-primary send_btn" name="tambah data auditee" value="tambah data auditee"> -->
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button class="btn btn-primary send_btn" type="submit" name="addAuditee">Daftar</button>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <!-- /.modal tambah data auditee -->
 
 
 
