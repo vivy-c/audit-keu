@@ -148,28 +148,32 @@ if (isset($_POST["ubahFoto"])) {
                             </div>
                           </div>
                         </form>
-
+                        
                         <!-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> -->
-                    </div>
-                  <!-- /.card-body -->
+                      </div>
+                      <!-- /.card-body -->
+                    </div> 
+                    <!-- /.card -->
                   </div>
-                  <!-- /.card -->
+                  
+                  <!-- /.post -->
                 </div>
-
-                <!-- /.post -->
-              </div>
-              <!-- akhir section activity -->
-
-              <!-- section timeline -->
-              <div class="tab-pane" id="timeline">
-                <div class="col-md-12">
-
-                  <div class="card card-default card-outline">
-                    <div class="card-body box-profile">
-
-                      <form class="form-horizontal" method="post" >
-                      <div class="form-group">
+                <!-- akhir section activity -->
+                
+                <!-- section timeline -->
+                <div class="tab-pane" id="timeline">
+                  <div class="col-md-12">
+                    
+                    <div class="card card-default card-outline">
+                      <div class="card-body box-profile">
+                        
+                        <form class="form-horizontal" method="post" >
+                          <div class="form-group">
                             <input type="hidden" id="id_user" class="form-control" value="<?= $r['id_user']; ?>" name="id_user">
+                            <input type="hidden" id="nip_npak" class="form-control" value="<?= $r['nip_npak']; ?>" name="nip_npak">
+                            <input type="hidden" id="nama" class="form-control" value="<?= $r['nama']; ?>" name="nama">
+                            <input type="hidden" id="no_hp" class="form-control" value="<?= $r['no_hp']; ?>" name="no_hp">
+                            <input type="hidden" id="email" class="form-control" value="<?= $r['email']; ?>" name="email">
                           </div>
                         <div class="form-group">
                           <label for="username">Username</label>

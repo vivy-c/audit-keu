@@ -158,7 +158,7 @@ function upload_foto()
 
       //lolos pengecekan
       //nama baru
-
+ 
       $nama = $_POST['nama'];
 
       $namaFileBaru = ("ttd_" . $nama);
@@ -170,18 +170,51 @@ function upload_foto()
       return $namaFileBaru;
     }
 
+
+    function ubah($data){
+	
+      global $conn;
+      $id_user =htmlspecialchars($data["id_user"]);
+      $username =htmlspecialchars($data["username"]);
+      $password =htmlspecialchars($data["password"]);
+      $password2 =htmlspecialchars($data["password"]);
+      $nama =htmlspecialchars($data["nama"]);
+      $nip_npak =htmlspecialchars($data["nip_npak"]);
+      $status = htmlspecialchars($data["status"]);
+      $level = htmlspecialchars($data["level"]);
+      $no_hp =htmlspecialchars($data["no_hp"]);
+      $email =htmlspecialchars($data["email"]);
+      $fotoLama = htmlspecialchars($data(["fotoLama"]));
+      $ttdLama = htmlspecialchars($data(["ttdLama"]));
+    
+      // 	//cek apakah user pilih foto baru atau tidak
+      if($_FILES['foto']['error'] === 4){
+        $foto  = $fotoLama;
+      }else{
+        $foto =upload_foto();
+      }
+    
+      if($_FILES['ttd']['error'] === 4){
+        $ttd  = $ttdLama;
+      }else{
+        $ttd =upload_ttd();
+      }
+    
+      $query="UPDATE tb_user SET username = '$username' ,password = '$password',password2 = '$password',nama = '$nama',nip_npak = '$nip_npak',status = '$status',level = '$level',no_hp = '$no_hp',email = '$email',foto='$foto',ttd='$ttd' WHERE id_user = $id_user";
+      mysqli_query($conn,$query);
+      return mysqli_affected_rows($conn);
+    }
+
 function ubahBio($data){
 	
 	global $conn;
 	$id_user =htmlspecialchars($data["id_user"]);
 	$nama =htmlspecialchars($data["nama"]);
 	$nip_npak =htmlspecialchars($data["nip_npak"]);
-	$status =htmlspecialchars($data["status"]);
-	$level =htmlspecialchars($data["level"]);
 	$no_hp =htmlspecialchars($data["no_hp"]);
 	$email =htmlspecialchars($data["email"]);
 
-	$query="UPDATE tb_user SET nama = '$nama',nip_npak = '$nip_npak',email = '$email',no_hp = '$no_hp',status = '$status',level = '$level'WHERE id_user = $id_user";
+	$query="UPDATE tb_user SET nama = '$nama',nip_npak = '$nip_npak',email = '$email',no_hp = '$no_hp' WHERE id_user = $id_user";
 	mysqli_query($conn,$query);
 	return mysqli_affected_rows($conn);
 }
@@ -191,13 +224,15 @@ function ubahPw($data){
 	
 	global $conn;
 	$id_user =htmlspecialchars($data["id_user"]);
-	$status =htmlspecialchars($data["status"]);
-	$level =htmlspecialchars($data["level"]);
+	$nama =htmlspecialchars($data["nama"]);
+	$nip_npak =htmlspecialchars($data["nip_npak"]);
+	$no_hp =htmlspecialchars($data["no_hp"]);
+	$email =htmlspecialchars($data["email"]);
 	$username =htmlspecialchars($data["username"]);
 	$password =htmlspecialchars($data["password"]);
 	$password2 =htmlspecialchars($data["password"]);
 
-	$query="UPDATE tb_user SET username = '$username' ,password = '$password' WHERE id_user = $id_user";
+	$query="UPDATE tb_user SET username = '$username' ,password = '$password',nama = '$nama',nip_npak = '$nip_npak',email = '$email',no_hp = '$no_hp' WHERE id_user = $id_user";
 	mysqli_query($conn,$query);
 	return mysqli_affected_rows($conn);
 }
@@ -229,6 +264,3 @@ function ubahFoto($data){
 	mysqli_query($conn,$query);
 	return mysqli_affected_rows($conn);
 }
-
-
-?>
