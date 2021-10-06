@@ -32,18 +32,22 @@ function login($data)
 		if ($result->num_rows > 0) {
 			$row = mysqli_fetch_assoc($result);
 			if($row['level']=='1'){
+				session_start();
 			  $_SESSION['username'] = $username;
 			  $_SESSION['level'] = "1";
 			  header("Location: ../direktur/index.php");
 			}else if($row['level']=='2'){
+				session_start();
 			  $_SESSION['username'] = $username;
 			  $_SESSION['level'] = "2";
 			  header("Location: ../auditee/profile/index.php");
 			}else if($row['level']=='3'){
+				session_start();
 			  $_SESSION['username'] = $username;
 			  $_SESSION['level'] = "3";
 			  header("Location: ../auditor/profile/index.php");
 			}else if($row['level']=='4'){
+				session_start();
 			  $_SESSION['username'] = $username;
 			  $_SESSION['level'] = "4";
 			  header("Location:../kepala_spi/profile/index.php");
@@ -51,9 +55,6 @@ function login($data)
 		}else {
 			echo "<script>alert('username atau password Anda salah. Silahkan coba lagi!')</script>";
 		}
-	
-	 
-
 
 	// if (mysqli_fetch_array($login)) {
  
