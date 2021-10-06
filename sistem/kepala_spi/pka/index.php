@@ -156,9 +156,7 @@ if (isset($_POST["tambahDataPka"])) {
                                                             <!-- /.modal -->
 
 
-                                                            <a class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#myModal<?php echo $r['id_pka']; ?>">
-                                                            <i class="fas fa-pen"></i>
-                                                            </a>
+                                                            <a class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#myModal<?php echo $r['id_pka']; ?>"><i class="fas fa-pen"></i></a>
 
                                                             <!-- tampilan modal jadi-->
                                                             <div class="modal fade" id="myModal<?php echo $r['id_pka']; ?>">

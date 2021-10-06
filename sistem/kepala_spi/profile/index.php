@@ -24,48 +24,48 @@ if (isset($_POST["ubah"])) {
      </script>";
   }
 }
-if (isset($_POST["ubahBio"])) {
-  if (ubahBio($_POST) > 0) {
-    echo "<script>
-     alert('data berhasil diperbarui');
-     document.location.href='../profile/index.php';
-     </script>";
-  } else {
-    echo "<script>
-     alert('data gagal diperbarui');
-     document.location.href='../profile/index.php';
-     </script>";
-  }
-}
-if (isset($_POST["ubahPw"])) {
-  if (ubahPw($_POST) > 0) {
-    echo "<script>
-     alert('data berhasil diperbarui');
-     document.location.href='../profile/index.php';
-     </script>";
-  } else {
-    echo "<script>
-     alert('data gagal diperbarui');
-     document.location.href='../profile/index.php';
-     </script>";
-  }
-}
-if (isset($_POST["ubahFoto"])) {
-  if (ubahFoto($_POST) > 0) {
-    echo "<script>
-     alert('data berhasil diperbarui');
-     document.location.href='../profile/index.php';
-     </script>";
-  } else {
-    echo "<script>
-     alert('data gagal diperbarui');
-     document.location.href='../profile/index.php';
-     </script>";
-  }
-}
-
+// if (isset($_POST["ubahBio"])) {
+//   if (ubahBio($_POST) > 0) {
+//     echo "<script>
+//      alert('data berhasil diperbarui');
+//      document.location.href='../profile/index.php';
+//      </script>";
+//   } else {
+//     echo "<script>
+//      alert('data gagal diperbarui');
+//      document.location.href='../profile/index.php';
+//      </script>";
+//   }
+// }
+// if (isset($_POST["ubahPw"])) {
+//   if (ubahPw($_POST) > 0) {
+//     echo "<script>
+//      alert('data berhasil diperbarui');
+//      document.location.href='../profile/index.php';
+//      </script>";
+//   } else {
+//     echo "<script>
+//      alert('data gagal diperbarui');
+//      document.location.href='../profile/index.php';
+//      </script>";
+//   }
+// }
+// if (isset($_POST["ubahFoto"])) {
+//   if (ubahFoto($_POST) > 0) {
+//     echo "<script>
+//      alert('data berhasil diperbarui');
+//      document.location.href='../profile/index.php';
+//      </script>";
+//   } else {
+//     echo "<script>
+//      alert('data gagal diperbarui');
+//      document.location.href='../profile/index.php';
+//      </script>";
+//   }
+// }
 
 ?>
+
 <style>
   .container {
     display: flex;
@@ -139,8 +139,10 @@ if (isset($_POST["ubahFoto"])) {
 
                         <p class="text-muted text-center"><?= $level; ?></p>
 
-                        <form class="form-horizontal" method="post">
+                        <form class="form-horizontal" method="post" enctype="multipart/form-data">
                           <div class="form-group">
+                          <input type="hidden" name="fotoLama" value="<?= $r["foto"];?>">
+                          <input type="hidden" name="ttdLama" value="<?= $r["ttd"];?>">
                             <input type="hidden" id="id_user" class="form-control" value="<?= $r['id_user']; ?>" name="id_user">
                           </div>
                           <div class="form-group">
