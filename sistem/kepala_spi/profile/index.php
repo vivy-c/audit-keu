@@ -10,7 +10,6 @@ $username = $_SESSION["username"];
 $sql = query("SELECT * FROM tb_user WHERE username='$username'");
 
 
-
 if (isset($_POST["ubah"])) {
   if (ubah($_POST) > 0) {
     echo "<script>
@@ -141,9 +140,11 @@ if (isset($_POST["ubah"])) {
 
                         <form class="form-horizontal" method="post" enctype="multipart/form-data">
                           <div class="form-group">
-                          <input type="hidden" name="fotoLama" value="<?= $r["foto"];?>">
-                          <input type="hidden" name="ttdLama" value="<?= $r["ttd"];?>">
-                            <input type="hidden" id="id_user" class="form-control" value="<?= $r['id_user']; ?>" name="id_user">
+                            <input type="hidden" name="fotoLama" value="<?= $r["foto"]; ?>">
+                            <input type="hidden" name="ttdLama" value="<?= $r["ttd"]; ?>">
+                            <input type="hidden" id="id_user" name="id_user" class="form-control" value="<?= $r['id_user']; ?>" name="id_user">
+                            <input type="hidden" id="status" name="status" class="form-control" value="<?= $r['status']; ?>" name="id_user">
+                            <input type="hidden" id="level" name="level" class="form-control" value="<?= $r['level']; ?>" name="id_user">
                           </div>
                           <div class="form-group">
                             <label for="nip">NIP / NPAK</label>
@@ -174,30 +175,30 @@ if (isset($_POST["ubah"])) {
                             <input type="password" id="password2" class="form-control " value="<?= $r['password']; ?>" name="password2">
                           </div>
                           <div class="form-group">
-                              <p><b>Foto anda sekarang:</b></p>
-                              <div class="box">
-                                <img src="../../img/user/<?= $r['foto']; ?>" alt="foto anda sekarang" width="100">
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label for="foto">Ubah Foto</label>
-                              <input type="file" id="foto" name="foto">
-                            </div>
-                            <div class="form-group">
-                              <p><b>Ttd anda sekarang:</b></p>
-                              <div class="box">
-                                <img src="../../img/user/<?= $r['ttd']; ?>" alt="foto anda sekarang" width="100">
-                              </div>
-                              <div class="form-group">
-                                <label for="ttd">Ubah tanda tangan</label> 
-                                <input type="file" id="ttd" name="ttd">
-                                <p style="color: red;"><i>* Upload ttd dengan background transparan*</i></p>
-                              </div>
-                          <div class="form-group row  float-left">
-                            <div class="col-sm-4">
-                              <button type="submit" name="ubah" class="btn btn-success">Perbarui</button>
+                            <p><b>Foto anda sekarang:</b></p>
+                            <div class="box">
+                              <img src="../../img/user/<?= $r['foto']; ?>" alt="foto anda sekarang" width="100">
                             </div>
                           </div>
+                          <div class="form-group">
+                            <label for="foto">Ubah Foto</label>
+                            <input type="file" id="foto" name="foto">
+                          </div>
+                          <div class="form-group">
+                            <p><b>Ttd anda sekarang:</b></p>
+                            <div class="box">
+                              <img src="../../img/user/<?= $r['ttd']; ?>" alt="foto anda sekarang" width="100">
+                            </div>
+                            <div class="form-group">
+                              <label for="ttd">Ubah tanda tangan</label>
+                              <input type="file" id="ttd" name="ttd">
+                              <p style="color: red;"><i>* Upload ttd dengan background transparan*</i></p>
+                            </div>
+                            <div class="form-group row  float-left">
+                              <div class="col-sm-4">
+                                <button type="submit" name="ubah" class="btn btn-success">Perbarui</button>
+                              </div>
+                            </div>
                         </form>
                       <?php endforeach; ?>
                       <!-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> -->
@@ -213,11 +214,11 @@ if (isset($_POST["ubah"])) {
 
               <!--  -->
 
-              </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
 </section>
 <!-- /.Left col -->
 <!-- right col (We are only adding the ID to make the widgets sortable)-->
