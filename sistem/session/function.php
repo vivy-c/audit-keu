@@ -15,52 +15,80 @@ function query($query)
 
 function login($data)
 {
+	
 	global $conn;
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-	$level = $_POST['level'];
-	$status = $_POST['status'];
+	// $level = $_POST['level'];
+	// $status = $_POST['status'];
+
+	// $login = mysqli_query($conn, "SELECT username FROM tb_user WHERE username = '$username' AND password = '$password' AND level = '$level' AND status = 1  ");
+
+	$gagal = mysqli_query($conn, "SELECT username FROM tb_user WHERE username = '$username' AND password = '$password' AND status = 0  ");
 
 
+		$sql = "SELECT * FROM tb_user WHERE username='$username' AND password='$password'";
+		$result = mysqli_query($conn, $sql);
+		if ($result->num_rows > 0) {
+			$row = mysqli_fetch_assoc($result);
+			if($row['level']=='1'){
+			  $_SESSION['username'] = $username;
+			  $_SESSION['level'] = "1";
+			  header("Location: ../direktur/index.php");
+			}else if($row['level']=='2'){
+			  $_SESSION['username'] = $username;
+			  $_SESSION['level'] = "2";
+			  header("Location: ../auditee/profile/index.php");
+			}else if($row['level']=='3'){
+			  $_SESSION['username'] = $username;
+			  $_SESSION['level'] = "3";
+			  header("Location: ../auditor/profile/index.php");
+			}else if($row['level']=='4'){
+			  $_SESSION['username'] = $username;
+			  $_SESSION['level'] = "4";
+			  header("Location:../kepala_spi/profile/index.php");
+			}     
+		}else {
+			echo "<script>alert('username atau password Anda salah. Silahkan coba lagi!')</script>";
+		}
+	
+	 
 
-	$login = mysqli_query($conn, "SELECT username FROM tb_user WHERE username = '$username' AND password = '$password' AND level = '$level' AND status = 1  ");
 
-	$gagal = mysqli_query($conn, "SELECT username FROM tb_user WHERE username = '$username' AND password = '$password' AND level = '$level' AND status = 0  ");
-
-	if (mysqli_fetch_array($login)) {
+	// if (mysqli_fetch_array($login)) {
  
 
-		$re1 = mysqli_query($conn, "SELECT username FROM tb_user WHERE $level=1 ");
-		$re2 = mysqli_query($conn, "SELECT username FROM tb_user WHERE $level=2 ");
-		$re3 = mysqli_query($conn, "SELECT username FROM tb_user WHERE $level=3 ");
-		$re4 = mysqli_query($conn, "SELECT username FROM tb_user WHERE $level=4 ");
+	// 	$re1 = mysqli_query($conn, "SELECT username FROM tb_user WHERE $level=1 ");
+	// 	$re2 = mysqli_query($conn, "SELECT username FROM tb_user WHERE $level=2 ");
+	// 	$re3 = mysqli_query($conn, "SELECT username FROM tb_user WHERE $level=3 ");
+	// 	$re4 = mysqli_query($conn, "SELECT username FROM tb_user WHERE $level=4 ");
 
-		if (mysqli_fetch_assoc($re1)) {
+	// 	if (mysqli_fetch_assoc($re1)) {
 
-			session_start();
-			$_SESSION['username'] = $username;
-			header('location:../direktur/index.php');
-		}
+	// 		session_start();
+	// 		$_SESSION['username'] = $username;
+	// 		header('location:../direktur/index.php');
+	// 	}
 
 
-		if (mysqli_fetch_assoc($re2)) {
-			session_start();
-			$_SESSION['username'] = $username;
-			header('location:../auditee/profile/index.php');
-		}
+	// 	if (mysqli_fetch_assoc($re2)) {
+	// 		session_start();
+	// 		$_SESSION['username'] = $username;
+	// 		header('location:../auditee/profile/index.php');
+	// 	}
 
-		if (mysqli_fetch_assoc($re3)) {
-			session_start();
-			$_SESSION['username'] = $username;
-			header('location:../auditor/profile/index.php');
-		}
+	// 	if (mysqli_fetch_assoc($re3)) {
+	// 		session_start();
+	// 		$_SESSION['username'] = $username;
+	// 		header('location:../auditor/profile/index.php');
+	// 	}
 
-		if (mysqli_fetch_assoc($re4)) {
-			session_start();
-			$_SESSION['username'] = $username;
-			header('location:../kepala_spi/profile/index.php');
-		}
-	}
+	// 	if (mysqli_fetch_assoc($re4)) {
+	// 		session_start();
+	// 		$_SESSION['username'] = $username;
+	// 		header('location:../kepala_spi/profile/index.php');
+	// 	}
+	// }
 
 	if (mysqli_fetch_array($gagal)) {
 		echo "<script>
@@ -76,8 +104,6 @@ function login($data)
 	
 	return mysqli_affected_rows($conn);
 }
-
-
 
 // function login($data)
 // {

@@ -59,7 +59,7 @@ if (isset($_POST["login"])) {
             </div>
           </div>
           <div class="input-group mb-3">
-            <select name="level" id="level" class="form-control">
+            <!-- <select name="level" id="level" class="form-control">
               <option style="color: white;">Level User</option>
               <option style="color: black;" value="1">Direktur</option>
               <option style="color: black;" value="2">Auditee</option>
@@ -70,8 +70,10 @@ if (isset($_POST["login"])) {
               <div class="input-group-text">
                 <span class="fas fa-layer-group"></span>
               </div>
-            </div>
+            </div> -->
+            <input type="hidden" name="level">
             <input type="hidden" name="status">
+            
           </div>
 
           <div class="row">
