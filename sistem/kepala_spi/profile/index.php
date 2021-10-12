@@ -9,7 +9,6 @@ $username = $_SESSION["username"];
 
 $sql = query("SELECT * FROM tb_user WHERE username='$username'");
 
-
 if (isset($_POST["ubah"])) {
   if (ubah($_POST) > 0) {
     echo "<script>
@@ -23,6 +22,7 @@ if (isset($_POST["ubah"])) {
      </script>";
   }
 }
+
 // if (isset($_POST["ubahBio"])) {
 //   if (ubahBio($_POST) > 0) {
 //     echo "<script>
@@ -140,11 +140,11 @@ if (isset($_POST["ubah"])) {
 
                         <form class="form-horizontal" method="post" enctype="multipart/form-data">
                           <div class="form-group">
-                            <input type="hidden" name="fotoLama" value="<?= $r["foto"]; ?>">
-                            <input type="hidden" name="ttdLama" value="<?= $r["ttd"]; ?>">
-                            <input type="hidden" id="id_user" name="id_user" class="form-control" value="<?= $r['id_user']; ?>" name="id_user">
-                            <input type="hidden" id="status" name="status" class="form-control" value="<?= $r['status']; ?>" name="id_user">
-                            <input type="hidden" id="level" name="level" class="form-control" value="<?= $r['level']; ?>" name="id_user">
+                            <input type="hidden" id="fotoLama" name="fotoLama" value="<?= $r['foto']; ?>">
+                            <input type="hidden" id="ttdLama" name="ttdLama" value="<?= $r['ttd']; ?>">
+                            <input type="hidden" id="id_user" name="id_user" class="form-control" value="<?= $r['id_user']; ?>">
+                            <input type="hidden" id="status" name="status" class="form-control" value="<?= $r['status']; ?>">
+                            <input type="hidden" id="level" name="level" class="form-control" value="<?= $r['level']; ?>" >
                           </div>
                           <div class="form-group">
                             <label for="nip">NIP / NPAK</label>
