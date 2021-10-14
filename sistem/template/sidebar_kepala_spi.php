@@ -1,5 +1,62 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
+  <?php 
+    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
+    $url = "https://";
+  else
+    $url = "http://";
+  // Append the host(domain name, ip) to the URL.   
+  $url .= $_SERVER['HTTP_HOST'];
+
+  // Append the requested resource location to the URL   
+  $url .= $_SERVER['REQUEST_URI'];
+
+  // $lihat_user = 'http://localhost/audit-keu/user/kepala_spi/user/lihat_user.php?nip=' . $nip;
+
+  // if ($url == 'http://localhost/audit-keu/kepala_spi/tb_user.php' or $url == $lihat_user) {
+  if ($url == 'http://localhost/audit-keu/sistem/kepala_spi/dashboard/index.php') {
+    $dashboard = 'active';
+  } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/user/index.php') {
+    $dataUser = 'active';
+    $user = 'active';
+  } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/konfirmasi_user/index.php') {
+    $konfirmasi_user = 'active';
+    $dataUser = 'active';
+  } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/auditee/index.php') {
+    $auditee = 'active';
+    $dataUser = 'active';
+  } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/pka/index.php') {
+    $pka = 'active';
+  } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/desk/index.php') {
+    $desk = 'active';
+    $dataAudit = 'active';
+  } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/visit/index.php') {
+    $desk = 'active';
+    $dataAudit = 'active';
+  } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/tha/index.php') {
+    $desk = 'active';
+    $dataAudit = 'active';
+  } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/lha/index.php') {
+    $desk = 'active';
+    $dataAudit = 'active';
+  } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/ba/index.php') {
+      $ba = 'active';
+  } else {
+    $dashboard = '';
+    $user = '';
+    $konfirmasi_user = '';
+    $auditee = '';
+    $pka = '';
+    $desk = '';
+    $visit = '';
+    $tha = '';
+    $lha = '';
+    $ba = '';
+    $dataUser = '' ;
+    $dataAudit = '';
+  }
+  ?>
+
 <div class="wrapper">
 
   <!-- Preloader -->
@@ -111,7 +168,7 @@
                with font-awesome or any other icon font library -->
                
           <li class="nav-item ">
-            <a href="../dashboard/index.php" class="nav-link">
+            <a href="../dashboard/index.php" class="nav-link <?= $dashboard; ?>">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -120,8 +177,8 @@
             </a>            
           </li>
           <li class="nav-item ">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <a href="#" class="nav-link <?= $dataUser; ?>">
+              <i class="nav-icon fas fa-user"></i>
               <p>
                 Data User
                 <i class="right fas fa-angle-left"></i>
@@ -129,19 +186,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../user/index.php" class="nav-link ">
+                <a href="../user/index.php" class="nav-link <?= $user; ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>User</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../konfirmasi_user/index.php" class="nav-link">
+                <a href="../konfirmasi_user/index.php" class="nav-link <?= $konfirmasi_user; ?>">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Konfirmasi User</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="../auditee/index.php" class="nav-link">
+              <a href="../auditee/index.php" class="nav-link <?= $auditee; ?>">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Auditee</p>
               </a>
@@ -159,7 +216,7 @@
             </a>            
           </li> -->
           <li class="nav-item ">
-            <a href="../pka/index.php" class="nav-link">
+            <a href="../pka/index.php" class="nav-link <?= $pka; ?>">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 PKA
@@ -169,7 +226,7 @@
           </li>
 
           <li class="nav-item ">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link <?= $dataAudit; ?>">
               <i class="nav-icon fas fa-list-alt"></i>
               <p>
                 Data Audit
@@ -178,25 +235,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../desk/index.php" class="nav-link">
+                <a href="../desk/index.php" class="nav-link <?= $desk; ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Desk</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link <?= $visit; ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Visit</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link <?= $tha; ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>THA</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link <?= $lha; ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>LHA</p>
                 </a>
@@ -241,7 +298,7 @@
             </a>            
           </li> -->
           <li class="nav-item ">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link <?= $ba; ?>">
               <i class="nav-icon far fa-flag"></i>
               <p>
                 Berita Acara
