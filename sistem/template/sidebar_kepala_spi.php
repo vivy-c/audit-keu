@@ -1,5 +1,6 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
+  
   <?php 
     if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
     $url = "https://";

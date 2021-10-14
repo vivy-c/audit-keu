@@ -23,7 +23,41 @@ function query($query){
   }
   return $rows;
 }
+if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
+    $url = "https://";
+  else
+    $url = "http://";
+  // Append the host(domain name, ip) to the URL.   
+  $url .= $_SERVER['HTTP_HOST'];
 
+  // Append the requested resource location to the URL   
+  $url .= $_SERVER['REQUEST_URI'];
+
+
+  // if ($url == 'http://localhost/audit-keu/kepala_spi/tb_user.php' or $url == $lihat_user) {
+  if ($url == 'http://localhost/audit-keu/sistem/kepala_spi/dashboard/index.php') {
+    $title = 'Ketua|Dashboard';
+  } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/user/index.php') {
+    $title = 'Ketua|User';
+  } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/konfirmasi_user/index.php') {
+    $title = 'Ketua|Konfirmasi';
+  } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/auditee/index.php') {
+    $title = 'Ketua|Auditee';
+  } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/pka/index.php') {
+    $title = 'Ketua|PKA';
+  } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/desk/index.php') {
+    $title = 'Ketua|Desk';
+  } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/visit/index.php') {
+    $title = 'Ketua|Visit';
+  } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/tha/index.php') {
+    $title = 'Ketua|THA';
+  } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/lha/index.php') {
+    $title = 'Ketua|LHA';
+  } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/ba/index.php') {
+      $title = 'Ketua|BA';
+  } else {
+    $title = '';
+  }
 
 ?>
 
@@ -32,7 +66,7 @@ function query($query){
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><?= $data['judul']; ?></title>
+  <title><?= $title; ?></title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
