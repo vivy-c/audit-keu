@@ -262,3 +262,14 @@ function upload_foto()
 // 	mysqli_query($conn,$query);
 // 	return mysqli_affected_rows($conn);
 // }
+
+$rowata_pka = mysqli_query($conn,"SELECT * FROM tb_pka");
+$jumlah_pka = mysqli_num_rows($rowata_pka);
+
+
+$rowata_lha = mysqli_query($conn, "SELECT * FROM tb_lha");
+$jumlah_lha = mysqli_num_rows($rowata_lha);
+
+
+$rowata_ba = mysqli_query($conn,"SELECT * FROM tb_ba");
+$jumlah_ba = mysqli_num_rows($rowata_ba);

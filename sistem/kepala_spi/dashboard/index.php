@@ -9,19 +9,7 @@ $username = $_SESSION["username"];
 
 $sql = query("SELECT * FROM tb_user WHERE username='$username'");
 
-if (isset($_POST["ubah"])) {
-  if (ubah($_POST) > 0) {
-    echo "<script>
-     alert('data berhasil diperbarui');
-     document.location.href='../profile/index.php';
-     </script>";
-  } else {
-    echo "<script>
-     alert('data gagal diperbarui');
-     document.location.href='../profile/index.php';
-     </script>";
-  }
-}
+
 
 // if (isset($_POST["ubahBio"])) {
 //   if (ubahBio($_POST) > 0) {
@@ -95,7 +83,56 @@ if (isset($_POST["ubah"])) {
 <!-- Main content -->
 <section class="content">
   <div class="container-fluid">
+    
     <div class="row">
+
+
+    <div class="col-lg-4 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3><?php echo $jumlah_pka; ?></h3>
+
+                <p>Program Kerja Audit</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-easel"></i>
+              </div>
+              <a href="../pka/index.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+
+          <div class="col-lg-4 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3><?php echo $jumlah_lha; ?></h3>
+                <p>Laporan Hasil Audit</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-laptop"></i>
+              </div>
+              <a href="../lha/index.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-4 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3><?php echo $jumlah_ba; ?></h3>
+
+                <p>Berita Acara</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-card"></i>
+              </div>
+              <a href="../ba/index.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+
       <div class="col-md-12">
         <div class="card">
           <div class="card-header p-2">
@@ -133,6 +170,20 @@ if (isset($_POST["ubah"])) {
                           $level = 'Ketua SPI';
                         } else {
                           $level = 'Belum dikonfirmasi';
+                        }
+
+                        if (isset($_POST["ubah"])) {
+                          if (ubah($_POST) > 0) {
+                            echo "<script>
+                             alert('data berhasil diperbarui');
+                             document.location.href='../profile/index.php';
+                             </script>";
+                          } else {
+                            echo "<script>
+                             alert('data gagal diperbarui');
+                             document.location.href='../profile/index.php';
+                             </script>";
+                          }
                         }
                         ?>
 

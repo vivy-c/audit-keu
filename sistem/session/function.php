@@ -40,17 +40,17 @@ function login($data)
 				session_start();
 			  $_SESSION['username'] = $username;
 			  $_SESSION['level'] = "2";
-			  header("Location: ../auditee/profile/index.php");
+			  header("Location: ../auditee/dashboard/index.php");
 			}else if($row['level']=='3'){
 				session_start();
 			  $_SESSION['username'] = $username;
 			  $_SESSION['level'] = "3";
-			  header("Location: ../auditor/profile/index.php");
+			  header("Location: ../auditor/dashboard/index.php");
 			}else if($row['level']=='4'){
 				session_start();
 			  $_SESSION['username'] = $username;
 			  $_SESSION['level'] = "4";
-			  header("Location:../kepala_spi/profile/index.php");
+			  header("Location:../kepala_spi/dashboard/index.php");
 			}     
 		}else {
 			echo "<script>alert('username atau password Anda salah. Silahkan coba lagi!')</script>";

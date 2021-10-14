@@ -111,10 +111,10 @@
                with font-awesome or any other icon font library -->
                
           <li class="nav-item ">
-            <a href="../profile/index.php" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
+            <a href="../dashboard/index.php" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Profile
+                Dashboard
                 <i class=""></i>
               </p>
             </a>            
