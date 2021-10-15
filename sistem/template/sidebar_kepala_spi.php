@@ -1,6 +1,6 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
-  
+
   <?php 
     if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
     $url = "https://";
@@ -17,31 +17,41 @@
   // if ($url == 'http://localhost/audit-keu/kepala_spi/tb_user.php' or $url == $lihat_user) {
   if ($url == 'http://localhost/audit-keu/sistem/kepala_spi/dashboard/index.php') {
     $dashboard = 'active';
+    $konten ='Dashboard';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/user/index.php') {
     $dataUser = 'active';
     $user = 'active';
+    $konten ='Data User';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/konfirmasi_user/index.php') {
     $konfirmasi_user = 'active';
     $dataUser = 'active';
+    $konten ='Konfirmasi User';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/auditee/index.php') {
     $auditee = 'active';
     $dataUser = 'active';
+    $konten ='Auditee';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/pka/index.php') {
     $pka = 'active';
+    $konten ='PKA';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/desk/index.php') {
     $desk = 'active';
     $dataAudit = 'active';
+    $konten ='Data Desk';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/visit/index.php') {
     $desk = 'active';
     $dataAudit = 'active';
+    $konten ='Data Visit';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/tha/index.php') {
     $desk = 'active';
     $dataAudit = 'active';
+    $konten ='THA';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/lha/index.php') {
     $desk = 'active';
     $dataAudit = 'active';
+    $konten ='LHA';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/ba/index.php') {
       $ba = 'active';
+      $konten ='Berita Acara';
   } else {
     $dashboard = '';
     $user = '';
@@ -55,6 +65,7 @@
     $ba = '';
     $dataUser = '' ;
     $dataAudit = '';
+    $konten ='';
   }
   ?>
 
@@ -332,7 +343,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0"><?= $konten; ?></h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
