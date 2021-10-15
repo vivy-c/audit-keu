@@ -253,19 +253,19 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link <?= $visit; ?>">
+                <a href="../visit/index.php" class="nav-link <?= $visit; ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Visit</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link <?= $tha; ?>">
+                <a href="../tha/index.php" class="nav-link <?= $tha; ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>THA</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link <?= $lha; ?>">
+                <a href="../lha/index.php" class="nav-link <?= $lha; ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>LHA</p>
                 </a>
@@ -310,7 +310,7 @@
             </a>            
           </li> -->
           <li class="nav-item ">
-            <a href="#" class="nav-link <?= $ba; ?>">
+            <a href="../ba/index.php" class="nav-link <?= $ba; ?>">
               <i class="nav-icon far fa-flag"></i>
               <p>
                 Berita Acara
