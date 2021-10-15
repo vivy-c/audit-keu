@@ -9,6 +9,19 @@ $username = $_SESSION["username"];
 $sql = query("SELECT * FROM tb_user WHERE username='$username'");
 
 
+if (isset($_POST["ubah"])) {
+  if (ubah($_POST) > 0) {
+    echo "<script>
+     alert('data berhasil diperbarui');
+     document.location.href='../dashboard/index.php';
+     </script>";
+  } else {
+    echo "<script>
+     alert('data gagal diperbarui');
+     document.location.href='../dashboard/index.php';
+     </script>";
+  }
+}
 
 // if (isset($_POST["ubahBio"])) {
 //   if (ubahBio($_POST) > 0) {
@@ -82,54 +95,54 @@ $sql = query("SELECT * FROM tb_user WHERE username='$username'");
 <!-- Main content -->
 <section class="content">
   <div class="container-fluid">
-    
+
     <div class="row">
 
 
-    <div class="col-lg-4 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3><?php echo $jumlah_pka; ?></h3>
+      <div class="col-lg-4 col-6">
+        <!-- small box -->
+        <div class="small-box bg-info">
+          <div class="inner">
+            <h3><?php echo $jumlah_pka; ?></h3>
 
-                <p>Program Kerja Audit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-easel"></i>
-              </div>
-              <a href="../pka/index.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
+            <p>Program Kerja Audit</p>
           </div>
-          <!-- ./col -->
+          <div class="icon">
+            <i class="ion ion-easel"></i>
+          </div>
+          <a href="../pka/index.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
 
-          <div class="col-lg-4 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3><?php echo $jumlah_lha; ?></h3>
-                <p>Laporan Hasil Audit</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-laptop"></i>
-              </div>
-              <a href="../lha/index.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
+      <div class="col-lg-4 col-6">
+        <!-- small box -->
+        <div class="small-box bg-success">
+          <div class="inner">
+            <h3><?php echo $jumlah_lha; ?></h3>
+            <p>Laporan Hasil Audit</p>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-4 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3><?php echo $jumlah_ba; ?></h3>
+          <div class="icon">
+            <i class="ion ion-laptop"></i>
+          </div>
+          <a href="../lha/index.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
+      <div class="col-lg-4 col-6">
+        <!-- small box -->
+        <div class="small-box bg-warning">
+          <div class="inner">
+            <h3><?php echo $jumlah_ba; ?></h3>
 
-                <p>Berita Acara</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-card"></i>
-              </div>
-              <a href="../ba/index.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
+            <p>Berita Acara</p>
           </div>
+          <div class="icon">
+            <i class="ion ion-card"></i>
+          </div>
+          <a href="../ba/index.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
 
 
       <div class="col-md-12">
@@ -170,20 +183,6 @@ $sql = query("SELECT * FROM tb_user WHERE username='$username'");
                         } else {
                           $level = 'Belum dikonfirmasi';
                         }
-
-                        if (isset($_POST["ubah"])) {
-                          if (ubah($_POST) > 0) {
-                            echo "<script>
-                             alert('data berhasil diperbarui');
-                             document.location.href='../profile/index.php';
-                             </script>";
-                          } else {
-                            echo "<script>
-                             alert('data gagal diperbarui');
-                             document.location.href='../profile/index.php';
-                             </script>";
-                          }
-                        }
                         ?>
 
                         <p class="text-muted text-center"><?= $level; ?></p>
@@ -194,7 +193,7 @@ $sql = query("SELECT * FROM tb_user WHERE username='$username'");
                             <input type="hidden" id="ttdLama" name="ttdLama" value="<?= $r['ttd']; ?>">
                             <input type="hidden" id="id_user" name="id_user" class="form-control" value="<?= $r['id_user']; ?>">
                             <input type="hidden" id="status" name="status" class="form-control" value="<?= $r['status']; ?>">
-                            <input type="hidden" id="level" name="level" class="form-control" value="<?= $r['level']; ?>" >
+                            <input type="hidden" id="level" name="level" class="form-control" value="<?= $r['level']; ?>">
                           </div>
                           <div class="form-group">
                             <label for="nip">NIP / NPAK</label>

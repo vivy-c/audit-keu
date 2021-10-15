@@ -182,8 +182,8 @@ function upload_foto()
       $level = htmlspecialchars($data["level"]);
       $no_hp =htmlspecialchars($data["no_hp"]);
       $email =htmlspecialchars($data["email"]);
-      $fotoLama = htmlspecialchars($data(["fotoLama"]));
-      $ttdLama = htmlspecialchars($data(["ttdLama"]));
+      $fotoLama = htmlspecialchars($data["fotoLama"]);
+      $ttdLama = htmlspecialchars($data["ttdLama"]);
     
       // 	//cek apakah user pilih foto baru atau tidak
       if($_FILES['foto']['error'] === 4){
@@ -198,7 +198,7 @@ function upload_foto()
         $ttd =upload_ttd();
       }
     
-      $query="UPDATE tb_user SET username = '$username' ,password = '$password',password2 = '$password',nama = '$nama',nip_npak = '$nip_npak',status = '$status',level = '$level',no_hp = '$no_hp',email = '$email',foto='$foto',ttd='$ttd' WHERE id_user = $id_user";
+      $query="UPDATE tb_user SET username = '$username' ,password = '$password',password2 = '$password2',nama = '$nama',nip_npak = '$nip_npak',status = '$status',level = '$level',no_hp = '$no_hp',email = '$email',foto='$foto',ttd='$ttd' WHERE id_user = $id_user";
       mysqli_query($conn,$query);
       return mysqli_affected_rows($conn);
     }
@@ -273,3 +273,4 @@ $jumlah_lha = mysqli_num_rows($rowata_lha);
 
 $rowata_ba = mysqli_query($conn,"SELECT * FROM tb_ba");
 $jumlah_ba = mysqli_num_rows($rowata_ba);
+ 
