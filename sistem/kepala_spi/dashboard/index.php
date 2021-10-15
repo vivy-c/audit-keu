@@ -3,7 +3,6 @@ include('../../template/header.php');
 include('../../template/sidebar_kepala_spi.php');
 include('functions.php');
 
-$data['judul'] = 'Profile Kepala';
 
 $username = $_SESSION["username"];
 
