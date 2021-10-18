@@ -189,9 +189,9 @@ if (isset($_POST["ubah"])) {
 
                         <form class="form-horizontal" method="post" enctype="multipart/form-data">
                           <div class="form-group">
-                            <input type="hidden" id="fotoLama" name="fotoLama" value="<?= $r['foto']; ?>">
-                            <input type="hidden" id="ttdLama" name="ttdLama" value="<?= $r['ttd']; ?>">
-                            <input type="hidden" id="id_user" name="id_user" class="form-control" value="<?= $r['id_user']; ?>">
+                            <input type="hidden" name="id_user" class="form-control" value="<?= $r['id_user']; ?>">
+                            <input type="hidden" name="fotoLama" value="<?= $r["foto"]; ?>">
+                            <input type="hidden" name="ttdLama" value="<?= $r["ttd"]; ?>">
                             <input type="hidden" id="status" name="status" class="form-control" value="<?= $r['status']; ?>">
                             <input type="hidden" id="level" name="level" class="form-control" value="<?= $r['level']; ?>">
                           </div>
@@ -231,7 +231,7 @@ if (isset($_POST["ubah"])) {
                           </div>
                           <div class="form-group">
                             <label for="foto">Ubah Foto</label>
-                            <input type="file" id="foto" name="foto">
+                            <input type="file" id="foto" name="foto" value="<?= $r["foto"];?>">
                           </div>
                           <div class="form-group">
                             <p><b>Ttd anda sekarang:</b></p>
@@ -240,7 +240,7 @@ if (isset($_POST["ubah"])) {
                             </div>
                             <div class="form-group">
                               <label for="ttd">Ubah tanda tangan</label>
-                              <input type="file" id="ttd" name="ttd">
+                              <input type="file" id="ttd" name="ttd" value="<?= $r["ttd"];?>">
                               <p style="color: red;"><i>* Upload ttd dengan background transparan*</i></p>
                             </div>
                             <div class="form-group row  float-left">

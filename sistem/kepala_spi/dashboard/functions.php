@@ -173,15 +173,15 @@ function upload_foto()
 	
       global $conn;
       $id_user =htmlspecialchars($data["id_user"]);
-      $username =htmlspecialchars($data["username"]);
-      $password =htmlspecialchars($data["password"]);
-      $password2 =htmlspecialchars($data["password"]);
-      $nama =htmlspecialchars($data["nama"]);
-      $nip_npak =htmlspecialchars($data["nip_npak"]);
-      $status = htmlspecialchars($data["status"]);
-      $level = htmlspecialchars($data["level"]);
-      $no_hp =htmlspecialchars($data["no_hp"]);
-      $email =htmlspecialchars($data["email"]);
+      $username =htmlspecialchars($data['username']);
+      $password =htmlspecialchars($data['password']);
+      $password2 =htmlspecialchars($data['password2']);
+      $nama =htmlspecialchars($data['nama']);
+      $nip_npak =htmlspecialchars($data['nip_npak']);
+      $status = htmlspecialchars($data['status']);
+      $level = htmlspecialchars($data['level']);
+      $no_hp =htmlspecialchars($data['no_hp']);
+      $email =htmlspecialchars($data['email']);
       $fotoLama = htmlspecialchars($data["fotoLama"]);
       $ttdLama = htmlspecialchars($data["ttdLama"]);
     
@@ -198,7 +198,18 @@ function upload_foto()
         $ttd =upload_ttd();
       }
     
-      $query="UPDATE tb_user SET username = '$username' ,password = '$password',password2 = '$password2',nama = '$nama',nip_npak = '$nip_npak',status = '$status',level = '$level',no_hp = '$no_hp',email = '$email',foto='$foto',ttd='$ttd' WHERE id_user = $id_user";
+      $query="UPDATE tb_user SET 
+      username = '$username',
+      password = '$password',
+      password2 = '$password2',
+      nama = '$nama',
+      nip_npak = '$nip_npak',
+      status = '$status',
+      level = '$level',
+      no_hp = '$no_hp',
+      email = '$email',
+      foto='$foto',
+      ttd='$ttd' WHERE id_user = $id_user";
       mysqli_query($conn,$query);
       return mysqli_affected_rows($conn);
     }

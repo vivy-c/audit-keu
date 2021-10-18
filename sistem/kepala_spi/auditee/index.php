@@ -53,7 +53,7 @@ $tb_auditee = query("SELECT * FROM tb_auditee  ORDER BY tb_auditee.nama_unit ASC
                       <?php foreach ($tb_auditee as $r) : ?>
                         <tr>
                           <th scope="row"><?= $no; ?></th>
-                          <td><?php echo $r['nama']; ?></td>
+                          <td><?php echo $r['id_user']; ?></td>
                           <td><?php echo $r['nama_unit']; ?></td>
                           <td><?php echo  $r['tanggal']; ?></td>
                           <td>
