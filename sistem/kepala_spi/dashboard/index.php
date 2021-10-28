@@ -12,10 +12,19 @@ $sql = query("SELECT * FROM tb_user WHERE username='$username'");
 
 if (isset($_POST["ubahData"])) {
   if (ubah($_POST) > 0) {
-  echo "<script>
-    alert('data berhasil diperbarui');
-    document.location.href = '../dashboard/index.php';
-  </script>";
+    session_destroy();
+    if (!isset($_SESSION['username'])) {
+      header("Location: ../session/index.php");
+    }else {
+      header("Location: index.php");
+    }
+      echo "<script>
+      alert('data berhasil diperbarui');
+      document.location.href = '../dashboard/index.php';
+      </script>"
+  
+ 
+  ;
   } 
   else {
   echo "<script>
@@ -177,7 +186,7 @@ if (isset($_POST["ubahData"])) {
                           </div>
                           <div class="form-group">
                             <label for="username">Username</label>
-                            <input type="text" id="username" class="form-control" value="<?= $r['username']; ?>" name="username" readonly>
+                            <input type="text" id="username" class="form-control" value="<?= $r['username']; ?>" name="username" >
                           </div>
                           <div class="form-group">
                             <label for="password">Password</label>

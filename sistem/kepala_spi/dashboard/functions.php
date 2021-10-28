@@ -1,5 +1,8 @@
 <?php
 
+session_start();
+
+
 function upload_foto()
     {
       $namaFile   = $_FILES['foto']['name'];

@@ -1,6 +1,11 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 
   <?php
+  if (!isset($_SESSION['username'])) {
+    header("Location: ../session/index.php");
+  } else {
+    header("Location: index.php");
+  }
   if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
     $url = "https://";
   else
@@ -72,8 +77,8 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="loader" src="../../../dist/img/loading-buffering.gif" alt="loader" height="60" width="60" style="color: white;">
-  </div>
+      <img class="loader" src="../../../dist/img/loading-buffering.gif" alt="loader" height="60" width="60" style="color: white;">
+    </div>
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -164,14 +169,14 @@
 
             <a href="#" class="d-block"><?php
 
-              $username = $_SESSION["username"];
+                                        $username = $_SESSION["username"];
 
-              $sql = "SELECT * FROM tb_user WHERE username='$username'";
-              $result = mysqli_query($conn, $sql);
-              while ($row = $result->fetch_assoc()) {
-                echo $row['nama'];
-              }
-              ?></a>
+                                        $sql = "SELECT * FROM tb_user WHERE username='$username'";
+                                        $result = mysqli_query($conn, $sql);
+                                        while ($row = $result->fetch_assoc()) {
+                                          echo $row['nama'];
+                                        }
+                                        ?></a>
           </div>
         </div>
 
