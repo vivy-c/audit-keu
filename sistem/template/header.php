@@ -23,6 +23,16 @@ function query($query){
   }
   return $rows;
 }
+
+// KETERANGAN PROFIL
+
+// $username = $_SESSION['username'];
+// $query = query("SELECT * FROM tb_user WHERE username = '$username' ");
+
+
+// $foto = $query['foto'];
+
+
 if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
     $url = "https://";
   else

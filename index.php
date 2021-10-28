@@ -57,8 +57,6 @@ if (isset($_POST["register"])) {
   </nav>
   <!-- akhir Navbar -->
 
-
-
   <!-- modal register-->
   <div class=" modal fade" id="registrasi" tabindex="-1">
     <div class="modal-dialog modal-lg">

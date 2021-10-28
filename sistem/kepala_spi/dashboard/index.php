@@ -8,60 +8,22 @@ $username = $_SESSION["username"];
 
 $sql = query("SELECT * FROM tb_user WHERE username='$username'");
 
+// $foto = $sql['foto'];
 
-if (isset($_POST["ubah"])) {
+if (isset($_POST["ubahData"])) {
   if (ubah($_POST) > 0) {
-    echo "<script>
-     alert('data berhasil diperbarui');
-     document.location.href='../dashboard/index.php';
-     </script>";
-  } else {
-    echo "<script>
-     alert('data gagal diperbarui');
-     document.location.href='../dashboard/index.php';
-     </script>";
+  echo "<script>
+    alert('data berhasil diperbarui');
+    document.location.href = '../dashboard/index.php';
+  </script>";
+  } 
+  else {
+  echo "<script>
+    alert('data gagal diperbarui');
+    document.location.href = '../dashboard/index.php';
+  </script>";
   }
-}
-
-// if (isset($_POST["ubahBio"])) {
-//   if (ubahBio($_POST) > 0) {
-//     echo "<script>
-//      alert('data berhasil diperbarui');
-//      document.location.href='../profile/index.php';
-//      </script>";
-//   } else {
-//     echo "<script>
-//      alert('data gagal diperbarui');
-//      document.location.href='../profile/index.php';
-//      </script>";
-//   }
-// }
-// if (isset($_POST["ubahPw"])) {
-//   if (ubahPw($_POST) > 0) {
-//     echo "<script>
-//      alert('data berhasil diperbarui');
-//      document.location.href='../profile/index.php';
-//      </script>";
-//   } else {
-//     echo "<script>
-//      alert('data gagal diperbarui');
-//      document.location.href='../profile/index.php';
-//      </script>";
-//   }
-// }
-// if (isset($_POST["ubahFoto"])) {
-//   if (ubahFoto($_POST) > 0) {
-//     echo "<script>
-//      alert('data berhasil diperbarui');
-//      document.location.href='../profile/index.php';
-//      </script>";
-//   } else {
-//     echo "<script>
-//      alert('data gagal diperbarui');
-//      document.location.href='../profile/index.php';
-//      </script>";
-//   }
-// }
+  }
 
 ?>
 
@@ -157,7 +119,9 @@ if (isset($_POST["ubah"])) {
           </div>
           <div class="card-body">
             <div class="tab-content">
-
+      <?php
+              
+              ?>
               <!-- section muncul -->
               <div class="tab-pane active" id="muncul">
                 <div class="col-md-12">
@@ -190,10 +154,10 @@ if (isset($_POST["ubah"])) {
                         <form class="form-horizontal" method="post" enctype="multipart/form-data">
                           <div class="form-group">
                             <input type="hidden" name="id_user" class="form-control" value="<?= $r['id_user']; ?>">
-                            <input type="hidden" name="fotoLama" value="<?= $r["foto"]; ?>">
-                            <input type="hidden" name="ttdLama" value="<?= $r["ttd"]; ?>">
-                            <input type="hidden" id="status" name="status" class="form-control" value="<?= $r['status']; ?>">
-                            <input type="hidden" id="level" name="level" class="form-control" value="<?= $r['level']; ?>">
+                            <input type="hidden" name="fotoLama" class="form-control" value="<?= $r['foto']; ?>">
+                            <input type="hidden" name="ttdLama" class="form-control" value="<?= $r['ttd']; ?>">
+                            <input type="hidden" name="status" class="form-control" value="<?= $r['status']; ?>">
+                            <input type="hidden" name="level" class="form-control" value="<?= $r['level']; ?>">
                           </div>
                           <div class="form-group">
                             <label for="nip">NIP / NPAK</label>
@@ -213,7 +177,7 @@ if (isset($_POST["ubah"])) {
                           </div>
                           <div class="form-group">
                             <label for="username">Username</label>
-                            <input type="text" id="username" class="form-control" value="<?= $r['username']; ?>" name="username">
+                            <input type="text" id="username" class="form-control" value="<?= $r['username']; ?>" name="username" readonly>
                           </div>
                           <div class="form-group">
                             <label for="password">Password</label>
@@ -221,7 +185,7 @@ if (isset($_POST["ubah"])) {
                           </div>
                           <div class="form-group">
                             <label for="password2">Konfirmasi Password</label>
-                            <input type="password" id="password2" class="form-control " value="<?= $r['password']; ?>" name="password2">
+                            <input type="password" id="password2" class="form-control " value="<?= $r['password2']; ?>" name="password2">
                           </div>
                           <div class="form-group">
                             <p><b>Foto anda sekarang:</b></p>
@@ -231,7 +195,7 @@ if (isset($_POST["ubah"])) {
                           </div>
                           <div class="form-group">
                             <label for="foto">Ubah Foto</label>
-                            <input type="file" id="foto" name="foto" value="<?= $r["foto"];?>">
+                            <input type="file" id="foto" name="foto" value="<?= $r['foto']; ?>">
                           </div>
                           <div class="form-group">
                             <p><b>Ttd anda sekarang:</b></p>
@@ -240,12 +204,12 @@ if (isset($_POST["ubah"])) {
                             </div>
                             <div class="form-group">
                               <label for="ttd">Ubah tanda tangan</label>
-                              <input type="file" id="ttd" name="ttd" value="<?= $r["ttd"];?>">
+                              <input type="file" id="ttd" name="ttd" value="<?= $r['ttd']; ?>">
                               <p style="color: red;"><i>* Upload ttd dengan background transparan*</i></p>
                             </div>
                             <div class="form-group row  float-left">
                               <div class="col-sm-4">
-                                <button type="submit" name="ubah" class="btn btn-success">Perbarui</button>
+                                <button type="submit" name="ubahData" class="btn btn-success">Perbarui</button>
                               </div>
                             </div>
                         </form>
