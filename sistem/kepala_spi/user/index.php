@@ -4,7 +4,7 @@ include('../../template/sidebar_kepala_spi.php');
 include('functions.php');
 // include('../../functions.php');
 
-$tb_user = query("SELECT * FROM tb_user");
+$tb_user = query("SELECT * FROM tb_user ORDER BY nama ASC");
 $judul = 'Data User';
 
 if (isset($_POST["register"])) {

@@ -1,11 +1,31 @@
 <?php
 include('../../template/header.php');
 include('../../template/sidebar_kepala_spi.php');
+include('function.php');
 
 $tb_auditee = query("SELECT a.id_auditee,b.nama,a.nama_unit,a.tanggal from tb_auditee as a,tb_user as b where a.id_user=b.id_user");
 
 $tb_user = query("SELECT * FROM tb_user  ORDER BY tb_user.nama ASC");
-$tb_auditee = query("SELECT * FROM tb_auditee  ORDER BY tb_auditee.nama_unit ASC");
+// $tb_auditee = query("SELECT * FROM tb_auditee  ORDER BY tb_auditee.nama_unit ASC");
+
+if (isset($_POST["addAuditee"])) {
+  //cek data berhasil tambah atau tidak
+  if (addAuditee($_POST) > 0) {
+    echo "
+            <script>
+            alert('data berhasil ditambahkan');
+            document.location.href='index.php';
+            </script>
+            ";
+  } else {
+    echo "
+            <script>
+            alert('data gagal ditambahkan');
+            document.location.href='index.php';
+            </script>
+            ";
+  }
+}
 
 ?>
 
@@ -53,13 +73,15 @@ $tb_auditee = query("SELECT * FROM tb_auditee  ORDER BY tb_auditee.nama_unit ASC
                       <?php foreach ($tb_auditee as $r) : ?>
                         <tr>
                           <th scope="row"><?= $no; ?></th>
-                          <td><?php echo $r['id_user']; ?></td>
+                          <td><?php echo $r['nama']; ?></td>
                           <td><?php echo $r['nama_unit']; ?></td>
                           <td><?php echo  $r['tanggal']; ?></td>
                           <td>
                             <div class="btn-group btn-group-sm">
-                              <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal<?php echo $r['id_auditee']; ?>"><i class="fas fa-eye"></i></a>
-
+                              <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal<?php echo $r['id_auditee']; ?>">
+                                <i class="fas fa-eye"></i>
+                              </a>
+                            
                               <!-- tampilan modal jadi-->
                               <div class="modal fade" id="myModal<?php echo $r['id_auditee']; ?>">
                                 <div class="modal-dialog modal-lg">
@@ -77,14 +99,14 @@ $tb_auditee = query("SELECT * FROM tb_auditee  ORDER BY tb_auditee.nama_unit ASC
                                         <?php
                                         $id = $r["id_auditee"];
                                         $data = mysqli_query($conn, "SELECT b.foto,a.id_auditee,b.nama,a.nama_unit,a.tanggal from tb_auditee as a,tb_user as b where a.id_user=b.id_user");
-                                        while ($cb = mysqli_fetch_array($data)) {
+                                        $cb = mysqli_fetch_array($data) 
                                         ?>
                                           <div class="form-group">
                                             <!-- <label for="id_user">ID User</label> -->
                                             <input type="hidden" class="form-control" id="id_auditee" name="id_auditee" value="<?= $cb["id_auditee"]; ?>">
                                           </div>
                                           <div class="form-group justify-content-center">
-                                            <img src="../../img/user/<?= $cb["foto"]; ?>" alt="foto ketua unit" width="50" class="img-circle elevation-2">
+                                              <img src="../../img/user/<?= $cb["foto"]; ?>" alt="foto ketua unit" width="50" class="img-circle elevation-2">
                                           </div>
                                           <div class="form-group">
                                             <label for="nama">Nama Ketua</label>
@@ -100,14 +122,12 @@ $tb_auditee = query("SELECT * FROM tb_auditee  ORDER BY tb_auditee.nama_unit ASC
                                           </div>
 
 
-                                        <?php
-                                        }
-                                        ?>
+                                        
 
                                     </div>
                                     <div class="modal-footer float-right">
-                                      <a href="index.php" type="submit" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
-                                      <!-- <button type="edit" id="edit" name="edit" value="edit" class="btn btn-primary">Simpan Perubahan</button> -->
+                                      <a href="index.php" type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
+                                      <!-- <button type="submit" id="addAuditee" name="addAuditee" value="addAuditee" class="btn btn-primary">Simpan Perubahan</button> -->
                                       </form>
                                     </div>
                                   </div>
@@ -131,6 +151,7 @@ $tb_auditee = query("SELECT * FROM tb_auditee  ORDER BY tb_auditee.nama_unit ASC
                 </div>
               </div>
 
+
               <!-- modal tambah data auditee-->
               <div class=" modal fade" id="addAuditee" tabindex="-1">
                 <div class="modal-dialog modal-lg">
@@ -151,16 +172,23 @@ $tb_auditee = query("SELECT * FROM tb_auditee  ORDER BY tb_auditee.nama_unit ASC
                                   <input type="hidden" id="id_auditee" class="form-control" value="" name="id_auditee">
                                 </div>
                                 <div class="form-group">
-                                  <label for="nip">Nama Ketua Unit</label>
-                                  <input type="text" id="nip" class="form-control" value="" name="nip_npak">
+                                  <label for="id_user">Nama Ketua Unit</label>
+                                  <select class="form-control " data-placeholder="Pilih Ketua Unit" style="width: 100%;" id="id_user" name="id_user">
+                                    <option value=""></option>
+                                    <?php $tb_user = query("SELECT * FROM tb_user WHERE level=2 AND status=1 ORDER BY tb_user.nama ASC"); ?>
+                                    <?php foreach ($tb_user as $row) {
+                                    ?>
+                                      <option value="<?= $row['id_user'] ?>"><?php echo $row['nama']; ?> (<?php echo $row['nip_npak']; ?>)</option>
+                                    <?php } ?>
+                                  </select>
                                 </div>
                                 <div class="form-group">
                                   <label for="nama">Nama Unit</label>
-                                  <input type="text" id="nama" class="form-control" value="" name="nama">
+                                  <input type="text" id="nama_unit" class="form-control" value="" name="nama_unit">
                                 </div>
                                 <div class="form-group">
-                                  <label for="nama">Nama Unit</label>
-                                  <input type="date" id="nama" class="form-control" value="" name="nama">
+                                  <label for="tanggal">Tanggal</label>
+                                  <input type="date" id="tanggal" class="form-control" value="" name="tanggal">
                                 </div>
                               </div>
                               <!-- /.card-body -->

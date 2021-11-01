@@ -12,7 +12,6 @@ $sql = query("SELECT * FROM tb_user WHERE username='$username'");
 
 if (isset($_POST["ubahData"])) {
   if (ubah($_POST) > 0) {
-    session_destroy();
     if (!isset($_SESSION['username'])) {
       header("Location: ../session/index.php");
     }else {

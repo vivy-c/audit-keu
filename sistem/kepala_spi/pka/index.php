@@ -91,150 +91,147 @@ if (isset($_POST["tambahDataPka"])) {
                                                         <td><?php echo  $r['status']; ?></td>
                                                         <td><?php echo  $r['tanggal']; ?></td>
                                                         <td>
-                                                        <div class="btn-group btn-group-sm">
-                                                            <a class="btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#myModaldetail<?php echo $r['id_pka']; ?>">
-                                                            <i class="fas fa-eye"></i>
-                                                            </a>
+                                                            <div class="btn-group btn-group-sm">
+                                                                <a class="btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#myModaldetail<?php echo $r['id_pka']; ?>">
+                                                                    <i class="fas fa-eye"></i>
+                                                                </a>
 
-                                                            <!-- tampilan modal jadi-->
-                                                            <div class="modal fade" id="myModaldetail<?php echo $r['id_pka']; ?>">
-                                                                <div class="modal-dialog modal-lg">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h4 class="modal-title">Detail Data PKA</h4>
-                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                <span aria-hidden="true">&times;</span>
-                                                                            </button>
+                                                                <!-- tampilan modal jadi-->
+                                                                <div class="modal fade" id="myModaldetail<?php echo $r['id_pka']; ?>">
+                                                                    <div class="modal-dialog modal-lg">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h4 class="modal-title">Detail Data PKA</h4>
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+
+                                                                            <div class="modal-body">
+                                                                                <!-- form start -->
+                                                                                <form action="" method="POST">
+                                                                                    <?php
+                                                                                    $id_pka = $r["id_pka"];
+                                                                                    $data = mysqli_query($conn, "SELECT a.id_pka,b.nama,c.nama_unit,a.status,a.tanggal from tb_pka as a,tb_user as b,tb_auditee as c where a.id_user=b.id_user=c.id_user");
+                                                                                    // $data = mysqli_query ( $conn, "SELECT id_pka,tb_auditee.nama_unit,id_auditee, tb_pka.id_user AS id_auditor , (SELECT nama FROM tb_user WHERE id_user = tb_pka.id_user ) AS nama_auditor ,(SELECT nama_unit FROM tb_auditee WHERE id_user = tb_auditee.id_user ) AS nama_auditee , tanggal,status FROM tb_pka INNER JOIN tb_auditee USING (id_auditee)");
+                                                                                    $cb = mysqli_fetch_array($data);                                                                      
+      
+                                                                                    ?>
+                                                                                        <div class="form-group">
+                                                                                            <label for="id_pka">ID PKA</label>
+                                                                                            <input type="text" class="form-control" id="id_pka" name="id_pka" value="<?= $cb["id_pka"]; ?>" readonly>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label for="nama">ID Auditor</label>
+                                                                                            <input type="text" class="form-control" id="nama" name="nama" value="<?= $cb["nama"]; ?>" readonly>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label for="nama_unit">ID Auditee</label>
+                                                                                            <input type="text" class="form-control" id="nama_unit" name="nama_unit" value="<?= $cb["nama_unit"]; ?>" readonly>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label for="status">Status</label>
+                                                                                            <input type="text" class="form-control" id="status" name="status" value="<?= $cb["status"]; ?>" readonly>
+                                                                                        </div>
+
+                                                                                        <div class="form-group">
+                                                                                            <label for="tanggal">tanggal</label>
+                                                                                            <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $cb["tanggal"]; ?>" required readonly>
+                                                                                        </div>
+
+                                                                            </div>
+                                                                            <div class="modal-footer float-right">
+                                                                                <a href="index.php" type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
+                                                                                <!-- <button type="edit" id="edit" name="edit" value="edit" class="btn btn-primary">Simpan Perubahan</button> -->
+                                                                                </form>
+                                                                            </div>
                                                                         </div>
-
-                                                                        <div class="modal-body">
-                                                                            <!-- form start -->
-                                                                            <form action="" method="POST">
-                                                                                <?php
-                                                                                $id = $r["id_pka"];
-                                                                                $data = mysqli_query($conn, "SELECT * FROM tb_pka WHERE id_pka = '$id'");
-                                                                                while ($cb = mysqli_fetch_array($data)) {
-                                                                                ?>
-                                                                                    <div class="form-group">
-                                                                                        <label for="id_pka">ID PKA</label>
-                                                                                        <input type="text" class="form-control" id="id_pka" name="id_pka" value="<?= $cb["id_pka"]; ?>" readonly>
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="id_user">ID Auditor</label>
-                                                                                        <input type="text" class="form-control" id="id_user" name="id_user" value="<?= $cb["id_user"]; ?>" readonly>
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="id_auditee">ID Auditee</label>
-                                                                                        <input type="text" class="form-control" id="id_auditee" name="id_auditee" value="<?= $cb["id_auditee"]; ?>" readonly>
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="status">Status</label>
-                                                                                        <input type="text" class="form-control" id="status" name="status" value="<?= $cb["status"]; ?>" readonly>
-                                                                                    </div>
-
-                                                                                    <div class="form-group">
-                                                                                        <label for="tanggal">tanggal</label>
-                                                                                        <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $cb["tanggal"]; ?>" required readonly>
-                                                                                    </div>
-
-
-                                                                                <?php
-                                                                                }
-                                                                                ?>
-
-                                                                        </div>
-                                                                        <div class="modal-footer float-right">
-                                                                            <a href="index.php" type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
-                                                                            <!-- <button type="edit" id="edit" name="edit" value="edit" class="btn btn-primary">Simpan Perubahan</button> -->
-                                                                            </form>
-                                                                        </div>
+                                                                        <!-- /.modal-content -->
                                                                     </div>
-                                                                    <!-- /.modal-content -->
+                                                                    <!-- /.modal-dialog -->
                                                                 </div>
-                                                                <!-- /.modal-dialog -->
-                                                            </div>
-                                                            <!-- /.modal -->
+                                                                <!-- /.modal -->
 
 
-                                                            <a class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#myModal<?php echo $r['id_pka']; ?>"><i class="fas fa-pen"></i></a>
+                                                                <a class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#myModal<?php echo $r['id_pka']; ?>"><i class="fas fa-pen"></i></a>
 
-                                                            <!-- tampilan modal jadi-->
-                                                            <div class="modal fade" id="myModal<?php echo $r['id_pka']; ?>">
-                                                                <div class="modal-dialog modal-lg">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h4 class="modal-title">Edit Data PKA</h4>
-                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                <span aria-hidden="true">&times;</span>
-                                                                            </button>
+                                                                <!-- tampilan modal jadi-->
+                                                                <div class="modal fade" id="myModal<?php echo $r['id_pka']; ?>">
+                                                                    <div class="modal-dialog modal-lg">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h4 class="modal-title">Edit Data PKA</h4>
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+
+                                                                            <div class="modal-body">
+                                                                                <!-- form start -->
+                                                                                <form action="" method="POST">
+                                                                                    <?php
+                                                                                    $id_pka = $r["id_pka"];
+                                                                                    $data = mysqli_query($conn, "SELECT * FROM tb_pka WHERE id_pka = '$id_pka'");
+                                                                                    while ($cb = mysqli_fetch_array($data)) {
+                                                                                    ?>
+                                                                                        <div class="form-group">
+                                                                                            <!-- <label for="id_user">ID User</label> -->
+                                                                                            <input type="hidden" class="form-control" id="id_pka" name="id_pka" value="<?= $cb["id_pka"]; ?>">
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label for="id_user">Nama Auditor</label>
+                                                                                            <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" id="id_auditee" name="id_auditee">
+                                                                                                <option value=""></option>
+                                                                                                <?php foreach ($tb_user as $row) {
+                                                                                                ?>
+                                                                                                    <option value="<?= $row['id_user'] ?>"><?php echo $row['nama']; ?> (<?php echo $row['nip_npak']; ?>)</option>
+                                                                                                <?php } ?>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label for="id_auditee">Nama Auditee</label>
+                                                                                            <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" id="id_auditee" name="id_auditee">
+                                                                                                <option value=""></option>
+                                                                                                <?php foreach ($tb_auditee as $row) {
+                                                                                                ?>
+                                                                                                    <option value="<?= $row['id'] ?>"><?php echo $row['nama_unit']; ?> (<?php echo $row['tanggal']; ?>)</option>
+                                                                                                <?php } ?>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label for="status">Status</label>
+                                                                                            <select class="form-control " data-placeholder="Pilih Status" style="width: 100%;" id="status" name="status">
+                                                                                                <option value=""></option>
+                                                                                                <option value="">Terealisasi</option>
+                                                                                                <option value="">Tidak Terealisasi</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label for="tanggal">tanggal</label>
+                                                                                            <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $cb["tanggal"]; ?>" required readonly>
+                                                                                        </div>
+
+                                                                                    <?php
+                                                                                    }
+                                                                                    ?>
+
+                                                                            </div>
+                                                                            <div class="modal-footer float-right">
+                                                                                <a href="index.php" type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
+                                                                                <a href="index.php" type="submit" class="btn btn-success" name="">Ubah Data</a>
+                                                                                <!-- <button type="edit" id="edit" name="edit" value="edit" class="btn btn-primary">Simpan Perubahan</button> -->
+                                                                                </form>
+                                                                            </div>
                                                                         </div>
-
-                                                                        <div class="modal-body">
-                                                                            <!-- form start -->
-                                                                            <form action="" method="POST">
-                                                                                <?php
-                                                                                $id = $r["id_pka"];
-                                                                                $data = mysqli_query($conn, "SELECT * FROM tb_pka WHERE id_pka = '$id'");
-                                                                                while ($cb = mysqli_fetch_array($data)) {
-                                                                                ?>
-                                                                                    <div class="form-group">
-                                                                                        <!-- <label for="id_user">ID User</label> -->
-                                                                                        <input type="hidden" class="form-control" id="id_pka" name="id_pka" value="<?= $cb["id_pka"]; ?>">
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="id_user">Nama Auditor</label>
-                                                                                        <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" id="id_auditee" name="id_auditee">
-                                                                                            <option value=""></option>
-                                                                                            <?php foreach ($tb_user as $row) {
-                                                                                            ?>
-                                                                                                <option value="<?= $row['id_user'] ?>"><?php echo $row['nama']; ?> (<?php echo $row['nip_npak']; ?>)</option>
-                                                                                            <?php } ?>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="id_auditee">Nama Auditee</label>
-                                                                                        <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" id="id_auditee" name="id_auditee">
-                                                                                            <option value=""></option>
-                                                                                            <?php foreach ($tb_auditee as $row) {
-                                                                                            ?>
-                                                                                                <option value="<?= $row['id'] ?>"><?php echo $row['nama_unit']; ?> (<?php echo $row['tanggal']; ?>)</option>
-                                                                                            <?php } ?>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="status">Status</label>
-                                                                                        <select class="form-control " data-placeholder="Pilih Status" style="width: 100%;" id="status" name="status">
-                                                                                            <option value=""></option>
-                                                                                            <option value="">Terealisasi</option>
-                                                                                            <option value="">Tidak Terealisasi</option>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="tanggal">tanggal</label>
-                                                                                        <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $cb["tanggal"]; ?>" required readonly>
-                                                                                    </div>
-
-                                                                                <?php
-                                                                                }
-                                                                                ?>
-
-                                                                        </div>
-                                                                        <div class="modal-footer float-right">
-                                                                            <a href="index.php" type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
-                                                                            <a href="index.php" type="submit" class="btn btn-success" name="">Ubah Data</a>
-                                                                            <!-- <button type="edit" id="edit" name="edit" value="edit" class="btn btn-primary">Simpan Perubahan</button> -->
-                                                                            </form>
-                                                                        </div>
+                                                                        <!-- /.modal-content -->
                                                                     </div>
-                                                                    <!-- /.modal-content -->
+                                                                    <!-- /.modal-dialog -->
                                                                 </div>
-                                                                <!-- /.modal-dialog -->
+                                                                <!-- /.modal -->
+
+                                                                <a class="btn btn-outline-danger btn-sm" name="hapus" href="hapus.php?id=<?= $r["id"]; ?>" onclick="return confirm('Yakin mengapus data?');"><i class="fas fa-trash"></i></a>
+
                                                             </div>
-                                                            <!-- /.modal -->
-
-                                                            <a class="btn btn-outline-danger btn-sm" name="hapus" href="hapus.php?id=<?= $r["id"]; ?>" onclick="return confirm('Yakin mengapus data?');"><i class="fas fa-trash"></i></a>
-
-                                                        </div>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>

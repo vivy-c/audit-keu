@@ -1,11 +1,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 
   <?php
-  if (!isset($_SESSION['username'])) {
-    header("Location: ../session/index.php");
-  } else {
-    header("Location: index.php");
-  }
+  
   if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
     $url = "https://";
   else
