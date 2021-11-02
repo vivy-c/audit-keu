@@ -250,11 +250,11 @@ if (isset($_POST["tambahDataPka"])) {
                                         <div class="modal-body">
                                             <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
                                                 <div class="form-group">
-                                                    <input type="hidden" class="form-control" id="id_pka" name="id_pka" autocomplete="off" required>
+                                                    <input type="hidden" class="form-control" name="id_pka" autocomplete="off" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="id">Nama Auditor</label>
-                                                    <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" id="id" name="id">
+                                                    <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" name="id_user">
                                                         <option value=""></option>
                                                         <?php foreach ($tb_user as $row) {
                                                         ?>
@@ -264,7 +264,7 @@ if (isset($_POST["tambahDataPka"])) {
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="id_auditee">Nama Auditee</label>
-                                                    <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" id="id_auditee" name="id_auditee">
+                                                    <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" name="id_auditee">
                                                         <option value=""></option>
                                                         <?php foreach ($tb_auditee as $row) {
                                                         ?>
@@ -276,7 +276,7 @@ if (isset($_POST["tambahDataPka"])) {
 
                                                 <div class="form-group">
                                                     <label for="status">Status</label>
-                                                    <select class="form-control " data-placeholder="Pilih Status" style="width: 100%;" id="status" name="status">
+                                                    <select class="form-control " data-placeholder="Pilih Status" style="width: 100%;" name="status">
                                                         <option value=""></option>
                                                         <option value="">Terealisasi</option>
                                                         <option value="">Tidak Terealisasi</option>

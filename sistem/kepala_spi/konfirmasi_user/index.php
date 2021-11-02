@@ -222,7 +222,7 @@ if (isset($_POST["status"])) {
                               <input type="hidden" name="status" value="1">
                               <button class=" btn btn-outline-success" type="submit"><a name="status" onclick="return confirm('Yakin mengaktifkan user ini?');"><i class="fas fa-check"></i></a></button>
                               </form>
-                              <a href="hapus.php?id=<?= $r["id_user"]; ?>" name="hapus" class="btn btn-outline-danger" onclick="return confirm('Yakin menghapus permanen?');"><i class="fas fa-trash"></i></a>
+                              <a href="hapus.php?id_user=<?= $r["id_user"]; ?>" name="hapus" class="btn btn-outline-danger" onclick="return confirm('Yakin menghapus permanen?');"><i class="fas fa-trash"></i></a>
                             </div>
                           </td>
                         </tr>
