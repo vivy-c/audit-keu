@@ -96,39 +96,30 @@ if (isset($_POST["addAuditee"])) {
                                     <div class="modal-body">
                                       <!-- form start -->
                                       <form action="" method="POST">
-                                        <?php
-                                        $id = $r["id_auditee"];
-                                        $data = mysqli_query($conn, "SELECT b.foto,a.id_auditee,b.nama,a.nama_unit,a.tanggal from tb_auditee as a,tb_user as b where a.id_user=b.id_user");
-                                        $cb = mysqli_fetch_array($data) 
-                                        ?>
                                           <div class="form-group">
                                             <!-- <label for="id_user">ID User</label> -->
-                                            <input type="hidden" class="form-control" id="id_auditee" name="id_auditee" value="<?= $cb["id_auditee"]; ?>">
+                                            <input type="hidden" class="form-control" id="id_auditee" name="id_auditee" value="<?= $r["id_auditee"]; ?>">
                                           </div>
                                           <div class="form-group justify-content-center">
-                                              <img src="../../img/user/<?= $cb["foto"]; ?>" alt="foto ketua unit" width="50" class="img-circle elevation-2">
+                                              <img src="../../img/user/<?= $r["foto"]; ?>" alt="foto ketua unit" width="50" class="img-circle elevation-2">
                                           </div>
                                           <div class="form-group">
                                             <label for="nama">Nama Ketua</label>
-                                            <input type="text" class="form-control" id="nama" name="nama" value="<?= $cb["nama"]; ?>" required readonly>
+                                            <input type="text" class="form-control" id="nama" name="nama" value="<?= $r["nama"]; ?>" required readonly>
                                           </div>
                                           <div class="form-group">
                                             <label for="nama_unit">Nama Unit</label>
-                                            <input type="text" class="form-control" id="nama_unit" name="nama_unit" value="<?= $cb["nama_unit"]; ?>" required readonly>
+                                            <input type="text" class="form-control" id="nama_unit" name="nama_unit" value="<?= $r["nama_unit"]; ?>" required readonly>
                                           </div>
                                           <div class="form-group">
                                             <label for="tanggal">Tanggal</label>
-                                            <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $cb["tanggal"]; ?>" required readonly>
+                                            <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $r["tanggal"]; ?>" required readonly>
                                           </div>
-
-
-                                        
-
                                     </div>
                                     <div class="modal-footer float-right">
                                       <a href="index.php" type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
                                       <!-- <button type="submit" id="addAuditee" name="addAuditee" value="addAuditee" class="btn btn-primary">Simpan Perubahan</button> -->
-                                      </form>
+                                    </form>
                                     </div>
                                   </div>
                                   <!-- /.modal-content -->
@@ -137,9 +128,9 @@ if (isset($_POST["addAuditee"])) {
                               </div>
                               <!-- /.modal -->
                               <a href="hapus.php?id=<?= $r["id_auditee"]; ?>" name="hapus" class="btn btn-outline-danger" onclick="return confirm('Yakin mengapus data?');"><i class="fas fa-trash"></i></a>
-
+                              
                             </div>
-
+                            
                           </td>
                         </tr>
                         <?php $no++;  ?>
