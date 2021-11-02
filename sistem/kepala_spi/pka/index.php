@@ -2,8 +2,8 @@
 include('../../template/header.php');
 include('../../template/sidebar_kepala_spi.php');
 
-$tb_user = query("SELECT * FROM tb_user  ORDER BY tb_user.nama ASC");
-$tb_auditee = query("SELECT * FROM tb_auditee  ORDER BY tb_auditee.nama_unit ASC");
+$tb_user = query("SELECT * FROM tb_user WHERE level=3 AND status=1 ORDER BY tb_user.nama ASC");
+$tb_auditee = query("SELECT * FROM tb_auditee ORDER BY tb_auditee.nama_unit ASC");
 
 function tambahPka($data)
 {
@@ -68,10 +68,16 @@ if (isset($_POST["tambahDataPka"])) {
                                                     ID PKA
                                                 </th>
                                                 <th>
-                                                    STATUS
+                                                    Nama Auditor
                                                 </th>
                                                 <th>
-                                                    TANGGAL
+                                                    Nama Unit
+                                                </th>
+                                                <th>
+                                                    Status
+                                                </th>
+                                                <th>
+                                                    Tanggal
                                                 </th>
                                                 <th>
                                                     Aksi
@@ -81,13 +87,15 @@ if (isset($_POST["tambahDataPka"])) {
                                         <tbody id="modal-data">
                                             <?php
                                             $no = 0;
-                                            $modal = mysqli_query($conn, "SELECT * FROM tb_pka ORDER BY id_pka DESC");
+                                            $modal = mysqli_query($conn, "SELECT a.id_pka,b.nama,c.nama_unit,a.status,a.tanggal FROM tb_pka as a,tb_user as b,tb_auditee as c WHERE a.id_user=b.id_user and a.id_auditee=c.id_auditee");
                                             while ($r = mysqli_fetch_array($modal)) {
                                                 $no++;
                                             ?>
                                                 <?php foreach ($modal as $r) : ?>
                                                     <tr>
                                                         <td><?php echo $r['id_pka']; ?></td>
+                                                        <td><?php echo $r['nama']; ?></td>
+                                                        <td><?php echo $r['nama_unit']; ?></td>
                                                         <td><?php echo  $r['status']; ?></td>
                                                         <td><?php echo  $r['tanggal']; ?></td>
                                                         <td>
@@ -112,7 +120,7 @@ if (isset($_POST["tambahDataPka"])) {
                                                                                 <form action="" method="POST">
                                                                                     <?php
                                                                                     $id_pka = $r["id_pka"];
-                                                                                    $data = mysqli_query($conn, "SELECT a.id_pka,b.nama,c.nama_unit,a.status,a.tanggal from tb_pka as a,tb_user as b,tb_auditee as c where a.id_user=b.id_user=c.id_user");
+                                                                                    $data = mysqli_query($conn, "SELECT a.id_pka,b.nama,c.nama_unit,a.status,a.tanggal FROM tb_pka as a,tb_user as b,tb_auditee as c WHERE a.id_user=b.id_user and a.id_auditee=c.id_auditee");
                                                                                     // $data = mysqli_query ( $conn, "SELECT id_pka,tb_auditee.nama_unit,id_auditee, tb_pka.id_user AS id_auditor , (SELECT nama FROM tb_user WHERE id_user = tb_pka.id_user ) AS nama_auditor ,(SELECT nama_unit FROM tb_auditee WHERE id_user = tb_auditee.id_user ) AS nama_auditee , tanggal,status FROM tb_pka INNER JOIN tb_auditee USING (id_auditee)");
                                                                                     $cb = mysqli_fetch_array($data);                                                                      
       
@@ -122,11 +130,11 @@ if (isset($_POST["tambahDataPka"])) {
                                                                                             <input type="text" class="form-control" id="id_pka" name="id_pka" value="<?= $cb["id_pka"]; ?>" readonly>
                                                                                         </div>
                                                                                         <div class="form-group">
-                                                                                            <label for="nama">ID Auditor</label>
+                                                                                            <label for="nama">Nama Auditor</label>
                                                                                             <input type="text" class="form-control" id="nama" name="nama" value="<?= $cb["nama"]; ?>" readonly>
                                                                                         </div>
                                                                                         <div class="form-group">
-                                                                                            <label for="nama_unit">ID Auditee</label>
+                                                                                            <label for="nama_unit">Nama Auditee</label>
                                                                                             <input type="text" class="form-control" id="nama_unit" name="nama_unit" value="<?= $cb["nama_unit"]; ?>" readonly>
                                                                                         </div>
                                                                                         <div class="form-group">
@@ -264,7 +272,7 @@ if (isset($_POST["tambahDataPka"])) {
                                                         <option value=""></option>
                                                         <?php foreach ($tb_user as $row) {
                                                         ?>
-                                                            <option value="<?= $row['id'] ?>"><?php echo $row['nama']; ?> (<?php echo $row['nip_npak']; ?>)</option>
+                                                            <option value="<?= $row['id_user'] ?>"><?php echo $row['nama']; ?> (<?php echo $row['nip_npak']; ?>)</option>
                                                         <?php } ?>
                                                     </select>
                                                 </div>
@@ -274,7 +282,7 @@ if (isset($_POST["tambahDataPka"])) {
                                                         <option value=""></option>
                                                         <?php foreach ($tb_auditee as $row) {
                                                         ?>
-                                                            <option value="<?= $row['id'] ?>"><?php echo $row['nama_unit']; ?> (<?php echo $row['tanggal']; ?>)</option>
+                                                            <option value="<?= $row['id_auditee'] ?>"><?php echo $row['nama_unit']; ?> (<?php echo $row['tanggal']; ?>)</option>
                                                         <?php } ?>
                                                     </select>
                                                 </div>
