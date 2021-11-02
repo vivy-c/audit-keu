@@ -24,6 +24,24 @@ if (isset($_POST["tambahDataPka"])) {
               ";
     }
 }
+if (isset($_POST["ubahPka"])) {
+    //cek data berhasil tambah atau tidak
+    if (ubahPka($_POST) > 0) {
+        echo "
+              <script>
+              alert('data berhasil diubah');
+              document.location.href='index.php';
+              </script>
+              ";
+    } else {
+        echo "
+              <script>
+              alert('data gagal diubah');
+              document.location.href='index.php';
+              </script>
+              ";
+    }
+}
 ?>
 
 <!-- Main content -->
@@ -86,7 +104,7 @@ if (isset($_POST["tambahDataPka"])) {
                                                         <td><?php echo  $r['tanggal']; ?></td>
                                                         <td>
                                                             <div class="btn-group btn-group-sm">
-                                                                <a class="btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#myModaldetail<?php echo $r['id_pka']; ?>">
+                                                                <a class="btn btn-outline-warning btn-sm text-warning" data-toggle="modal" data-target="#myModaldetail<?php echo $r['id_pka']; ?>">
                                                                     <i class="fas fa-eye"></i>
                                                                 </a>
 
@@ -104,28 +122,28 @@ if (isset($_POST["tambahDataPka"])) {
                                                                             <div class="modal-body">
                                                                                 <!-- form start -->
                                                                                 <form action="" method="POST">
-                                                                                    
-                                                                                        <div class="form-group">
-                                                                                            <label for="id_pka">ID PKA</label>
-                                                                                            <input type="text" class="form-control" id="id_pka" name="id_pka" value="<?= $r["id_pka"]; ?>" readonly>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label for="nama">Nama Auditor</label>
-                                                                                            <input type="text" class="form-control" id="nama" name="nama" value="<?= $r["nama"]; ?>" readonly>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label for="nama_unit">Nama Auditee</label>
-                                                                                            <input type="text" class="form-control" id="nama_unit" name="nama_unit" value="<?= $r["nama_unit"]; ?>" readonly>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label for="status">Status</label>
-                                                                                            <input type="text" class="form-control" id="status" name="status" value="<?= $r["status"]; ?>" readonly>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label for="tanggal">tanggal</label>
-                                                                                            <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $r["tanggal"]; ?>" required readonly>
-                                                                                        </div>
-                                                                                    
+
+                                                                                    <div class="form-group">
+                                                                                        <label for="id_pka">ID PKA</label>
+                                                                                        <input type="text" class="form-control" id="id_pka" name="id_pka" value="<?= $r["id_pka"]; ?>" readonly>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="nama">Nama Auditor</label>
+                                                                                        <input type="text" class="form-control" id="nama" name="nama" value="<?= $r["nama"]; ?>" readonly>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="nama_unit">Nama Auditee</label>
+                                                                                        <input type="text" class="form-control" id="nama_unit" name="nama_unit" value="<?= $r["nama_unit"]; ?>" readonly>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="status">Status</label>
+                                                                                        <input type="text" class="form-control" id="status" name="status" value="<?= $r["status"]; ?>" readonly>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="tanggal">tanggal</label>
+                                                                                        <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $r["tanggal"]; ?>" required readonly>
+                                                                                    </div>
+
 
                                                                             </div>
                                                                             <div class="modal-footer float-right">
@@ -141,7 +159,7 @@ if (isset($_POST["tambahDataPka"])) {
                                                                 <!-- /.modal -->
 
 
-                                                                <a class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#myModal<?php echo $r['id_pka']; ?>"><i class="fas fa-pen"></i></a>
+                                                                <a class="btn btn-outline-success btn-sm text-success" data-toggle="modal" data-target="#myModal<?php echo $r['id_pka']; ?>"><i class="fas fa-pen"></i></a>
 
                                                                 <!-- tampilan modal jadi-->
                                                                 <div class="modal fade" id="myModal<?php echo $r['id_pka']; ?>">
@@ -157,56 +175,46 @@ if (isset($_POST["tambahDataPka"])) {
                                                                             <div class="modal-body">
                                                                                 <!-- form start -->
                                                                                 <form action="" method="POST">
-                                                                                    <?php
-                                                                                    $id_pka = $r["id_pka"];
-                                                                                    $data = mysqli_query($conn, "SELECT * FROM tb_pka WHERE id_pka = '$id_pka'");
-                                                                                    while ($cb = mysqli_fetch_array($data)) {
-                                                                                    ?>
-                                                                                        <div class="form-group">
-                                                                                            <!-- <label for="id_user">ID User</label> -->
-                                                                                            <input type="hidden" class="form-control" id="id_pka" name="id_pka" value="<?= $cb["id_pka"]; ?>">
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label for="id_user">Nama Auditor</label>
-                                                                                            <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" id="id_auditee" name="id_auditee">
-                                                                                                <option value="<?= $cb['nama'] ?>"></option>
-                                                                                                <?php foreach ($tb_user as $row) {
-                                                                                                ?>
-                                                                                                    <option value="<?= $row['id_user'] ?>"><?php echo $row['nama']; ?> (<?php echo $row['nip_npak']; ?>)</option>
-                                                                                                <?php } ?>
-                                                                                            </select>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label for="id_auditee">Nama Auditee</label>
-                                                                                            <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" id="id_auditee" name="id_auditee">
-                                                                                                <option value="<?= $cb['nama_unit'] ?>"></option>
-                                                                                                <?php foreach ($tb_auditee as $row) {
-                                                                                                ?>
-                                                                                                    <option value="<?= $row['id_auditee'] ?>"><?php echo $row['nama_unit']; ?> (<?php echo $row['tanggal']; ?>)</option>
-                                                                                                <?php } ?>
-                                                                                            </select>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label for="status">Status</label>
-                                                                                            <select class="form-control " data-placeholder="Pilih Status" style="width: 100%;" id="status" name="status">
-                                                                                                <option value=""></option>
-                                                                                                <option value="">Terealisasi</option>
-                                                                                                <option value="">Tidak Terealisasi</option>
-                                                                                            </select>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label for="tanggal">tanggal</label>
-                                                                                            <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $cb["tanggal"]; ?>" required readonly>
-                                                                                        </div>
-
-                                                                                    <?php
-                                                                                    }
-                                                                                    ?>
-
+                                                                                    <div class="form-group">
+                                                                                        <!-- <label for="id_user">ID User</label> -->
+                                                                                        <input type="hidden" class="form-control" id="id_pka" name="id_pka" value="<?= $r["id_pka"]; ?>">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="id_user">Nama Auditor</label>
+                                                                                        <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" id="id_auditee" name="id_auditee">
+                                                                                            <option value="<?= $r['nama'] ?>"><?= $r['nama'] ?></option>
+                                                                                            <?php foreach ($tb_user as $row) {
+                                                                                            ?>
+                                                                                                <option value="<?= $row['id_user'] ?>"><?php echo $row['nama']; ?> </option>
+                                                                                            <?php } ?>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="id_auditee">Nama Auditee</label>
+                                                                                        <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" id="id_auditee" name="id_auditee">
+                                                                                            <option value="<?= $r['nama_unit'] ?>"><?= $r['nama_unit'] ?></option>
+                                                                                            <?php foreach ($tb_auditee as $row) {
+                                                                                            ?>
+                                                                                                <option value="<?= $row['id_auditee'] ?>"><?php echo $row['nama_unit']; ?> (<?php echo $row['tanggal']; ?>)</option>
+                                                                                            <?php } ?>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="status">Status</label>
+                                                                                        <select class="form-control " data-placeholder="Pilih Status" style="width: 100%;" id="status" name="status">
+                                                                                            <option value="<?= $r['status'] ?>"><?= $r['status'] ?></option>
+                                                                                            <option value="<?= $r['status'] ?>">Terealisasi</option>
+                                                                                            <option value="<?= $r['status'] ?>">Tidak Terealisasi</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="tanggal">tanggal</label>
+                                                                                        <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $r["tanggal"]; ?>" required readonly>
+                                                                                    </div>
                                                                             </div>
                                                                             <div class="modal-footer float-right">
                                                                                 <a href="index.php" type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
-                                                                                <a href="index.php" type="submit" class="btn btn-success" name="">Ubah Data</a>
+                                                                                <a href="index.php" type="submit" class="btn btn-success" name="ubahPka">Ubah Data</a>
                                                                                 <!-- <button type="edit" id="edit" name="edit" value="edit" class="btn btn-primary">Simpan Perubahan</button> -->
                                                                                 </form>
                                                                             </div>
@@ -228,7 +236,6 @@ if (isset($_POST["tambahDataPka"])) {
                                     </table>
                                 </div>
                             </div>
-
 
                             <!-- Modal Popup untuk Add-->
                             <div class="modal fade" id="addPKA">
@@ -252,7 +259,7 @@ if (isset($_POST["tambahDataPka"])) {
                                                         <option value=""></option>
                                                         <?php foreach ($tb_user as $row) {
                                                         ?>
-                                                            <option value="<?= $row['id_user'] ?>"><?php echo $row['nama']; ?> (<?php echo $row['nip_npak']; ?>)</option>
+                                                            <option value="<?= $row['id_user'] ?>"><?php echo $row['nama']; ?> </option>
                                                         <?php } ?>
                                                     </select>
                                                 </div>
@@ -267,17 +274,15 @@ if (isset($_POST["tambahDataPka"])) {
                                                     </select>
                                                 </div>
 
-
                                                 <!-- <div class="form-group"> -->
-                                                    <!-- <label for="status">Status</label> -->
-                                                    <input type="hidden" class="form-control" id="status" name="status" value="Belum Dilaksanakan" readonly>
+                                                <!-- <label for="status">Status</label> -->
+                                                <input type="hidden" class="form-control" id="status" name="status" value="Belum Dilaksanakan" readonly>
                                                 <!-- </div> -->
 
                                                 <div class="form-group">
                                                     <label for="tanggal">tanggal<span style="color: red;">*</span></label>
                                                     <input type="date" class="form-control" id="tanggal" name="tanggal" autocomplete="off" required>
                                                 </div>
-
                                                 <br>
                                                 <br>
 
