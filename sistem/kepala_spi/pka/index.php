@@ -104,34 +104,28 @@ if (isset($_POST["tambahDataPka"])) {
                                                                             <div class="modal-body">
                                                                                 <!-- form start -->
                                                                                 <form action="" method="POST">
-                                                                                    <?php
-                                                                                    $id_pka = $r["id_pka"];
-                                                                                    $data = mysqli_query($conn, "SELECT a.id_pka,b.nama,c.nama_unit,a.status,a.tanggal FROM tb_pka as a,tb_user as b,tb_auditee as c WHERE a.id_user=b.id_user and a.id_auditee=c.id_auditee");
-                                                                                    // $data = mysqli_query ( $conn, "SELECT id_pka,tb_auditee.nama_unit,id_auditee, tb_pka.id_user AS id_auditor , (SELECT nama FROM tb_user WHERE id_user = tb_pka.id_user ) AS nama_auditor ,(SELECT nama_unit FROM tb_auditee WHERE id_user = tb_auditee.id_user ) AS nama_auditee , tanggal,status FROM tb_pka INNER JOIN tb_auditee USING (id_auditee)");
-                                                                                    $cb = mysqli_fetch_array($data);                                                                      
-      
-                                                                                    ?>
+                                                                                    
                                                                                         <div class="form-group">
                                                                                             <label for="id_pka">ID PKA</label>
-                                                                                            <input type="text" class="form-control" id="id_pka" name="id_pka" value="<?= $cb["id_pka"]; ?>" readonly>
+                                                                                            <input type="text" class="form-control" id="id_pka" name="id_pka" value="<?= $r["id_pka"]; ?>" readonly>
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="nama">Nama Auditor</label>
-                                                                                            <input type="text" class="form-control" id="nama" name="nama" value="<?= $cb["nama"]; ?>" readonly>
+                                                                                            <input type="text" class="form-control" id="nama" name="nama" value="<?= $r["nama"]; ?>" readonly>
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="nama_unit">Nama Auditee</label>
-                                                                                            <input type="text" class="form-control" id="nama_unit" name="nama_unit" value="<?= $cb["nama_unit"]; ?>" readonly>
+                                                                                            <input type="text" class="form-control" id="nama_unit" name="nama_unit" value="<?= $r["nama_unit"]; ?>" readonly>
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="status">Status</label>
-                                                                                            <input type="text" class="form-control" id="status" name="status" value="<?= $cb["status"]; ?>" readonly>
+                                                                                            <input type="text" class="form-control" id="status" name="status" value="<?= $r["status"]; ?>" readonly>
                                                                                         </div>
-
                                                                                         <div class="form-group">
                                                                                             <label for="tanggal">tanggal</label>
-                                                                                            <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $cb["tanggal"]; ?>" required readonly>
+                                                                                            <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $r["tanggal"]; ?>" required readonly>
                                                                                         </div>
+                                                                                    
 
                                                                             </div>
                                                                             <div class="modal-footer float-right">
@@ -223,7 +217,7 @@ if (isset($_POST["tambahDataPka"])) {
                                                                 </div>
                                                                 <!-- /.modal -->
 
-                                                                <a class="btn btn-outline-danger btn-sm" name="hapus" href="hapus.php?id=<?= $r["id"]; ?>" onclick="return confirm('Yakin mengapus data?');"><i class="fas fa-trash"></i></a>
+                                                                <a href="hapus.php?id_pka=<?= $r["id_pka"]; ?>" name="hapus" class="btn btn-outline-danger" onclick="return confirm('Yakin menghapus permanen?');"><i class="fas fa-trash"></i></a>
 
                                                             </div>
                                                         </td>
@@ -272,16 +266,12 @@ if (isset($_POST["tambahDataPka"])) {
                                                         <?php } ?>
                                                     </select>
                                                 </div>
-                                                <br>
 
-                                                <div class="form-group">
-                                                    <label for="status">Status</label>
-                                                    <select class="form-control " data-placeholder="Pilih Status" style="width: 100%;" name="status">
-                                                        <option value=""></option>
-                                                        <option value="">Terealisasi</option>
-                                                        <option value="">Tidak Terealisasi</option>
-                                                    </select>
-                                                </div>
+
+                                                <!-- <div class="form-group"> -->
+                                                    <!-- <label for="status">Status</label> -->
+                                                    <input type="hidden" class="form-control" id="status" name="status" value="Belum Dilaksanakan" readonly>
+                                                <!-- </div> -->
 
                                                 <div class="form-group">
                                                     <label for="tanggal">tanggal<span style="color: red;">*</span></label>
@@ -294,7 +284,6 @@ if (isset($_POST["tambahDataPka"])) {
                                                 <button type="submit" class="btn btn-success mr-2 float-right" name="tambahDataPka">Simpan</button>
                                                 <button class="btn btn-secondary mr-2 float-right">Batal</button>
                                             </form>
-
 
 
                                         </div>
