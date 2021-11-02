@@ -1,24 +1,10 @@
 <?php
 include('../../template/header.php');
 include('../../template/sidebar_kepala_spi.php');
+include('function.php');
 
 $tb_user = query("SELECT * FROM tb_user WHERE level=3 AND status=1 ORDER BY tb_user.nama ASC");
 $tb_auditee = query("SELECT * FROM tb_auditee ORDER BY tb_auditee.nama_unit ASC");
-
-function tambahPka($data)
-{
-    global $conn;
-    $id_pka = htmlspecialchars($data["id_pka"]);
-    $id_user = htmlspecialchars($data["id_user"]);
-    $id_auditee = htmlspecialchars($data["id_auditee"]);
-    $status = htmlspecialchars($data["status"]);
-    $tanggal  = htmlspecialchars($data["tanggal"]);
-
-    //insert data
-    $query = "INSERT INTO tb_pka VALUES ('$id_pka','$id_user','$id_auditee','$tanggal','$status')";
-    mysqli_query($conn, $query);
-    return mysqli_affected_rows($conn);
-}
 
 if (isset($_POST["tambahDataPka"])) {
     //cek data berhasil tambah atau tidak
@@ -189,7 +175,7 @@ if (isset($_POST["tambahDataPka"])) {
                                                                                         <div class="form-group">
                                                                                             <label for="id_user">Nama Auditor</label>
                                                                                             <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" id="id_auditee" name="id_auditee">
-                                                                                                <option value=""></option>
+                                                                                                <option value="<?= $cb['nama'] ?>"></option>
                                                                                                 <?php foreach ($tb_user as $row) {
                                                                                                 ?>
                                                                                                     <option value="<?= $row['id_user'] ?>"><?php echo $row['nama']; ?> (<?php echo $row['nip_npak']; ?>)</option>
@@ -199,10 +185,10 @@ if (isset($_POST["tambahDataPka"])) {
                                                                                         <div class="form-group">
                                                                                             <label for="id_auditee">Nama Auditee</label>
                                                                                             <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" id="id_auditee" name="id_auditee">
-                                                                                                <option value=""></option>
+                                                                                                <option value="<?= $cb['nama_unit'] ?>"></option>
                                                                                                 <?php foreach ($tb_auditee as $row) {
                                                                                                 ?>
-                                                                                                    <option value="<?= $row['id'] ?>"><?php echo $row['nama_unit']; ?> (<?php echo $row['tanggal']; ?>)</option>
+                                                                                                    <option value="<?= $row['id_auditee'] ?>"><?php echo $row['nama_unit']; ?> (<?php echo $row['tanggal']; ?>)</option>
                                                                                                 <?php } ?>
                                                                                             </select>
                                                                                         </div>
