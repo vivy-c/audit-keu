@@ -78,7 +78,7 @@ if (isset($_POST["status"])) {
                     <tbody id="modal-data">
                       <?php
                       $no = 0;
-                      $modal = mysqli_query($conn, "SELECT a.id_desk,b.tanggal,a.jenis,a.tgl_monitoring,a.lama_monitoring,a.tgl_visit,a.penanggung_jawab FROM tb_desk as a,tb_pka as b WHERE a.id_pka=b.id_pka");
+                      $modal = mysqli_query($conn, "SELECT a.id_desk,b.tanggal,a.jenis,a.sumber_dana,a.nominal,a.tgl_monitoring,a.lama_monitoring,a.tgl_visit,a.penanggung_jawab,c.nama FROM tb_desk as a,tb_pka as b, tb_user as c WHERE a.id_pka=b.id_pka");
                       while ($r = mysqli_fetch_array($modal)) {
                       ?>
                         <?php $no = 1; ?>
@@ -158,8 +158,14 @@ if (isset($_POST["status"])) {
                           <input type="date" class="form-control" id="tgl_visit" name="tgl_visit" autocomplete="off" required>
                         </div>
                         <div class="form-group">
-                          <label for="penanggung_jawab">penanggung_jawab<span style="color: red;">*</span></label>
-                          <input type="text" class="form-control" id="penanggung_jawab" name="penanggung_jawab" autocomplete="off" required>
+                          <label for="penanggung_jawab">Penanggung Jawab<span style="color: red;">*</span></label>
+                          <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" name="id_user">
+                            <option value=""></option>
+                            <?php foreach ($modal as $row) {
+                            ?>
+                              <option value="<?= $row['penanggung_jawab'] ?>"><?php echo $row['nama']; ?> </option>
+                            <?php } ?>
+                          </select>
                         </div>
                         <br>
                         <br>
@@ -175,6 +181,7 @@ if (isset($_POST["status"])) {
                   </div>
                 </div>
               </div>
+              <!-- akhir modal add -->
 
             </div>
           </div>
