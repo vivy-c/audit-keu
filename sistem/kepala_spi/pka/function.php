@@ -24,7 +24,7 @@ function ubahPka($data)
     $status = htmlspecialchars($data["status"]);
     $tanggal  = htmlspecialchars($data["tanggal"]);
 
-    //insert data
+    //update data
     $query="UPDATE tb_user SET 
 
       -- id_pka   = '$id_pka',
