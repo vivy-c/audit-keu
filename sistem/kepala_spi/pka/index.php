@@ -171,7 +171,7 @@ if (isset($_POST["ubahPka"])) {
                                                                                     <span aria-hidden="true">&times;</span>
                                                                                 </button>
                                                                             </div>
-
+                            
                                                                             <div class="modal-body">
                                                                                 <!-- form start -->
                                                                                 <form action="" method="POST">
@@ -215,7 +215,7 @@ if (isset($_POST["ubahPka"])) {
                                                                             <div class="modal-footer float-right">
                                                                                 <a href="index.php" type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
                                                                                 <button type="submit" name="ubahPka" class="btn btn-success">Perbarui</button>
-
+                            
                                                                                 <!-- <a href="" type="submit" class="btn btn-success" name="ubahPka">Ubah Data</a> -->
                                                                                 <!-- <button type="edit" id="edit" name="edit" value="edit" class="btn btn-primary">Simpan Perubahan</button> -->
                                                                                 </form>
@@ -226,18 +226,17 @@ if (isset($_POST["ubahPka"])) {
                                                                     <!-- /.modal-dialog -->
                                                                 </div>
                                                                 <!-- /.modal -->
-
                                                                 <a href="hapus.php?id_pka=<?= $r["id_pka"]; ?>" name="hapus" class="btn btn-outline-danger" onclick="return confirm('Yakin menghapus permanen?');"><i class="fas fa-trash"></i></a>
-
+                                                                
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                <?php endforeach; ?>
-                                        </tbody>
-                                    <?php } ?>
-                                    </table>
-                                </div>
-                            </div>
+                                                    <?php endforeach; ?>
+                                                </tbody>
+                                                <?php } ?>
+                                            </table>
+                                        </div>
+                                    </div>
 
                             <!-- Modal Popup untuk Add-->
                             <div class="modal fade" id="addPKA">

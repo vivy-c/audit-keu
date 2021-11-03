@@ -5,10 +5,7 @@ include('../../template/sidebar_kepala_spi.php');
 
 $username = $_SESSION["username"];
 
-// $tampil = query("SELECT * FROM tb_user WHERE status = 0 ");
 $tb_desk = query("SELECT * FROM tb_desk");
-// $id_user=$_GET["id_user"];
-// $q=query("SELECT * FROM tb_user WHERE id_user = $id_user")[0];
 
 
 if (isset($_POST["status"])) {
@@ -41,7 +38,7 @@ if (isset($_POST["status"])) {
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
-              <button href="javascript.void(0)" class="btn btn-primary mb-3" data-target="#addPKA" data-toggle="modal">Tambah data</button>
+              <button href="javascript.void(0)" class="btn btn-primary mb-3" data-target="#tambahDesk" data-toggle="modal">Tambah data</button>
             </div>
 
             <div class="col-12">
@@ -56,16 +53,10 @@ if (isset($_POST["status"])) {
                           No
                         </th>
                         <th>
-                          PKA
+                          Tanggal PKA
                         </th>
                         <th>
                           Jenis
-                        </th>
-                        <th>
-                          Sumber Dana
-                        </th>
-                        <th>
-                          Nominal
                         </th>
                         <th>
                           Tanggal monitoring
@@ -79,91 +70,111 @@ if (isset($_POST["status"])) {
                         <th>
                           Penanggung jawab
                         </th>
+                        <th>
+                          Aksi
+                        </th>
                       </tr>
                     </thead>
                     <tbody id="modal-data">
-                      <?php $no = 1; ?>
-                      <?php foreach ($tb_desk as $r) : ?>
-                        <tr>
-                          <th scope="row"><?= $no; ?></th>
-                          <td><?php echo $r['id_pka']; ?></td>
-                          <td><?php echo  $r['jenis']; ?></td>
-                          <td><?php echo  $r['sumber_dana']; ?></td>
-                          <td><?php echo  $r['nominal']; ?></td>
-                          <td><?php echo  $r['tgl_monitoring']; ?></td>
-                          <td><?php echo  $r['lama_monitoring']; ?></td>
-                          <td><?php echo  $r['tgl_visit']; ?></td>
-                          <td><?php echo  $r['penanggung_jawab']; ?></td>
-                        </tr>
-                        <?php $no++;  ?>
-                      <?php endforeach; ?>
+                      <?php
+                      $no = 0;
+                      $modal = mysqli_query($conn, "SELECT a.id_desk,b.tanggal,a.jenis,a.tgl_monitoring,a.lama_monitoring,a.tgl_visit,a.penanggung_jawab FROM tb_desk as a,tb_pka as b WHERE a.id_pka=b.id_pka");
+                      while ($r = mysqli_fetch_array($modal)) {
+                      ?>
+                        <?php $no = 1; ?>
+                        <?php foreach ($modal as $r) : ?>
+                          <tr>
+                            <th scope="row"><?= $no; ?></th>
+                            <td><?php echo $r['tanggal']; ?></td>
+                            <td><?php echo  $r['jenis']; ?></td>
+                            <td><?php echo  $r['tgl_monitoring']; ?></td>
+                            <td><?php echo  $r['lama_monitoring']; ?></td>
+                            <td><?php echo  $r['tgl_visit']; ?></td>
+                            <td><?php echo  $r['penanggung_jawab']; ?></td>
+                            <td>
+                              <div class="btn-group btn-group-sm">
+                                <a class="btn btn-outline-warning btn-sm text-warning" data-toggle="modal" data-target="#myModaldetail<?php echo $r['id_pka']; ?>"><i class="fas fa-eye"></i></a>
+                                <a class="btn btn-outline-success btn-sm text-success" data-toggle="modal" data-target="#myModal<?php echo $r['id_pka']; ?>"><i class="fas fa-pen"></i></a>
+                                <a href="hapus.php?id_pka=<?= $r["id_pka"]; ?>" name="hapus" class="btn btn-outline-danger" onclick="return confirm('Yakin menghapus permanen?');"><i class="fas fa-trash"></i></a>
+                            </td>
+                          </tr>
+                          <?php $no++;  ?>
+                        <?php endforeach; ?>
                     </tbody>
-                    <?php  ?>
+                  <?php } ?>
                   </table>
 
                 </div>
               </div>
 
               <!-- Modal Popup untuk Add-->
-              <div class="modal fade" id="addPKA">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Tambah Data PKA</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
+              <div class="modal fade" id="tambahDesk">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Tambah Data Desk</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
 
-                                        <div class="modal-body">
-                                            <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
-                                                <div class="form-group">
-                                                    <input type="hidden" class="form-control" name="id_pka" autocomplete="off" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="id">Nama Auditor</label>
-                                                    <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" name="id_user">
-                                                        <option value=""></option>
-                                                        <?php foreach ($tb_user as $row) {
-                                                        ?>
-                                                            <option value="<?= $row['id_user'] ?>"><?php echo $row['nama']; ?> </option>
-                                                        <?php } ?>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="id_auditee">Nama Auditee</label>
-                                                    <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" name="id_auditee">
-                                                        <option value=""></option>
-                                                        <?php foreach ($tb_auditee as $row) {
-                                                        ?>
-                                                            <option value="<?= $row['id_auditee'] ?>"><?php echo $row['nama_unit']; ?> (<?php echo $row['tanggal']; ?>)</option>
-                                                        <?php } ?>
-                                                    </select>
-                                                </div>
+                    <div class="modal-body">
+                      <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                          <input type="hidden" class="form-control" name="id_desk" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="id">Tanggal PKA<span style="color: red;">*</span></label>
+                          <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" name="id_user">
+                            <option value=""></option>
+                            <?php foreach ($modal as $row) {
+                            ?>
+                              <option value="<?= $row['id_pka'] ?>"><?php echo $row['tanggal']; ?> </option>
+                            <?php } ?>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="jenis">jenis<span style="color: red;">*</span></label>
+                          <input type="text" class="form-control" id="jenis" name="jenis" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="sumber_dana">Sumber Dana<span style="color: red;">*</span></label>
+                          <input type="text" class="form-control" id="sumber_dana" name="sumber_dana" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="nominal">Nominal<span style="color: red;">*</span></label>
+                          <input type="number" class="form-control" id="nominal" name="nominal" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="tgl_monitoring">Tanggal Monitoring<span style="color: red;">*</span></label>
+                          <input type="date" class="form-control" id="tgl_monitoring" name="tgl_monitoring" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="lama_monitoring">Lama Monitoring<span style="color: red;">*</span></label>
+                          <input type="number" class="form-control" id="lama_monitoring" name="lama_monitoring" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="tgl_visit">Tanggal Visit<span style="color: red;">*</span></label>
+                          <input type="date" class="form-control" id="tgl_visit" name="tgl_visit" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="penanggung_jawab">penanggung_jawab<span style="color: red;">*</span></label>
+                          <input type="text" class="form-control" id="penanggung_jawab" name="penanggung_jawab" autocomplete="off" required>
+                        </div>
+                        <br>
+                        <br>
 
-                                                <!-- <div class="form-group"> -->
-                                                <!-- <label for="status">Status</label> -->
-                                                <input type="hidden" class="form-control" id="status" name="status" value="Belum Dilaksanakan" readonly>
-                                                <!-- </div> -->
-
-                                                <div class="form-group">
-                                                    <label for="tanggal">tanggal<span style="color: red;">*</span></label>
-                                                    <input type="date" class="form-control" id="tanggal" name="tanggal" autocomplete="off" required>
-                                                </div>
-                                                <br>
-                                                <br>
-
-                                                <button type="submit" class="btn btn-success mr-2 float-right" name="tambahDataPka">Simpan</button>
-                                                <button class="btn btn-secondary mr-2 float-right">Batal</button>
-                                            </form>
+                        <button type="submit" class="btn btn-success mr-2 float-right" name="tambahDataPka">Simpan</button>
+                        <button class="btn btn-secondary mr-2 float-right">Batal</button>
+                      </form>
 
 
-                                        </div>
+                    </div>
 
 
-                                    </div>
-                                </div>
-                            </div>
+                  </div>
+                </div>
+              </div>
 
             </div>
           </div>
