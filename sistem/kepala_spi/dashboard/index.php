@@ -74,7 +74,6 @@ if (isset($_POST["ubahData"])) {
         <div class="small-box bg-info">
           <div class="inner">
             <h3><?php echo $jumlah_pka; ?></h3>
-
             <p>Program Kerja Audit</p>
           </div>
           <div class="icon">

@@ -21,7 +21,7 @@
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/user/index.php') {
     $dataUser = 'active';
     $user = 'active';
-    $konten = 'Data User';
+    $konten = 'Data Semua User';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/konfirmasi_user/index.php') {
     $konfirmasi_user = 'active';
     $dataUser = 'active';
@@ -29,10 +29,10 @@
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/auditee/index.php') {
     $auditee = 'active';
     $dataUser = 'active';
-    $konten = 'Auditee';
+    $konten = 'Data Unit';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/pka/index.php') {
     $pka = 'active';
-    $konten = 'PKA';
+    $konten = 'Program Kerja Audit';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/desk/index.php') {
     $desk = 'active';
     $dataAudit = 'active';
@@ -44,11 +44,11 @@
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/tha/index.php') {
     $tha = 'active';
     $dataAudit = 'active';
-    $konten = 'THA';
+    $konten = 'Temuan Hasil Audit';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/lha/index.php') {
     $lha = 'active';
     $dataAudit = 'active';
-    $konten = 'LHA';
+    $konten = 'Laporan Hasil Audit';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/ba/index.php') {
     $ba = 'active';
     $konten = 'Berita Acara';
@@ -357,11 +357,11 @@
       <div class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0"><?= $konten; ?></h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
+            <div class="col-sm-5 ">
+              <h1 class="m-0 ml-3"><?= $konten; ?></h1>
+              </div><!-- /.col -->
+              <div class="col-sm-5">
+                <ol class="breadcrumb float-sm-right">
 
               </ol>
             </div><!-- /.col -->
