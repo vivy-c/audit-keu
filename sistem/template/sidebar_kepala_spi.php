@@ -38,15 +38,15 @@
     $dataAudit = 'active';
     $konten = 'Data Desk';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/visit/index.php') {
-    $desk = 'active';
+    $visit = 'active';
     $dataAudit = 'active';
     $konten = 'Data Visit';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/tha/index.php') {
-    $desk = 'active';
+    $tha = 'active';
     $dataAudit = 'active';
     $konten = 'THA';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/lha/index.php') {
-    $desk = 'active';
+    $lha = 'active';
     $dataAudit = 'active';
     $konten = 'LHA';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/ba/index.php') {
