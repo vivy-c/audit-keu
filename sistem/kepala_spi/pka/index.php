@@ -214,7 +214,9 @@ if (isset($_POST["ubahPka"])) {
                                                                             </div>
                                                                             <div class="modal-footer float-right">
                                                                                 <a href="index.php" type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
-                                                                                <a href="index.php" type="submit" class="btn btn-success" name="ubahPka">Ubah Data</a>
+                                                                                <button type="submit" name="ubahPka" class="btn btn-success">Perbarui</button>
+
+                                                                                <!-- <a href="" type="submit" class="btn btn-success" name="ubahPka">Ubah Data</a> -->
                                                                                 <!-- <button type="edit" id="edit" name="edit" value="edit" class="btn btn-primary">Simpan Perubahan</button> -->
                                                                                 </form>
                                                                             </div>

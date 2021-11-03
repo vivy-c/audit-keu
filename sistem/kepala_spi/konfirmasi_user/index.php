@@ -122,7 +122,7 @@ if (isset($_POST["status"])) {
                           <td><span class="badge badge-<?= $badge; ?>"><?= $status; ?></span></td>
                           <td class="">
                             <div class="btn-group btn-group-sm">
-                              <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal<?php echo $r['id_user']; ?>"><i class="fas fa-eye"></i></a>
+                              <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal<?php echo $r['id_user']; ?>"><i class="fas fa-eye"></i> </a>
 
                               <!-- tampilan modal jadi-->
                               <div class="modal fade" id="myModal<?php echo $r['id_user']; ?>">
@@ -220,7 +220,7 @@ if (isset($_POST["status"])) {
                               <form action="" method="post">
                               <input type="hidden" name="id_user" value="<?= $r["id_user"]; ?>">
                               <input type="hidden" name="status" value="1">
-                              <button class=" btn btn-outline-success" type="submit"><a name="status" onclick="return confirm('Yakin mengaktifkan user ini?');"><i class="fas fa-check"></i></a></button>
+                              <button class="btn btn-outline-success" type="submit"><a name="status" onclick="return confirm('Yakin mengaktifkan user ini?');"><i class="fas fa-check"></i></a></button>
                               </form>
                               <a href="hapus.php?id_user=<?= $r["id_user"]; ?>" name="hapus" class="btn btn-outline-danger" onclick="return confirm('Yakin menghapus permanen?');"><i class="fas fa-trash"></i></a>
                             </div>
