@@ -20,10 +20,7 @@ if (isset($_POST["ubahData"])) {
       echo "<script>
       alert('data berhasil diperbarui');
       document.location.href = '../dashboard/index.php';
-      </script>"
-  
- 
-  ;
+      </script>";
   } 
   else {
   echo "<script>
