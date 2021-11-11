@@ -13,13 +13,13 @@ $sql = query("SELECT * FROM tb_user WHERE username='$username'");
 if (isset($_POST["ubahData"])) {
   if (ubah($_POST) > 0) {
     if (!isset($_SESSION['username'])) {
-      header("Location: ../session/index.php");
+      header("Location: ../../session/index.php");
     }else {
       header("Location: index.php");
     }
       echo "<script>
       alert('data berhasil diperbarui');
-      document.location.href = '../dashboard/index.php';
+      document.location.href = '../../session/index.php';
       </script>";
   } 
   else {
