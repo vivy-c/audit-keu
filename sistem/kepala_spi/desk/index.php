@@ -18,13 +18,11 @@ include('function.php');
                     <div class="row">
                         <div class="card-body mt-0">
                             <div class="callout callout-default my-0">
-                            <h5>Hint!</h5>
-
+                            <h5>Petunjuk!</h5>
                             <p>Data desk memberikan info mengenai data 
                                 Program Kerja Audit (PKA) dan data referensi tahun sebelumnya.</p>
                             </div>
                         </div>
-
 
                         <div class="col-md-12">
                             <button href="javascript.void(0)" class="btn btn-primary mb-3" data-target="#addDesk" data-toggle="modal"><i class="far fa-plus-square"></i> Tambah data</button>
@@ -67,7 +65,7 @@ include('function.php');
                                         <tbody id="modal-data">
                                             <?php
                                             $no = 0;
-                                            $modal = mysqli_query($conn, "SELECT a.id_desk,a.id_pka,b.id_pka,b.tanggal,a.jenis,a.sumber_dana,a.nominal,a.tgl_monitoring,a.lama_monitoring,a.tgl_visit,c.nama,b.id_user,c.id_user,d.nama_unit,b.status,c.foto FROM tb_desk as a,tb_pka as b, tb_user as c,tb_auditee as d WHERE a.id_pka=b.id_pka AND b.id_user=c.id_user AND b.id_auditee=d.id_auditee");
+                                            $modal = mysqli_query($conn, "SELECT a.id_desk,a.id_pka,b.id_pka,b.tanggal,a.jenis,a.sumber_dana,a.nominal,a.tgl_monitoring,a.lama_monitoring,c.nama,b.id_user,c.id_user,d.nama_unit,b.status,c.foto FROM tb_desk as a,tb_pka as b, tb_user as c,tb_auditee as d WHERE a.id_pka=b.id_pka AND b.id_user=c.id_user AND b.id_auditee=d.id_auditee");
                                             while ($r = mysqli_fetch_array($modal)) {
                                                 $no++;
                                             ?>
@@ -78,7 +76,6 @@ include('function.php');
                                                         <td><?php echo  $r['jenis']; ?></td>
                                                         <td><?php echo  $r['tgl_monitoring']; ?></td>
                                                         <td><?php echo  $r['lama_monitoring']; ?></td>
-                                                        <td><?php echo  $r['tgl_visit']; ?></td>
                                                         <td><?php echo  $r['nama']; ?></td>
                                                         <td>
                                                             <div class="btn-group btn-group-sm">
@@ -145,10 +142,6 @@ include('function.php');
                                                                                         <label for="lama_monitoring">Lama Monitoring</label>
                                                                                         <input type="number" class="form-control" id="lama_monitoring" name="lama_monitoring" autocomplete="off" value="<?= $r['lama_monitoring'];?>"  required readonly>
                                                                                     </div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="tgl_visit">Tanggal Visit</label>
-                                                                                        <input type="date" class="form-control" id="tgl_visit" name="tgl_visit" autocomplete="off" value="<?= $r['tgl_visit'];?>" required readonly>
-                                                                                    </div>
                                                                                 </form>
 
 
@@ -213,10 +206,6 @@ include('function.php');
                                                                                     <div class="form-group">
                                                                                         <label for="lama_monitoring">Lama Monitoring</label>
                                                                                         <input type="number" class="form-control" id="lama_monitoring" name="lama_monitoring" autocomplete="off" value="<?= $r['lama_monitoring'];?>"  required>
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="tgl_visit">Tanggal Visit</label>
-                                                                                        <input type="date" class="form-control" id="tgl_visit" name="tgl_visit" autocomplete="off" value="<?= $r['tgl_visit'];?>" required>
                                                                                     </div>
 
                                                                                     <a href="index.php" type="button" class="btn btn-secondary ml-2 float-right" data-dismiss="modal">Kembali</a>
@@ -289,10 +278,6 @@ include('function.php');
                                                     <label for="lama_monitoring">Lama Monitoring<span style="color: red;">*</span></label>
                                                     <input type="number" class="form-control" id="lama_monitoring" name="lama_monitoring" autocomplete="off" required>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="tgl_visit">Tanggal Visit<span style="color: red;">*</span></label>
-                                                    <input type="date" class="form-control" id="tgl_visit" name="tgl_visit" autocomplete="off" required>
-                                                </div>
                                                 <br>
                                                 <br>
 
@@ -308,9 +293,6 @@ include('function.php');
                                 </div>
                             </div>
                             <!-- akhir modal add -->
-
-
-
 
                         </div>
                     </div>
