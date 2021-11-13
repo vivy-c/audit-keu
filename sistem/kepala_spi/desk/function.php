@@ -1,5 +1,60 @@
 <?php
 
+$tb_user = query("SELECT * FROM tb_user WHERE status=1 ORDER BY tb_user.nama ASC");
+$tb_pka = query("SELECT a.id_pka,a.id_user,a.tanggal,b.nama FROM tb_pka as a,tb_user as b WHERE a.id_user=b.id_user");
+$tb_auditee = query("SELECT * FROM tb_auditee ORDER BY tb_auditee.nama_unit ASC");
+
+foreach ($tb_user as $r) :
+if ($r['level'] == 1) {
+    $level = 'Direktur';
+  } elseif ($r['level'] == 2) {
+    $level = 'Auditee';
+  } elseif ($r['level'] == 3) {
+    $level = 'Auditor';
+  } elseif ($r['level'] == 4) {
+    $level = 'Ketua SPI';
+  } else {
+    $level = 'Tidak tersedia';
+  }
+endforeach;
+
+if (isset($_POST["tambahDesk"])) {
+    //cek data berhasil tambah atau tidak
+    if (tambahDesk($_POST) > 0) {
+        echo "
+              <script>
+              alert('data berhasil ditambahkan');
+              document.location.href='index.php';
+              </script>
+              ";
+    } else {
+        echo "
+              <script>
+              alert('data gagal ditambahkan');
+              document.location.href='index.php';
+              </script>
+              ";
+    }
+}
+if (isset($_POST["ubahDesk"])) {
+    //cek data berhasil tambah atau tidak
+    if (ubahDesk($_POST) > 0) {
+        echo "
+              <script>
+              alert('data berhasil diubah');
+              document.location.href='index.php';
+              </script>
+              ";
+    } else {
+        echo "
+              <script>
+              alert('data gagal diubah');
+              document.location.href='index.php';
+              </script>
+              ";
+    }
+}
+
 function tambahDesk($data)
 {
     global $conn;
@@ -11,10 +66,9 @@ function tambahDesk($data)
     $tgl_monitoring     = htmlspecialchars($data["tgl_monitoring"]);
     $lama_monitoring    = htmlspecialchars($data["lama_monitoring"]);
     $tgl_visit          = htmlspecialchars($data["tgl_visit"]);
-    $penanggung_jawab   = htmlspecialchars($data["penanggung_jawab"]);
     
     //insert data
-    $query = "INSERT INTO tb_desk VALUES ('$id_desk','$id_pka','$jenis','$sumber_dana','$nominal','$tgl_monitoring','$lama_monitoring','$tgl_visit','$penanggung_jawab')";
+    $query = "INSERT INTO tb_desk VALUES ('$id_desk','$id_pka','$jenis','$sumber_dana','$nominal','$tgl_monitoring','$lama_monitoring','$tgl_visit')";
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }
@@ -30,10 +84,9 @@ function ubahDesk($data)
     $tgl_monitoring     = htmlspecialchars($data["tgl_monitoring"]);
     $lama_monitoring    = htmlspecialchars($data["lama_monitoring"]);
     $tgl_visit          = htmlspecialchars($data["tgl_visit"]);
-    $penanggung_jawab   = htmlspecialchars($data["penanggung_jawab"]);
 
     //update data
-    $query="UPDATE tb_user SET 
+    $query="UPDATE tb_desk SET 
 
       -- id_desk   = '$id_desk',
       id_pka         = '$id_pka',
@@ -42,8 +95,7 @@ function ubahDesk($data)
       nominal        = '$nominal',
       tgl_monitoring    = '$tgl_monitoring',
       lama_monitoring   = '$lama_monitoring',
-      tgl_visit         = '$tgl_visit',
-      penanggung_jawab  = '$penanggung_jawab'
+      tgl_visit         = '$tgl_visit'
 
       WHERE id_desk = '$id_desk'
       ";

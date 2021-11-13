@@ -63,17 +63,17 @@ include('function.php');
                                                         <td><?php echo $r['nama']; ?></td>
                                                         <td><?php echo $r['nama_unit']; ?></td>
                                                         <?php
-                          if ($r['status'] == 'Belum Dilaksanakan') {
-                            $status = 'Belum Dilaksanakan';
-                            $badge = 'info';
-                          } elseif ($r['status'] == 'Terealisasi') {
-                            $status = 'Terealisasi';
-                            $badge = 'success';
-                          } else {
-                            $status = 'Tidak Terealisasi';
-                            $badge = 'danger';
-                          }
-                          ?>
+                                                        if ($r['status'] == 'Belum Dilaksanakan') {
+                                                            $status = 'Belum Dilaksanakan';
+                                                            $badge = 'info';
+                                                        } elseif ($r['status'] == 'Terealisasi') {
+                                                            $status = 'Terealisasi';
+                                                            $badge = 'success';
+                                                        } else {
+                                                            $status = 'Tidak Terealisasi';
+                                                            $badge = 'danger';
+                                                        }
+                                                        ?>
                                                         <td><span class="badge badge-<?= $badge; ?>"><?= $status; ?></td>
                                                         <td><?php echo  $r['tanggal']; ?></td>
                                                         <td>
@@ -145,7 +145,7 @@ include('function.php');
                                                                                     <span aria-hidden="true">&times;</span>
                                                                                 </button>
                                                                             </div>
-                            
+
                                                                             <div class="modal-body">
                                                                                 <!-- form start -->
                                                                                 <form action="" method="POST">
@@ -165,8 +165,8 @@ include('function.php');
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="id_auditee">Nama Auditee</label>
-                                                                                        <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" id="id_auditee" name="id_auditee">
-                                                                                        <option ><?= $r['nama_unit'] ?></option>
+                                                                                        <select class="form-control " data-placeholder="Pilih Auditee" style="width: 100%;" id="id_auditee" name="id_auditee">
+                                                                                            <option><?= $r['nama_unit'] ?></option>
                                                                                             <?php foreach ($tb_auditee as $row) {
                                                                                             ?>
                                                                                                 <option value="<?= $row['id_auditee'] ?>"><?php echo $row['nama_unit']; ?> (<?php echo $row['tanggal']; ?>)</option>
@@ -176,9 +176,9 @@ include('function.php');
                                                                                     <div class="form-group">
                                                                                         <label for="status">Status</label>
                                                                                         <select class="form-control " data-placeholder="Pilih Status" style="width: 100%;" id="status" name="status">
-                                                                                            <option value="<?= $r['status'] ?>"><?= $r['status'] ?></option>
-                                                                                            <option value="<?= $r['status'] ?>">Terealisasi</option>
-                                                                                            <option value="<?= $r['status'] ?>">Tidak Terealisasi</option>
+                                                                                            <option value=""><?= $r['status'] ?></option>
+                                                                                            <option value="Terealisasi">Terealisasi</option>
+                                                                                            <option value="Tidak Terealisasi">Tidak Terealisasi</option>
                                                                                         </select>
                                                                                     </div>
                                                                                     <div class="form-group">
@@ -189,7 +189,7 @@ include('function.php');
                                                                             <div class="modal-footer float-right">
                                                                                 <a href="index.php" type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
                                                                                 <button type="submit" name="ubahDataPka" class="btn btn-success">Perbarui</button>
-                            
+
                                                                                 <!-- <a href="" type="submit" class="btn btn-success" name="ubahPka">Ubah Data</a> -->
                                                                                 <!-- <button type="edit" id="edit" name="edit" value="edit" class="btn btn-primary">Simpan Perubahan</button> -->
                                                                                 </form>
@@ -201,17 +201,17 @@ include('function.php');
                                                                 </div>
                                                                 <!-- /.modal -->
                                                                 <a href="hapus.php?id_pka=<?= $r["id_pka"]; ?>" name="hapus" class="btn btn-outline-danger" onclick="return confirm('Yakin menghapus permanen?');"><i class="fas fa-trash"></i></a>
-                                                                
+
                                                             </div>
                                                         </td>
                                                     </tr>
                                                     <?php $no++;  ?>
-                                                    <?php endforeach; ?>
-                                                </tbody>
-                                                <?php } ?>
-                                            </table>
-                                        </div>
-                                    </div>
+                                                <?php endforeach; ?>
+                                        </tbody>
+                                    <?php } ?>
+                                    </table>
+                                </div>
+                            </div>
 
                             <!-- Modal Popup untuk Add-->
                             <div class="modal fade" id="addPKA">
@@ -241,7 +241,7 @@ include('function.php');
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="id_auditee">Nama Auditee</label>
-                                                    <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" name="id_auditee">
+                                                    <select class="form-control " data-placeholder="Pilih Auditee" style="width: 100%;" name="id_auditee">
                                                         <option value=""></option>
                                                         <?php foreach ($tb_auditee as $row) {
                                                         ?>
