@@ -19,11 +19,10 @@ include('function.php');
                     <div class="row">
                         <div class="card-body mt-0">
                             <div class="callout callout-default my-0">
-                            <h5>I am a danger callout!</h5>
+                            <h5>Hint!</h5>
 
-                            <p>There is a problem that we need to fix. A wonderful serenity has taken possession of my entire
-                                soul,
-                                like these sweet mornings of spring which I enjoy with my whole heart.</p>
+                            <p>Data desk memberikan info mengenai data 
+                                Program Kerja Audit (PKA) dan data referensi tahun sebelumnya.</p>
                             </div>
                         </div>
 
@@ -69,7 +68,7 @@ include('function.php');
                                         <tbody id="modal-data">
                                             <?php
                                             $no = 0;
-                                            $modal = mysqli_query($conn, "SELECT a.id_desk,a.id_pka,b.id_pka,b.tanggal,a.jenis,a.sumber_dana,a.nominal,a.tgl_monitoring,a.lama_monitoring,a.tgl_visit,c.nama,b.id_user,c.id_user FROM tb_desk as a,tb_pka as b, tb_user as c WHERE a.id_pka=b.id_pka AND b.id_user=c.id_user");
+                                            $modal = mysqli_query($conn, "SELECT a.id_desk,a.id_pka,b.id_pka,b.tanggal,a.jenis,a.sumber_dana,a.nominal,a.tgl_monitoring,a.lama_monitoring,a.tgl_visit,c.nama,b.id_user,c.id_user,d.nama_unit,b.status,c.foto FROM tb_desk as a,tb_pka as b, tb_user as c,tb_auditee as d WHERE a.id_pka=b.id_pka AND b.id_user=c.id_user AND b.id_auditee=d.id_auditee");
                                             while ($r = mysqli_fetch_array($modal)) {
                                                 $no++;
                                             ?>
@@ -104,6 +103,22 @@ include('function.php');
                                                                                     <div class="form-group">
                                                                                         <input type="hidden" class="form-control" name="id_desk" autocomplete="off" required readonly>
                                                                                     </div>
+                                                                                    
+                                                                                    <div class="form-group text-center img-fluid img-circle">
+                                                                                        <img src="../../img/user/<?= $r["foto"]; ?>" alt="foto ketua unit" width="50" class="img-circle elevation-2">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="nama">Nama Auditor</label>
+                                                                                        <input type="text" class="form-control" id="nama" name="nama" value="<?= $r["nama"]; ?>" readonly>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="nama_unit">Nama Auditee</label>
+                                                                                        <input type="text" class="form-control" id="nama_unit" name="nama_unit" value="<?= $r["nama_unit"]; ?>" readonly>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="status">Status</label>
+                                                                                        <input type="text" class="form-control" id="status" name="status" value="<?= $r["status"]; ?>" readonly>
+                                                                                    </div>
                                                                                     <div class="form-group">
                                                                                         <label for="id_pka">Tanggal PKA</label>
                                                                                         <select class="form-control " data-placeholder="Pilih PKA" style="width: 100%;" name="id_pka" readonly>
@@ -135,9 +150,6 @@ include('function.php');
                                                                                         <label for="tgl_visit">Tanggal Visit</label>
                                                                                         <input type="date" class="form-control" id="tgl_visit" name="tgl_visit" autocomplete="off" value="<?= $r['tgl_visit'];?>" required readonly>
                                                                                     </div>
-                                                                                    <br>
-                                                                                    <br>
-
                                                                                 </form>
 
 
@@ -219,7 +231,7 @@ include('function.php');
                                                                     <!-- /.modal-dialog -->
                                                                 </div>
                                                                 <!-- /.modal -->
-                                                                <a href="hapus.php?id_pka=<?= $r["id_pka"]; ?>" name="hapus" class="btn btn-outline-danger" onclick="return confirm('Yakin menghapus permanen?');"><i class="fas fa-trash"></i></a>
+                                                                <a href="hapus.php?id_desk=<?= $r["id_desk"]; ?>" name="hapus" class="btn btn-outline-danger" onclick="return confirm('Yakin menghapus permanen?');"><i class="fas fa-trash"></i></a>
 
                                                             </div>
                                                         </td>

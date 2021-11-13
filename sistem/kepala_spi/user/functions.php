@@ -182,7 +182,17 @@
       return $namaFileBaru;
     }
 
-
+    $belum_dikonfirmasi = mysqli_query($conn,"SELECT * FROM tb_user WHERE status=1 AND level=0");
+    $jumlah_belum_dikonfirmasi = mysqli_num_rows($belum_dikonfirmasi);
+    
+    $direktur = mysqli_query($conn,"SELECT * FROM tb_user WHERE status=1 AND level=1");
+    $jumlah_direktur = mysqli_num_rows($direktur);
+    $auditee = mysqli_query($conn,"SELECT * FROM tb_user WHERE status=1 AND level=2");
+    $jumlah_auditee = mysqli_num_rows($auditee);
+    $auditor = mysqli_query($conn,"SELECT * FROM tb_user WHERE status=1 AND level=3");
+    $jumlah_auditor = mysqli_num_rows($auditor);
+    $kepala_spi = mysqli_query($conn,"SELECT * FROM tb_user WHERE status=1 AND level=4");
+    $jumlah_kepala_spi = mysqli_num_rows($kepala_spi);
 
     ?>
     <!-- /.register function -->

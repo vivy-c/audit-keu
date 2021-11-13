@@ -152,69 +152,8 @@ function upload_foto()
       return mysqli_affected_rows($conn);
     }
 
-// function ubahBio($data){
-	
-// 	global $conn;
-// 	$id_user =htmlspecialchars($data["id_user"]);
-// 	$nama =htmlspecialchars($data["nama"]);
-// 	$nip_npak =htmlspecialchars($data["nip_npak"]);
-// 	$no_hp =htmlspecialchars($data["no_hp"]);
-// 	$email =htmlspecialchars($data["email"]);
-
-// 	$query="UPDATE tb_user SET nama = '$nama',nip_npak = '$nip_npak',email = '$email',no_hp = '$no_hp' WHERE id_user = $id_user";
-// 	mysqli_query($conn,$query);
-// 	return mysqli_affected_rows($conn);
-// }
-
-
-// function ubahPw($data){
-	
-// 	global $conn;
-// 	$id_user =htmlspecialchars($data["id_user"]);
-// 	$nama =htmlspecialchars($data["nama"]);
-// 	$nip_npak =htmlspecialchars($data["nip_npak"]);
-// 	$no_hp =htmlspecialchars($data["no_hp"]);
-// 	$email =htmlspecialchars($data["email"]);
-// 	$username =htmlspecialchars($data["username"]);
-// 	$password =htmlspecialchars($data["password"]);
-// 	$password2 =htmlspecialchars($data["password"]);
-
-// 	$query="UPDATE tb_user SET username = '$username' ,password = '$password',nama = '$nama',nip_npak = '$nip_npak',email = '$email',no_hp = '$no_hp' WHERE id_user = $id_user";
-// 	mysqli_query($conn,$query);
-// 	return mysqli_affected_rows($conn);
-// }
-
-
-// function ubahFoto($data){
-	
-// 	global $conn;
-// 	$id_user =htmlspecialchars($data["id_user"]);
-// 	$status =htmlspecialchars($data["status"]);
-// 	$level =htmlspecialchars($data["level"]);
-// 	$fotoLama = htmlspecialchars($data(["fotoLama"]));
-// 	$ttdLama = htmlspecialchars($data(["ttdLama"]));
-	
-// 	// 	//cek apakah user pilih foto baru atau tidak
-// 	if($_FILES['foto']['error'] === 4){
-// 		$foto  = $fotoLama;
-// 	}else{
-// 		$foto =upload_foto();
-// 	}
-
-// 	if($_FILES['ttd']['error'] === 4){
-// 		$ttd  = $ttdLama;
-// 	}else{
-// 		$ttd =upload_ttd();
-// 	}
-
-// 	$query="UPDATE tb_user SET foto='$foto',ttd='$ttd' WHERE id_user = $id_user";
-// 	mysqli_query($conn,$query);
-// 	return mysqli_affected_rows($conn);
-// }
-
 $rowata_pka = mysqli_query($conn,"SELECT * FROM tb_pka");
 $jumlah_pka = mysqli_num_rows($rowata_pka);
-
 
 $rowata_lha = mysqli_query($conn, "SELECT * FROM tb_lha");
 $jumlah_lha = mysqli_num_rows($rowata_lha);

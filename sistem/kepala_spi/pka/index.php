@@ -17,6 +17,36 @@ include('function.php');
             <section class="col-md-12 connectedSortable">
                 <div class="container-fluid">
                     <div class="row">
+                    <div class="col-md-12">
+            <div class="card">
+              <!-- <div class="card-header">
+                <h3 class="card-title">Progress PKA</h3>
+              </div> -->
+              <!-- /.card-header -->
+              <div class="card-body">
+                <p>PKA Belum Dilaksanakan</p>
+                <div class="progress mb-3">
+                  <div class="progress-bar bg-info" role="progressbar" aria-valuenow="<?= $persentase1; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $persentase1; ?>%">
+                  <span class=""><?= $persentase1; ?>%</span>
+                  </div>
+                </div>
+                <p>PKA Terealisasi</p>
+                <div class="progress mb-3">
+                  <div class="progress-bar bg-success" role="progressbar" aria-valuenow="<?= $persentase2; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $persentase2; ?>%">
+                    <span class=""><?= $persentase2; ?>%</span>
+                  </div>
+                </div>
+                <p>PKA Tidak Terealisasi</p>
+                <div class="progress mb-3">
+                  <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="<?= $persentase3; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $persentase3; ?>%">
+                    <span class=""><?= $persentase3; ?>%</span>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
 
                         <div class="col-md-12">
                             <button href="javascript.void(0)" class="btn btn-primary mb-3" data-target="#addPKA" data-toggle="modal"><i class="far fa-plus-square"></i> Tambah data</button>

@@ -1,6 +1,7 @@
 <?php
 
 $tb_user = query("SELECT * FROM tb_user WHERE status=1 ORDER BY tb_user.nama ASC");
+$tb_pka_full = query("SELECT a.id_pka,b.id_user,b.nama,c.id_auditee,c.nama_unit,a.status,a.tanggal FROM tb_pka as a,tb_user as b,tb_auditee as c WHERE a.id_user=b.id_user and a.id_auditee=c.id_auditee");
 $tb_pka = query("SELECT a.id_pka,a.id_user,a.tanggal,b.nama FROM tb_pka as a,tb_user as b WHERE a.id_user=b.id_user");
 $tb_auditee = query("SELECT * FROM tb_auditee ORDER BY tb_auditee.nama_unit ASC");
 

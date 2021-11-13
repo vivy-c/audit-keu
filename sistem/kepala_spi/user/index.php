@@ -21,54 +21,6 @@ if (isset($_POST["register"])) {
   }
 }
 
-// // untuk alert
-// if (isset($_POST["edit"])) {
-//   if (edit($_POST) > 0) {
-//     echo "
-//       <script>
-//       alert('Data Berhasil Diedit!');
-//       document.location.href = 'index.php';
-//       </script>
-//       ";
-//   } else {
-//     echo "
-//       <script>
-//           alert('Data Gagal Diedit!');
-//           document.location.href = 'index.php';
-//       </script>
-//       ";
-//   }
-// }
-
-// function edit($data)
-// {
-//   global $conn;
-//   $id = $data["id_user"];
-//   $username = $data["username"];
-//   $password = $data["password"];
-//   $nama = $data["nama"];
-//   $nip_npak = $data["nip_npak"];
-//   $jabatan = $data["jabatan"];
-//   $no_hp = $data["no_hp"];
-//   $email = $data["email"];
-//   $status = $data["status"];
-//   $ttd = $data["ttd"];
-
-//   $query = "UPDATE tb_user SET
-//     username='$username',
-//     password='$password',
-//     nama='$nama',
-//     nip_npak='$nip_npak',
-//     jabatan='$jabatan',
-//     no_hp='$no_hp',
-//     email='$email',
-//     status='$status',
-//     ttd='$ttd'
-//     WHERE id_user ='$id'";
-//   mysqli_query($conn, $query);
-//   return mysqli_affected_rows($conn);
-// }
-
 ?>
 
 
@@ -80,6 +32,67 @@ if (isset($_POST["register"])) {
     <!-- /.row -->
     <!-- Main row -->
     <div class="row">
+
+    <div class="container-fluid">
+        <h5 class="mb-2">Info Jumlah</h5>
+        <div class="row">
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Ketua SPI</span>
+                <span class="info-box-number"><?= $jumlah_kepala_spi; ?></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Auditor</span>
+                <span class="info-box-number"><?= $jumlah_auditor; ?></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-warning"><i class="far fa-copy"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Auditee</span>
+                <span class="info-box-number"><?= $jumlah_auditee; ?></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-danger"><i class="far fa-star"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Belum dikonfirmasi</span>
+                <span class="info-box-number"><?= $jumlah_belum_dikonfirmasi; ?></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+       
+      </div>
 
       <div class="col-md-12">
         <button href="javascript.void(0)" class="btn btn-primary mb-3" data-toggle="modal" data-target="#registrasi"><i class="far fa-plus-square"></i> Tambah data</button>
@@ -135,7 +148,7 @@ if (isset($_POST["register"])) {
                           }
                           ?>
 
-                          <p class="text-muted text-sm"><b>Status: </b> <span class="badge badge-<?= $badge; ?>"><?= $status; ?></span></p>
+                          <p class="text-muted text-sm"><b>Status: </b> <span class="badge badge-<?= $badge; ?>" href="<?= $a_tag; ?>" class="btn btn-sm bg-<?= $badge; ?>"><?= $status; ?></span></p>
                           <ul class="ml-4 mb-0 fa-ul text-muted">
                             <li class="small mt-1"><span class="fa-li"><i class="fas fa-md fa-building"></i></span>Email Address: <?= $r['email']; ?></li>
                             <li class="small mt-1"><span class="fa-li"><i class="fas fa-md fa-phone"></i></span> Phone #: <?= $r['no_hp']; ?></li>

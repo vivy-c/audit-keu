@@ -3,6 +3,23 @@
 $tb_user = query("SELECT * FROM tb_user WHERE level=2 AND status=1 ORDER BY tb_user.nama ASC");
 $tb_auditee = query("SELECT * FROM tb_auditee ORDER BY tb_auditee.nama_unit ASC");
 
+$rowata_pka = mysqli_query($conn,"SELECT * FROM tb_pka");
+
+$belum_dilaksanakan = mysqli_query($conn,"SELECT * FROM tb_pka WHERE status='Belum Dilaksanakan'");
+$terealisasi = mysqli_query($conn,"SELECT * FROM tb_pka WHERE status='Terealisasi'");
+$tidak_terealisasi = mysqli_query($conn,"SELECT * FROM tb_pka WHERE status='Tidak Terealisasi'");
+
+$jumlah_pka = mysqli_num_rows($rowata_pka);
+
+$jumlah_bd = mysqli_num_rows($belum_dilaksanakan);
+$jumlah_t = mysqli_num_rows($terealisasi);
+$jumlah_tidak_t = mysqli_num_rows($tidak_terealisasi);
+
+$persentase1 = (($jumlah_bd/$jumlah_pka)*100);
+$persentase2 = (($jumlah_t/$jumlah_pka)*100);
+$persentase3 = (($jumlah_tidak_t/$jumlah_pka)*100);
+
+
 if (isset($_POST["tambahDataPka"])) {
     //cek data berhasil tambah atau tidak
     if (tambahPka($_POST) > 0) {

@@ -71,7 +71,7 @@ if (isset($_POST["ubahData"])) {
         <div class="small-box bg-info">
           <div class="inner">
             <h3><?php echo $jumlah_pka; ?></h3>
-            <p>Program Kerja Audit</p>
+            <p>Program Kerja Audit(PKA)</p>
           </div>
           <div class="icon">
             <i class="ion ion-easel"></i>
@@ -86,7 +86,7 @@ if (isset($_POST["ubahData"])) {
         <div class="small-box bg-success">
           <div class="inner">
             <h3><?php echo $jumlah_lha; ?></h3>
-            <p>Laporan Hasil Audit</p>
+            <p>Laporan Hasil Audit(LHA)</p>
           </div>
           <div class="icon">
             <i class="ion ion-laptop"></i>
@@ -110,6 +110,7 @@ if (isset($_POST["ubahData"])) {
         </div>
       </div>
 
+    
 
       <div class="col-md-12">
         <div class="card">

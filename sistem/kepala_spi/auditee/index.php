@@ -100,7 +100,7 @@ if (isset($_POST["addAuditee"])) {
                                             <!-- <label for="id_user">ID User</label> -->
                                             <input type="hidden" class="form-control" id="id_auditee" name="id_auditee" value="<?= $r["id_auditee"]; ?>">
                                           </div>
-                                          <div class="form-group justify-content-center">
+                                          <div class="form-group text-center img-fluid img-circle">
                                               <img src="../../img/user/<?= $r["foto"]; ?>" alt="foto ketua unit" width="50" class="img-circle elevation-2">
                                           </div>
                                           <div class="form-group">
