@@ -82,7 +82,7 @@ if (isset($_POST["register"])) {
     <div class="row">
 
       <div class="col-md-12">
-        <button href="javascript.void(0)" class="btn btn-primary mb-3" data-toggle="modal" data-target="#registrasi">Tambah data</button>
+        <button href="javascript.void(0)" class="btn btn-primary mb-3" data-toggle="modal" data-target="#registrasi"><i class="far fa-plus-square"></i> Tambah data</button>
       </div>
 
       <!-- Left col -->

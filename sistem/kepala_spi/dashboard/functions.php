@@ -136,7 +136,7 @@ function upload_foto()
       -- id_user   = '$id_user',
       username  = '$username',
       password  = '$password',
-      passsword2 = '$password',
+      passsword2 = '$password2',
       nama      = '$nama',
       nip_npak  = '$nip_npak',
       status    = '$status',

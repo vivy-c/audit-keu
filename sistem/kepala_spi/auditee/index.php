@@ -3,7 +3,7 @@ include('../../template/header.php');
 include('../../template/sidebar_kepala_spi.php');
 include('function.php');
 
-$tb_auditee = query("SELECT a.id_auditee,b.nama,a.nama_unit,a.tanggal from tb_auditee as a,tb_user as b where a.id_user=b.id_user");
+$tb_auditee = query("SELECT a.id_auditee,b.foto,b.nama,a.nama_unit,a.tanggal from tb_auditee as a,tb_user as b where a.id_user=b.id_user");
 
 $tb_user = query("SELECT * FROM tb_user  ORDER BY tb_user.nama ASC");
 // $tb_auditee = query("SELECT * FROM tb_auditee  ORDER BY tb_auditee.nama_unit ASC");
@@ -42,7 +42,7 @@ if (isset($_POST["addAuditee"])) {
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
-              <button href="javascript.void(0)" class="btn btn-primary mb-3" data-target="#addAuditee" data-toggle="modal">Tambah data</button>
+              <button href="javascript.void(0)" class="btn btn-primary mb-3" data-target="#addAuditee" data-toggle="modal"><i class="far fa-plus-square"></i> Tambah data</button>
             </div>
             <div class="col-12">
               <div class="card">

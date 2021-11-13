@@ -57,7 +57,7 @@ if (isset($_POST["ubahPka"])) {
                     <div class="row">
 
                         <div class="col-md-12">
-                            <button href="javascript.void(0)" class="btn btn-primary mb-3" data-target="#addPKA" data-toggle="modal">Tambah data</button>
+                            <button href="javascript.void(0)" class="btn btn-primary mb-3" data-target="#addPKA" data-toggle="modal"><i class="far fa-plus-square"></i> Tambah data</button>
                         </div>
 
                         <div class="col-12">
@@ -68,6 +68,9 @@ if (isset($_POST["ubahPka"])) {
                                     <table id="datatable" class="table table-striped table-bordered table-hover">
                                         <thead>
                                             <tr>
+                                                <th>
+                                                    No
+                                                </th>
                                                 <th>
                                                     ID PKA
                                                 </th>
@@ -97,6 +100,7 @@ if (isset($_POST["ubahPka"])) {
                                             ?>
                                                 <?php foreach ($modal as $r) : ?>
                                                     <tr>
+                                                        <td><?php echo $r['no']; ?></td>
                                                         <td><?php echo $r['id_pka']; ?></td>
                                                         <td><?php echo $r['nama']; ?></td>
                                                         <td><?php echo $r['nama_unit']; ?></td>
@@ -231,6 +235,7 @@ if (isset($_POST["ubahPka"])) {
                                                             </div>
                                                         </td>
                                                     </tr>
+                                                    <?php $no++;  ?>
                                                     <?php endforeach; ?>
                                                 </tbody>
                                                 <?php } ?>
