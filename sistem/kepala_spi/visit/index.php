@@ -37,7 +37,6 @@ if (isset($_POST["status"])) {
     <!-- Main row -->
     <div class="row">
       <!-- Left col -->
-      <section class="col-md-12 connectedSortable">
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
@@ -87,18 +86,7 @@ if (isset($_POST["status"])) {
           </div>
         </div>
 
-      </section>
-
-      <!--  -->
-
-
       <!-- /.Left col -->
-      <!-- right col (We are only adding the ID to make the widgets sortable)-->
-      <section class="col-lg-5 connectedSortable">
-
-
-      </section>
-      <!-- right col -->
     </div>
     <!-- /.row (main row) -->
   </div><!-- /.container-fluid -->

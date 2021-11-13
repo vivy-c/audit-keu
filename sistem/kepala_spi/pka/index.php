@@ -14,39 +14,35 @@ include('function.php');
         <!-- Main row -->
         <div class="row">
             <!-- Left col -->
-            <section class="col-md-12 connectedSortable">
                 <div class="container-fluid">
                     <div class="row">
-                    <div class="col-md-12">
-            <div class="card">
-              <!-- <div class="card-header">
-                <h3 class="card-title">Progress PKA</h3>
-              </div> -->
-              <!-- /.card-header -->
-              <div class="card-body">
-                <p>PKA Belum Dilaksanakan</p>
-                <div class="progress mb-3">
-                  <div class="progress-bar bg-info" role="progressbar" aria-valuenow="<?= $persentase1; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $persentase1; ?>%">
-                  <span class=""><?= $persentase1; ?>%</span>
-                  </div>
-                </div>
-                <p>PKA Terealisasi</p>
-                <div class="progress mb-3">
-                  <div class="progress-bar bg-success" role="progressbar" aria-valuenow="<?= $persentase2; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $persentase2; ?>%">
-                    <span class=""><?= $persentase2; ?>%</span>
-                  </div>
-                </div>
-                <p>PKA Tidak Terealisasi</p>
-                <div class="progress mb-3">
-                  <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="<?= $persentase3; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $persentase3; ?>%">
-                    <span class=""><?= $persentase3; ?>%</span>
-                  </div>
-                </div>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
+                        <div class="col-md-12">
+                            <div class="card">
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <p>PKA Belum Dilaksanakan</p>
+                                    <div class="progress mb-3">
+                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="<?= $persentase1; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $persentase1; ?>%">
+                                            <span class=""><?= $persentase1; ?>%</span>
+                                        </div>
+                                    </div>
+                                    <p>PKA Terealisasi</p>
+                                    <div class="progress mb-3">
+                                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="<?= $persentase2; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $persentase2; ?>%">
+                                            <span class=""><?= $persentase2; ?>%</span>
+                                        </div>
+                                    </div>
+                                    <p>PKA Tidak Terealisasi</p>
+                                    <div class="progress mb-3">
+                                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="<?= $persentase3; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?= $persentase3; ?>%">
+                                            <span class=""><?= $persentase3; ?>%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
 
                         <div class="col-md-12">
                             <button href="javascript.void(0)" class="btn btn-primary mb-3" data-target="#addPKA" data-toggle="modal"><i class="far fa-plus-square"></i> Tambah data</button>
@@ -304,14 +300,73 @@ include('function.php');
                     </div>
                 </div>
 
-            </section>
             <!-- /.Left col -->
-            <!-- right col (We are only adding the ID to make the widgets sortable)-->
-            <section class="col-lg-5 connectedSortable">
+            <div class="container-fluid">
 
+        <!-- Timelime example  -->
+        <div class="row">
+          <div class="col-md-12">
+            <!-- The time line -->
+            <div class="timeline">
+              <!-- timeline time label -->
+              <div class="time-label">
+                <span class="bg-red">10 Feb. 2014</span>
+              </div>
+              <!-- /.timeline-label -->
+              <!-- timeline item -->
+              <div>
+                <i class="fas fa-envelope bg-blue"></i>
+                <div class="timeline-item">
+                  <span class="time"><i class="fas fa-clock"></i> 12:05</span>
+                  <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
 
-            </section>
-            <!-- right col -->
+                  <div class="timeline-body">
+                    Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
+                    weebly ning heekya handango imeem plugg dopplr jibjab, movity
+                    jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
+                    quora plaxo ideeli hulu weebly balihoo...
+                  </div>
+                  <div class="timeline-footer">
+                    <a class="btn btn-primary btn-sm">Read more</a>
+                    <a class="btn btn-danger btn-sm">Delete</a>
+                  </div>
+                </div>
+              </div>
+              <!-- END timeline item -->
+              <!-- timeline item -->
+              <div>
+                <i class="fas fa-user bg-green"></i>
+                <div class="timeline-item">
+                  <span class="time"><i class="fas fa-clock"></i> 5 mins ago</span>
+                  <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request</h3>
+                </div>
+              </div>
+              <!-- END timeline item -->
+              <!-- timeline item -->
+              <div>
+                <i class="fas fa-comments bg-yellow"></i>
+                <div class="timeline-item">
+                  <span class="time"><i class="fas fa-clock"></i> 27 mins ago</span>
+                  <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
+                  <div class="timeline-body">
+                    Take me to your leader!
+                    Switzerland is small and neutral!
+                    We are more like Germany, ambitious and misunderstood!
+                  </div>
+                  <div class="timeline-footer">
+                    <a class="btn btn-warning btn-sm">View comment</a>
+                  </div>
+                </div>
+              </div>
+              <!-- END timeline item -->
+              <div>
+                <i class="fas fa-clock bg-gray"></i>
+              </div>
+            </div>
+          </div>
+          <!-- /.col -->
+        </div>
+      </div>
         </div>
         <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->

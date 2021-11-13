@@ -14,7 +14,6 @@ include('function.php');
         <!-- Main row -->
         <div class="row">
             <!-- Left col -->
-            <section class="col-md-12 connectedSortable">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="card-body mt-0">
@@ -317,7 +316,6 @@ include('function.php');
                     </div>
                 </div>
 
-            </section>
             <!-- /.Left col -->
             <!-- right col (We are only adding the ID to make the widgets sortable)-->
             <section class="col-lg-5 connectedSortable">
