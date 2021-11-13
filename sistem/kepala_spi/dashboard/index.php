@@ -186,11 +186,9 @@ if (isset($_POST["ubahData"])) {
                           <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" id="password" class="form-control" value="<?= $r['password']; ?>" name="password">
+                            <input type="hidden" id="password2" class="form-control " value="<?= $r['password2']; ?>" name="password2">
                           </div>
-                          <div class="form-group">
-                            <label for="password2">Konfirmasi Password</label>
-                            <input type="password" id="password2" class="form-control " value="<?= $r['password2']; ?>" name="password2">
-                          </div>
+                          
                           <div class="form-group">
                             <p><b>Foto anda sekarang:</b></p>
                             <div class="box">

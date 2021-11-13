@@ -120,7 +120,7 @@ if (isset($_POST["register"])) {
                           }
                           ?>
 
-                          <p class="text-muted text-sm"><b>Level: </b> <span class="badge badge-<?= $badge; ?>"><?= $level; ?></span></p>
+                          <p class="text-muted text-sm"><b>Level: </b> <?= $level; ?></p>
 
                           <?php
                           if ($r['status'] == 1) {

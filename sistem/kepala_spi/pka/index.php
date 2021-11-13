@@ -62,7 +62,19 @@ include('function.php');
                                                         <th scope="row"><?= $no; ?></th>
                                                         <td><?php echo $r['nama']; ?></td>
                                                         <td><?php echo $r['nama_unit']; ?></td>
-                                                        <td><?php echo  $r['status']; ?></td>
+                                                        <?php
+                          if ($r['status'] == 'Belum Dilaksanakan') {
+                            $status = 'Belum Dilaksanakan';
+                            $badge = 'info';
+                          } elseif ($r['status'] == 'Terealisasi') {
+                            $status = 'Terealisasi';
+                            $badge = 'success';
+                          } else {
+                            $status = 'Tidak Terealisasi';
+                            $badge = 'danger';
+                          }
+                          ?>
+                                                        <td><span class="badge badge-<?= $badge; ?>"><?= $status; ?></td>
                                                         <td><?php echo  $r['tanggal']; ?></td>
                                                         <td>
                                                             <div class="btn-group btn-group-sm">
