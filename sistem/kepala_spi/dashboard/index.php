@@ -110,36 +110,23 @@ if (isset($_POST["ubahData"])) {
         </div>
       </div>
 
-    
-
+      
       <div class="col-md-12">
-        <div class="card">
-          <div class="card-header p-2">
-            <ul class="nav nav-pills">
-              <li class="nav-item"><a class="nav-link active" href="#muncul" data-toggle="tab">Biodata</a></li>
-              <!-- <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Biodata</a></li>
-              <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Password</a></li>
-              <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Foto & Ttd</a></li> -->
-            </ul>
-          </div>
-          <div class="card-body">
-            <div class="tab-content">
-      <?php
-              
-              ?>
-              <!-- section muncul -->
-              <div class="tab-pane active" id="muncul">
-                <div class="col-md-12">
-                  <div class="card card-default card-outline">
-                    <div class="card-body box-profile">
+            <!-- Widget: user widget style 1 -->
+            <div class="card card-widget widget-user">
+              <!-- Add the bg color to the header using any of the bg-* classes -->
+              <div class="widget-user-header text-white" style="background: url('../../img/photo1.png') center center;">
+                
+              </div>
+              <div class="widget-user-image">
+                <img class="img-circle" src="../../img/user/<?= $foto; ?>" alt="User Avatar">
+              </div>
+              <div class="card-footer">
+                <div class="row">
+                  <!-- /.col -->
+                  <div class="col-md-12 border-right">
+                    <div class="description-block">
                       <?php foreach ($sql as $r) : ?>
-                        <div class="text-center">
-
-                          <img class="profile-user-img img-fluid img-circle" src="../../img/user/<?= $r['foto']; ?>" alt="User profile picture">
-                        </div>
-
-                        <h3 class="profile-username text-center"><?= $r['nama']; ?></h3>
-
                         <?php
                         if ($r['level'] == 1) {
                           $level = 'Direktur';
@@ -153,8 +140,13 @@ if (isset($_POST["ubahData"])) {
                           $level = 'Belum dikonfirmasi';
                         }
                         ?>
+                      <h5 class="description-text"><?= $nama; ?></h5>
+                      <span class="description-header"><?= $level; ?></span>
+                    </div>
+                    <!-- /.description-block -->
+                  </div>
 
-                        <p class="text-muted text-center"><?= $level; ?></p>
+                  <div class="card-body box-profile">
 
                         <form class="form-horizontal" method="post" enctype="multipart/form-data">
                           <div class="form-group">
@@ -219,21 +211,13 @@ if (isset($_POST["ubahData"])) {
                       <?php endforeach; ?>
                       <!-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> -->
                     </div>
-                    <!-- /.card-body -->
-                  </div>
-                  <!-- /.card -->
+
                 </div>
-
-                <!-- /.post -->
+                <!-- /.row -->
               </div>
-              <!-- akhir section muncul -->
-
-              <!--  -->
-
             </div>
+            <!-- /.widget-user -->
           </div>
-        </div>
-      </div>
     </div>
 </section>
 <!-- /.Left col -->

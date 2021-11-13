@@ -321,7 +321,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-5 ">
-              <h1 class="m-0 ml-3"><?= $konten; ?></h1>
+              <h1 class="m-0"><?= $konten; ?></h1>
             </div><!-- /.col -->
             <div class="col-sm-5">
               <ol class="breadcrumb float-sm-right">
