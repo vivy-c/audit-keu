@@ -1,11 +1,9 @@
 <?php
 include('../../template/header.php');
 include('../../template/sidebar_kepala_spi.php');
-
+include('function.php');
 
 $username = $_SESSION["username"];
-
-
 
 ?>
 
