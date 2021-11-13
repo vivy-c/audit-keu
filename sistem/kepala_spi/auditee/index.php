@@ -166,7 +166,7 @@ if (isset($_POST["addAuditee"])) {
                                   <label for="id_user">Nama Ketua Unit</label>
                                   <select class="form-control " data-placeholder="Pilih Ketua Unit" style="width: 100%;" id="id_user" name="id_user">
                                     <option value=""></option>
-                                    <?php $tb_user = query("SELECT * FROM tb_user WHERE level=2 AND status=1 ORDER BY tb_user.nama ASC"); ?>
+                                    <?php $tb_user = query("SELECT * FROM tb_user WHERE level=3 AND status=1 ORDER BY tb_user.nama ASC"); ?>
                                     <?php foreach ($tb_user as $row) {
                                     ?>
                                       <option value="<?= $row['id_user'] ?>"><?php echo $row['nama']; ?> (<?php echo $row['nip_npak']; ?>)</option>

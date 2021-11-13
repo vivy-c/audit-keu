@@ -128,7 +128,7 @@
       $namaFileBaru .= $ekstensi;
 
 
-      move_uploaded_file($tmpName, '../../img/user/ ' . $namaFileBaru);
+      move_uploaded_file($tmpName, '../../img/user/' . $namaFileBaru);
       return $namaFileBaru;
     }
 
@@ -178,7 +178,7 @@
       $namaFileBaru .= $ekstensi;
 
 
-      move_uploaded_file($tmpName, '../../img/user/ ' . $namaFileBaru);
+      move_uploaded_file($tmpName, '../../img/user/' . $namaFileBaru);
       return $namaFileBaru;
     }
 

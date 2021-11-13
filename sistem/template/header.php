@@ -46,25 +46,25 @@ if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
 
   // if ($url == 'http://localhost/audit-keu/kepala_spi/tb_user.php' or $url == $lihat_user) {
   if ($url == 'http://localhost/audit-keu/sistem/kepala_spi/dashboard/index.php') {
-    $title = 'Ketua|Dashboard';
+    $title = 'Ketua | Dashboard';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/user/index.php') {
-    $title = 'Ketua|User';
+    $title = 'Ketua | User';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/konfirmasi_user/index.php') {
-    $title = 'Ketua|Konfirmasi';
+    $title = 'Ketua | Konfirmasi';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/auditee/index.php') {
-    $title = 'Ketua|Auditee';
+    $title = 'Ketua | Auditee';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/pka/index.php') {
-    $title = 'Ketua|PKA';
+    $title = 'Ketua | PKA';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/desk/index.php') {
-    $title = 'Ketua|Desk';
+    $title = 'Ketua | Desk';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/visit/index.php') {
-    $title = 'Ketua|Visit';
+    $title = 'Ketua | Visit';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/tha/index.php') {
-    $title = 'Ketua|THA';
+    $title = 'Ketua | THA';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/lha/index.php') {
-    $title = 'Ketua|LHA';
+    $title = 'Ketua | LHA';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/ba/index.php') {
-      $title = 'Ketua|BA';
+      $title = 'Ketua | BA';
   } else {
     $title = '';
   }

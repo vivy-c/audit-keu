@@ -1,7 +1,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 
   <?php
-  
+
   if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
     $url = "https://";
   else
@@ -134,6 +134,10 @@
 
       <!-- Sidebar -->
       <div class="sidebar">
+        
+      <div >
+          
+        </div>
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
@@ -162,17 +166,20 @@
             <img src="../../img/user/<?= $foto; ?>" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-
+            
             <a href="#" class="d-block"><?php
 
-                                        $username = $_SESSION["username"];
+              $username = $_SESSION["username"];
 
-                                        $sql = "SELECT * FROM tb_user WHERE username='$username'";
-                                        $result = mysqli_query($conn, $sql);
-                                        while ($row = $result->fetch_assoc()) {
-                                          echo $row['nama'];
-                                        }
-                                        ?></a>
+              $sql = "SELECT * FROM tb_user WHERE username='$username'";
+              $result = mysqli_query($conn, $sql);
+              while ($row = $result->fetch_assoc()) {
+                echo $row['nama'];
+              }
+              ?></a>
+
+              <span class="badge badge-info d-block">Ketua-SPI</span>
+              
           </div>
         </div>
 
@@ -233,15 +240,6 @@
               </ul>
             </li>
 
-            <!-- <li class="nav-item ">
-            <a href="../konfirmasi_user/index.php" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
-              <p>
-                Konfirmasi User
-                <i class=""></i>
-              </p>
-            </a>            
-          </li> -->
             <li class="nav-item ">
               <a href="../pka/index.php" class="nav-link <?= $pka; ?>">
                 <i class="nav-icon far fa-calendar-alt"></i>
@@ -288,42 +286,7 @@
               </ul>
             </li>
 
-            <!-- <li class="nav-item ">
-            <a href="../desk/index.php" class="nav-link">
-            <i class="nav-icon fas fa-list-alt"></i>
-              <p>
-                Data Desk
-                <i class=""></i>
-              </p>
-            </a>            
-          </li>
-          <li class="nav-item ">
-            <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-list-ul"></i>
-              <p>
-                Data Visit
-                <i class=""></i>
-              </p>
-            </a>            
-          </li>
-          <li class="nav-item ">
-            <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-pen-square"></i>
-              <p>
-                THA
-                <i class=""></i>
-              </p>
-            </a>            
-          </li>
-          <li class="nav-item ">
-            <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-poll"></i>
-              <p>
-                LHA
-                <i class=""></i>
-              </p>
-            </a>            
-          </li> -->
+            
             <li class="nav-item ">
               <a href="../ba/index.php" class="nav-link <?= $ba; ?>">
                 <i class="nav-icon far fa-flag"></i>
@@ -359,9 +322,9 @@
           <div class="row mb-2">
             <div class="col-sm-5 ">
               <h1 class="m-0 ml-3"><?= $konten; ?></h1>
-              </div><!-- /.col -->
-              <div class="col-sm-5">
-                <ol class="breadcrumb float-sm-right">
+            </div><!-- /.col -->
+            <div class="col-sm-5">
+              <ol class="breadcrumb float-sm-right">
 
               </ol>
             </div><!-- /.col -->

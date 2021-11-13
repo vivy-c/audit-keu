@@ -3,45 +3,7 @@ include('../../template/header.php');
 include('../../template/sidebar_kepala_spi.php');
 include('function.php');
 
-$tb_user = query("SELECT * FROM tb_user WHERE level=3 AND status=1 ORDER BY tb_user.nama ASC");
-$tb_auditee = query("SELECT * FROM tb_auditee ORDER BY tb_auditee.nama_unit ASC");
 
-if (isset($_POST["tambahDataPka"])) {
-    //cek data berhasil tambah atau tidak
-    if (tambahPka($_POST) > 0) {
-        echo "
-              <script>
-              alert('data berhasil ditambahkan');
-              document.location.href='index.php';
-              </script>
-              ";
-    } else {
-        echo "
-              <script>
-              alert('data gagal ditambahkan');
-              document.location.href='index.php';
-              </script>
-              ";
-    }
-}
-if (isset($_POST["ubahPka"])) {
-    //cek data berhasil tambah atau tidak
-    if (ubahPka($_POST) > 0) {
-        echo "
-              <script>
-              alert('data berhasil diubah');
-              document.location.href='index.php';
-              </script>
-              ";
-    } else {
-        echo "
-              <script>
-              alert('data gagal diubah');
-              document.location.href='index.php';
-              </script>
-              ";
-    }
-}
 ?>
 
 <!-- Main content -->
@@ -72,9 +34,6 @@ if (isset($_POST["ubahPka"])) {
                                                     No
                                                 </th>
                                                 <th>
-                                                    ID PKA
-                                                </th>
-                                                <th>
                                                     Nama Auditor
                                                 </th>
                                                 <th>
@@ -94,21 +53,20 @@ if (isset($_POST["ubahPka"])) {
                                         <tbody id="modal-data">
                                             <?php
                                             $no = 0;
-                                            $modal = mysqli_query($conn, "SELECT a.id_pka,b.nama,c.nama_unit,a.status,a.tanggal FROM tb_pka as a,tb_user as b,tb_auditee as c WHERE a.id_user=b.id_user and a.id_auditee=c.id_auditee");
+                                            $modal = mysqli_query($conn, "SELECT a.id_pka,b.id_user,b.nama,c.id_auditee,c.nama_unit,a.status,a.tanggal FROM tb_pka as a,tb_user as b,tb_auditee as c WHERE a.id_user=b.id_user and a.id_auditee=c.id_auditee");
                                             while ($r = mysqli_fetch_array($modal)) {
                                                 $no++;
                                             ?>
                                                 <?php foreach ($modal as $r) : ?>
                                                     <tr>
-                                                        <td><?php echo $r['no']; ?></td>
-                                                        <td><?php echo $r['id_pka']; ?></td>
+                                                        <th scope="row"><?= $no; ?></th>
                                                         <td><?php echo $r['nama']; ?></td>
                                                         <td><?php echo $r['nama_unit']; ?></td>
                                                         <td><?php echo  $r['status']; ?></td>
                                                         <td><?php echo  $r['tanggal']; ?></td>
                                                         <td>
                                                             <div class="btn-group btn-group-sm">
-                                                                <a class="btn btn-outline-warning btn-sm text-warning" data-toggle="modal" data-target="#myModaldetail<?php echo $r['id_pka']; ?>">
+                                                                <a class="btn btn-outline-primary btn-sm text-primary" data-toggle="modal" data-target="#myModaldetail<?php echo $r['id_pka']; ?>">
                                                                     <i class="fas fa-eye"></i>
                                                                 </a>
 
@@ -185,8 +143,8 @@ if (isset($_POST["ubahPka"])) {
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="id_user">Nama Auditor</label>
-                                                                                        <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" id="id_auditee" name="id_auditee">
-                                                                                            <option value="<?= $r['nama'] ?>"><?= $r['nama'] ?></option>
+                                                                                        <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" id="id_user" name="id_user">
+                                                                                            <option><?= $r['nama'] ?></option>
                                                                                             <?php foreach ($tb_user as $row) {
                                                                                             ?>
                                                                                                 <option value="<?= $row['id_user'] ?>"><?php echo $row['nama']; ?> </option>
@@ -196,7 +154,7 @@ if (isset($_POST["ubahPka"])) {
                                                                                     <div class="form-group">
                                                                                         <label for="id_auditee">Nama Auditee</label>
                                                                                         <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" id="id_auditee" name="id_auditee">
-                                                                                            <option value="<?= $r['nama_unit'] ?>"><?= $r['nama_unit'] ?></option>
+                                                                                        <option ><?= $r['nama_unit'] ?></option>
                                                                                             <?php foreach ($tb_auditee as $row) {
                                                                                             ?>
                                                                                                 <option value="<?= $row['id_auditee'] ?>"><?php echo $row['nama_unit']; ?> (<?php echo $row['tanggal']; ?>)</option>
@@ -218,7 +176,7 @@ if (isset($_POST["ubahPka"])) {
                                                                             </div>
                                                                             <div class="modal-footer float-right">
                                                                                 <a href="index.php" type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
-                                                                                <button type="submit" name="ubahPka" class="btn btn-success">Perbarui</button>
+                                                                                <button type="submit" name="ubahDataPka" class="btn btn-success">Perbarui</button>
                             
                                                                                 <!-- <a href="" type="submit" class="btn btn-success" name="ubahPka">Ubah Data</a> -->
                                                                                 <!-- <button type="edit" id="edit" name="edit" value="edit" class="btn btn-primary">Simpan Perubahan</button> -->
@@ -280,12 +238,8 @@ if (isset($_POST["ubahPka"])) {
                                                     </select>
                                                 </div>
 
-                                                <!-- <div class="form-group"> -->
-                                                <!-- <label for="status">Status</label> -->
-                                                <input type="hidden" class="form-control" id="status" name="status" value="Belum Dilaksanakan" readonly>
-                                                <!-- </div> -->
-
                                                 <div class="form-group">
+                                                    <input type="hidden" class="form-control" id="status" name="status" value="Belum Dilaksanakan">
                                                     <label for="tanggal">tanggal<span style="color: red;">*</span></label>
                                                     <input type="date" class="form-control" id="tanggal" name="tanggal" autocomplete="off" required>
                                                 </div>
@@ -303,152 +257,6 @@ if (isset($_POST["ubahPka"])) {
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Modal Popup untuk Edit-->
-                            <div id="ModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-                            </div>
-
-                            <!-- Modal Popup untuk delete-->
-                            <div class="modal fade" id="modal_delete">
-                                <div class="modal-dialog">
-                                    <div class="modal-content" style="margin-top:100px;">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Are you sure to delete this data ?</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-
-                                        <div class="modal-footer" style="margin:0px; border-top:0px; text-align:center;">
-                                            <a href="#" class="btn btn-danger" id="delete_link">Delete</a>
-                                            <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Javascript untuk popup modal Edit-->
-                            <script type="text/javascript">
-                                $(document).ready(function() {
-                                    $('#datatable').on('click', '.open_modal', function(e) {
-                                        var m = $(this).attr("id");
-                                        $.ajax({
-                                            url: "modal_edit.php",
-                                            type: "GET",
-                                            data: {
-                                                id_pka: m,
-                                            },
-                                            success: function(ajaxData) {
-                                                $("#ModalEdit").html(ajaxData);
-                                                $("#ModalEdit").modal('show', {
-                                                    backdrop: 'true'
-                                                });
-                                            }
-                                        });
-                                    });
-                                });
-                            </script>
-
-                            <!-- Ajax untuk menyimpan data-->
-                            <script type="text/javascript">
-                                $('body').on('submit', '#form-save', function(e) {
-                                    e.preventDefault();
-                                    $.ajax({
-                                            method: $(this).attr("method"), // untuk mendapatkan attribut method pada form
-                                            url: $(this).attr("action"), // untuk mendapatkan attribut action pada form
-                                            data: {
-                                                modal_name: $('#modal-name').val(),
-                                                description: $('#description').val(),
-                                            },
-                                            success: function(response) {
-                                                console.log(response);
-                                                $("#modal-data").empty();
-                                                $("#modal-data").html(response.data);
-                                                $("#ModalAdd").modal('hide');
-                                                $(".modal-backdrop").hide();
-                                            },
-                                            error: function(e) {
-                                                // Error function here
-                                            },
-                                            beforeSend: function(b) {
-                                                // Before function here
-                                            }
-                                        })
-                                        .done(function(d) {
-                                            // When ajax finished
-                                        });
-                                });
-                            </script>
-
-                            <!-- Ajax untuk update data-->
-                            <script type="text/javascript">
-                                $('body').on('submit', '#form-update', function(e) {
-                                    e.preventDefault();
-                                    $.ajax({
-                                            method: $(this).attr("method"), // untuk mendapatkan attribut method pada form
-                                            url: $(this).attr("action"), // untuk mendapatkan attribut action pada form
-                                            data: {
-                                                id_pka: $('#edit-id').val(),
-                                                modal_name: $('#edit-name').val(),
-                                                description: $('#edit-description').val(),
-                                            },
-                                            success: function(response) {
-                                                console.log(response);
-                                                $("#modal-data").empty();
-                                                $("#modal-data").html(response.data);
-                                                $("#ModalEdit").modal('hide');
-                                            },
-                                            error: function(e) {
-                                                // Error function here
-                                            },
-                                            beforeSend: function(b) {
-                                                // Before function here
-                                            }
-                                        })
-                                        .done(function(d) {
-                                            // When ajax finished
-                                        });
-                                });
-                            </script>
-
-                            <!-- Ajax untuk delete data-->
-                            <script type="text/javascript">
-                                $('body').on('click', '.delete_modal', function(e) {
-                                    let id_pka = $(this).data('id');
-                                    $('#modal_delete').modal('show', {
-                                        backdrop: 'static'
-                                    });
-                                    $("#delete_link").on("click", function() {
-                                        e.preventDefault();
-                                        $.ajax({
-                                                method: 'POST', // untuk mendapatkan attribut method pada form
-                                                url: 'proses_delete.php', // untuk mendapatkan attribut action pada form
-                                                data: {
-                                                    id_pka: id_pka
-                                                },
-                                                success: function(response) {
-                                                    console.log(response);
-                                                    $("#modal-data").empty();
-                                                    $("#modal-data").html(response.data);
-                                                    $("#modal_delete").modal('hide');
-
-                                                },
-                                                error: function(e) {
-                                                    // Error function here
-                                                },
-                                                beforeSend: function(b) {
-                                                    // Before function here
-                                                }
-                                            })
-                                            .done(function(d) {
-                                                // When ajax finished
-                                            });
-                                    });
-                                });
-                            </script>
-
-
 
                         </div>
                     </div>
