@@ -52,9 +52,6 @@ include('function.php');
                                                     Lama monitoring
                                                 </th>
                                                 <th>
-                                                    Tanggal visit
-                                                </th>
-                                                <th>
                                                     Penanggung jawab
                                                 </th>
                                                 <th>
