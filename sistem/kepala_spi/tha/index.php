@@ -2,28 +2,7 @@
 include('../../template/header.php');
 include('../../template/sidebar_kepala_spi.php');
 
-
 $username = $_SESSION["username"];
-
-// $tampil = query("SELECT * FROM tb_user WHERE status = 0 ");
-$tb_tha = query("SELECT * FROM tb_tha");
-// $id_user=$_GET["id_user"];
-// $q=query("SELECT * FROM tb_user WHERE id_user = $id_user")[0];
-
-
-if (isset($_POST["status"])) {
-  if (status($_POST) > 0) {
-     echo "<script>
-     alert('User berhasil diaktifkan');
-     document.location.href='../user/index.php';
-     </script>";
-  } else {
-     echo "<script>
-     alert('User gagal diaktifkan');
-     document.location.href='../user/index.php';
-     </script>";
-  }
-}
 
 ?>
 
@@ -57,7 +36,10 @@ if (isset($_POST["status"])) {
                           Visit
                         </th>
                         <th>
-                          Tanggal
+                          Tanggal THA
+                        </th>
+                        <th>
+                          Tanggal Visit
                         </th>
                         <th>
                           Catatan
@@ -83,16 +65,25 @@ if (isset($_POST["status"])) {
                         <th>
                           Persetujuan
                         </th>
+                        <th>
+                          Aksi
+                        </th>
                       </tr>
                     </thead>
                     <tbody id="modal-data">
-                      <?php $no = 1; ?>
+                    <?php
+                    $no = 0;
+                      $tb_tha = mysqli_query($conn, "SELECT a.id_tha,a.id_visit,a.tgl_tha,a.catatan,a.dasar_hukum,a.penyebab,a.akibat,a.rekomendasi,a.tanggapan_auditee,a.rencana_tindak_lanjut,a.persetujuan,b.tgl_visit FROM tb_tha as a,tb_visit as b WHERE a.id_visit=b.id_visit");
+                      while ($r = mysqli_fetch_array($tb_tha)) {
+                      $no++;
+                    ?>
                       <?php foreach ($tb_tha as $r) : ?>
                         <tr>
                           <th scope="row"><?= $no; ?></th>
                           <td><?php echo $r['id_tha']; ?></td>
                           <td><?php echo  $r['id_visit']; ?></td>
-                          <td><?php echo  $r['tanggal']; ?></td>
+                          <td><?php echo  $r['tgl_tha']; ?></td>
+                          <td><?php echo  $r['tgl_visit']; ?></td>
                           <td><?php echo  $r['catatan']; ?></td>
                           <td><?php echo  $r['dasar_hukum']; ?></td>
                           <td><?php echo  $r['penyebab']; ?></td>
@@ -105,7 +96,7 @@ if (isset($_POST["status"])) {
                         <?php $no++;  ?>
                       <?php endforeach; ?>
                     </tbody>
-                    <?php  ?>
+                    <?php } ?>
                   </table>
 
                 </div>

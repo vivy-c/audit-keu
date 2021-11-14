@@ -83,7 +83,7 @@ $username = $_SESSION["username"];
                   <tbody id="modal-data">
                   <?php
                     $no = 0;
-                    $tb_visit = mysqli_query($conn,"SELECT a.id_visit, b.id_desk, b.tgl_monitoring, a.tanggal,a.isi FROM tb_visit as a, tb_desk as b WHERE a.id_desk=b.id_desk");
+                    $tb_visit = mysqli_query($conn,"SELECT a.id_visit, b.id_desk, b.tgl_monitoring, a.tgl_visit,a.isi FROM tb_visit as a, tb_desk as b WHERE a.id_desk=b.id_desk");
                     while ($r = mysqli_fetch_array($tb_visit)) {
                         $no++;
                    ?>
@@ -93,7 +93,7 @@ $username = $_SESSION["username"];
                         <td><?php echo $r['id_visit']; ?></td>
                         <td><?php echo  $r['id_desk']; ?></td>
                         <td><?php echo  $r['tgl_monitoring']; ?></td>
-                        <td><?php echo  $r['tanggal']; ?></td>
+                        <td><?php echo  $r['tgl_visit']; ?></td>
                         <td><?php echo  $r['isi']; ?></td>
                         <td>
                           <div class="btn-group btn-group-sm">
@@ -124,8 +124,8 @@ $username = $_SESSION["username"];
                                         </select>
                                       </div>
                                       <div class="form-group">
-                                        <label for="tanggal">Tanggal Visit</label>
-                                        <input type="date" class="form-control" id="tanggal" name="tanggal" autocomplete="off" required value="<?= $r['tanggal']; ?>" readonly>
+                                        <label for="tgl_visit">Tanggal Visit</label>
+                                        <input type="date" class="form-control" id="tgl_visit" name="tgl_visit" autocomplete="off" required value="<?= $r['tgl_visit']; ?>" readonly>
                                       </div>
                                       <div class="form-group">
                                         <label for="isi">Isi</label>
@@ -172,8 +172,8 @@ $username = $_SESSION["username"];
                                         </select>
                                       </div>
                                       <div class="form-group">
-                                        <label for="tanggal">Tanggal Visit</label>
-                                        <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $r['tanggal']; ?>" autocomplete="off" required>
+                                        <label for="tgl_visit">Tanggal Visit</label>
+                                        <input type="date" class="form-control" id="tgl_visit" name="tgl_visit" value="<?= $r['tgl_visit']; ?>" autocomplete="off" required>
                                       </div>
                                       <div class="form-group">
                                         <label for="isi">Isi</label>
@@ -232,8 +232,8 @@ $username = $_SESSION["username"];
                         </select>
                       </div>
                       <div class="form-group">
-                        <label for="tanggal">Tanggal Visit<span style="color: red;">*</span></label>
-                        <input type="date" class="form-control" id="tanggal" name="tanggal" autocomplete="off" required>
+                        <label for="tgl_visit">Tanggal Visit<span style="color: red;">*</span></label>
+                        <input type="date" class="form-control" id="tgl_visit" name="tgl_visit" autocomplete="off" required>
                       </div>
                       <div class="form-group">
                         <label for="isi">Isi<span style="color: red;">*</span></label>
