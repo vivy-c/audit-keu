@@ -89,30 +89,23 @@ $username = $_SESSION["username"];
                                                 <input type="hidden" class="form-control" name="id_lha" autocomplete="off" required>
                                               </div>
                                               <div class="form-group">
-                                                <label for="id_tha">Tanggal THA<span style="color: red;">*</span></label>
-                                                <select class="form-control " data-placeholder="Pilih Tanggal THA" style="width: 100%;" name="id_tha"  value="">
+                                                <label for="id_tha">Tanggal THA</label>
+                                                <select class="form-control " data-placeholder="Pilih Tanggal THA" style="width: 100%;" name="id_tha"  value="" readonly>
                                                   <option value=""><?= $r['tgl_tha']; ?></option>
-                                                  <?php foreach ($tb_tha as $row) {
-                                                  ?>
-                                                    <option value="<?= $r['id_tha'] ?>"> <?php echo $row['tgl_tha']; ?> (ID THA : <?= $row['id_tha']; ?>)</option>
-                                                  <?php } ?>
                                                 </select>
                                               </div>
                                               <div class="form-group">
-                                                <label for="tgl_lha">Tanggal LHA<span style="color: red;">*</span></label>
-                                                <input type="date" class="form-control" id="tgl_lha" name="tgl_lha" autocomplete="off" required value="<?= $r['tgl_lha']; ?>">
+                                                <label for="tgl_lha">Tanggal LHA</label>
+                                                <input type="date" class="form-control" id="tgl_lha" name="tgl_lha" autocomplete="off" required value="<?= $r['tgl_lha']; ?>" readonly>
                                               </div>
                                               <div class="form-group">
-                                                <label for="status">Status<span style="color: red;">*</span></label>
-                                                <input type="text" class="form-control" id="status" name="status" autocomplete="off" required value="<?= $r['status']; ?>">
+                                                <label for="status">Status</label>
+                                                <input type="text" class="form-control" id="status" name="status" autocomplete="off" required value="<?= $r['status']; ?>" readonly>
                                               </div>
                                               <div class="form-group">
-                                                <label for="keterangan">Keterangan<span style="color: red;">*</span></label>
-                                                <input type="text" class="form-control" id="keterangan" name="keterangan" autocomplete="off" required value="<?= $r['keterangan']; ?>">
+                                                <label for="keterangan">Keterangan</label>
+                                                <input type="text" class="form-control" id="keterangan" name="keterangan" autocomplete="off" required value="<?= $r['keterangan']; ?>" readonly>
                                               </div>
-
-                                              <button type="submit" class="btn btn-success mr-2 float-right" name="tambahLHA">Simpan</button>
-                                              <button class="btn btn-secondary mr-2 float-right" data-dismiss="modal">Batal</button>
                                             </form>
 
                                           </div>
@@ -147,7 +140,7 @@ $username = $_SESSION["username"];
                                                 <input type="hidden" class="form-control" name="id_lha" autocomplete="off" required>
                                               </div>
                                               <div class="form-group">
-                                                <label for="id_tha">Tanggal THA<span style="color: red;">*</span></label>
+                                                <label for="id_tha">Tanggal THA</label>
                                                 <select class="form-control " data-placeholder="Pilih Tanggal THA" style="width: 100%;" name="id_tha"  value="">
                                                   <option value=""><?= $r['tgl_tha']; ?></option>
                                                   <?php foreach ($tb_tha as $row) {
@@ -157,19 +150,19 @@ $username = $_SESSION["username"];
                                                 </select>
                                               </div>
                                               <div class="form-group">
-                                                <label for="tgl_lha">Tanggal LHA<span style="color: red;">*</span></label>
+                                                <label for="tgl_lha">Tanggal LHA</label>
                                                 <input type="date" class="form-control" id="tgl_lha" name="tgl_lha" autocomplete="off" required value="<?= $r['tgl_lha']; ?>">
                                               </div>
                                               <div class="form-group">
-                                                <label for="status">Status<span style="color: red;">*</span></label>
+                                                <label for="status">Status</label>
                                                 <input type="text" class="form-control" id="status" name="status" autocomplete="off" required value="<?= $r['status']; ?>">
                                               </div>
                                               <div class="form-group">
-                                                <label for="keterangan">Keterangan<span style="color: red;">*</span></label>
+                                                <label for="keterangan">Keterangan</label>
                                                 <input type="text" class="form-control" id="keterangan" name="keterangan" autocomplete="off" required value="<?= $r['keterangan']; ?>">
                                               </div>
 
-                                              <button type="submit" class="btn btn-success mr-2 float-right" name="tambahLHA">Simpan</button>
+                                              <button type="submit" class="btn btn-success mr-2 float-right" name="ubahLHA">Simpan</button>
                                               <button class="btn btn-secondary mr-2 float-right" data-dismiss="modal">Batal</button>
                                             </form>
 

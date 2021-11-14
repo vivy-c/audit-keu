@@ -182,7 +182,7 @@
       return $namaFileBaru;
     }
 
-    $belum_dikonfirmasi = mysqli_query($conn,"SELECT * FROM tb_user WHERE status=1 AND level=0");
+    $belum_dikonfirmasi = mysqli_query($conn,"SELECT * FROM tb_user WHERE status=0");
     $jumlah_belum_dikonfirmasi = mysqli_num_rows($belum_dikonfirmasi);
     
     $direktur = mysqli_query($conn,"SELECT * FROM tb_user WHERE status=1 AND level=1");

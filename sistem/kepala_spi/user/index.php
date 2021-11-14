@@ -4,7 +4,7 @@ include('../../template/sidebar_kepala_spi.php');
 include('functions.php');
 // include('../../functions.php');
 
-$tb_user = query("SELECT * FROM tb_user ORDER BY nama ASC");
+$tb_user = query("SELECT * FROM tb_user ORDER BY status DESC");
 $judul = 'Data User';
 
 if (isset($_POST["register"])) {
@@ -33,12 +33,46 @@ if (isset($_POST["register"])) {
     <!-- Main row -->
     <div class="row">
 
-    <div class="container-fluid">
-        <h5 class="mb-2">Info Jumlah</h5>
+      <div class="container-fluid">
+
+        <!-- <div class="row">
+                <div class="col-12 col-sm-4">
+                  <div class="info-box bg-light">
+                    <div class="info-box-content">
+                      <span class="info-box-text text-center text-muted">Estimated budget</span>
+                      <span class="info-box-number text-center text-muted mb-0">2300</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                  <div class="info-box bg-light">
+                    <div class="info-box-content">
+                      <span class="info-box-text text-center text-muted">Total amount spent</span>
+                      <span class="info-box-number text-center text-muted mb-0">2000</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                  <div class="info-box bg-light">
+                    <div class="info-box-content">
+                      <span class="info-box-text text-center text-muted">Estimated project duration</span>
+                      <span class="info-box-number text-center text-muted mb-0">20</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                  <div class="info-box bg-light">
+                    <div class="info-box-content">
+                      <span class="info-box-text text-center text-muted">Estimated project duration</span>
+                      <span class="info-box-number text-center text-muted mb-0">20</span>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
         <div class="row">
           <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box">
-              <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
+              <span class="info-box-icon bg-info"><i class="fas fa-user"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Ketua SPI</span>
@@ -51,7 +85,7 @@ if (isset($_POST["register"])) {
           <!-- /.col -->
           <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box">
-              <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
+              <span class="info-box-icon bg-success"><i class="fas fa-user"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Auditor</span>
@@ -64,7 +98,7 @@ if (isset($_POST["register"])) {
           <!-- /.col -->
           <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box">
-              <span class="info-box-icon bg-warning"><i class="far fa-copy"></i></span>
+              <span class="info-box-icon bg-warning"><i class="fas fa-user"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Auditee</span>
@@ -77,7 +111,7 @@ if (isset($_POST["register"])) {
           <!-- /.col -->
           <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box">
-              <span class="info-box-icon bg-danger"><i class="far fa-star"></i></span>
+              <span class="info-box-icon bg-danger"><i class="fas fa-user"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Belum dikonfirmasi</span>
@@ -91,7 +125,7 @@ if (isset($_POST["register"])) {
         </div>
         <!-- /.row -->
 
-       
+
       </div>
 
       <div class="col-md-12">
@@ -184,88 +218,88 @@ if (isset($_POST["register"])) {
           </div>
 
           <!-- modal register-->
-  <div class=" modal fade" id="registrasi" tabindex="-1">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Registrasi</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card card-primary">
+          <div class=" modal fade" id="registrasi" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Registrasi</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="card card-primary">
 
-                <form class="main_form" method="post" id="form" action="" enctype="multipart/form-data">
+                        <form class="main_form" method="post" id="form" action="" enctype="multipart/form-data">
 
-                  <div class="card-body">
-                    <div class="form-group">
-                      <input type="hidden" id="id" class="form-control" value="" name="id">
+                          <div class="card-body">
+                            <div class="form-group">
+                              <input type="hidden" id="id" class="form-control" value="" name="id">
+                            </div>
+                            <div class="form-group">
+                              <label for="nip">NIP / NPAK</label>
+                              <input type="text" id="nip" class="form-control" value="" name="nip_npak">
+                            </div>
+                            <div class="form-group">
+                              <label for="nama">Nama</label>
+                              <input type="text" id="nama" class="form-control" value="" name="nama">
+                            </div>
+                            <div class="form-group">
+                              <label for="no_hp">No Telepon</label>
+                              <input type="text" id="no_hp" class="form-control" value="" name="no_hp">
+                            </div>
+                            <div class="form-group">
+                              <label for="email">Email</label>
+                              <input type="email" id="email" class="form-control" value="" name="email">
+                            </div>
+                            <div class="form-group">
+                              <label for="level">Pilih Level</label>
+                              <select class="form-control" name="level" id="level">
+                                <option value="1">Direktur</option>
+                                <option value="2">Auditee</option>
+                                <option value="3">Auditor</option>
+                                <option value="4">Ketua SPI</option>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <label for="username">Username</label>
+                              <input type="text" id="username" class="form-control" value="" name="username">
+                            </div>
+                            <div class="form-group">
+                              <label for="password">Password</label>
+                              <input type="password" id="password" class="form-control" value="" name="password">
+                            </div>
+                            <div class="form-group">
+                              <label for="password2">Konfirmasi Password</label>
+                              <input type="password" id="password2" class="form-control " value="" name="password2">
+                            </div>
+                            <div class="form-group">
+                              <label for="foto">Pilih Foto</label><br>
+                              <input type="file" id="foto" name="foto">
+                            </div>
+                            <div class="form-group">
+                              <label for="ttd">Pilih tanda tangan</label><br>
+                              <input type="file" id="ttd" name="ttd">
+                              <p style="color: red;"><i><b>* Upload ttd dengan background transparan*</i></b></p>
+                            </div>
+                            <input type="hidden" id="status" name="status" value="0">
+                          </div>
+                          <!-- /.card-body -->
+                      </div>
+                      <!-- /.card -->
                     </div>
-                    <div class="form-group">
-                      <label for="nip">NIP / NPAK</label>
-                      <input type="text" id="nip" class="form-control" value="" name="nip_npak">
-                    </div>
-                    <div class="form-group">
-                      <label for="nama">Nama</label>
-                      <input type="text" id="nama" class="form-control" value="" name="nama">
-                    </div>
-                    <div class="form-group">
-                      <label for="no_hp">No Telepon</label>
-                      <input type="text" id="no_hp" class="form-control" value="" name="no_hp">
-                    </div>
-                    <div class="form-group">
-                      <label for="email">Email</label>
-                      <input type="email" id="email" class="form-control" value="" name="email">
-                    </div>
-                    <div class="form-group">
-                      <label for="level">Pilih Level</label>
-                      <select class="form-control" name="level" id="level">
-                        <option value="1">Direktur</option>
-                        <option value="2">Auditee</option>
-                        <option value="3">Auditor</option>
-                        <option value="4">Ketua SPI</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="username">Username</label>
-                      <input type="text" id="username" class="form-control" value="" name="username">
-                    </div>
-                    <div class="form-group">
-                      <label for="password">Password</label>
-                      <input type="password" id="password" class="form-control" value="" name="password">
-                    </div>
-                    <div class="form-group">
-                      <label for="password2">Konfirmasi Password</label>
-                      <input type="password" id="password2" class="form-control " value="" name="password2">
-                    </div>
-                    <div class="form-group">
-                      <label for="foto">Pilih Foto</label><br>
-                      <input type="file" id="foto" name="foto">
-                    </div>
-                    <div class="form-group">
-                      <label for="ttd">Pilih tanda tangan</label><br>
-                      <input type="file" id="ttd" name="ttd">
-                      <p style="color: red;"><i><b>* Upload ttd dengan background transparan*</i></b></p>
-                    </div>
-                    <input type="hidden" id="status" name="status" value="0">
                   </div>
-                  <!-- /.card-body -->
+                </div>
+                <div class="modal-footer">
+                  <!-- <input type="submit" class="btn btn-primary send_btn" name="register" value="register"> -->
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button class="btn btn-primary send_btn" type="submit" name="register">Tambah</button>
+                </div>
+                </form>
               </div>
-              <!-- /.card -->
             </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <!-- <input type="submit" class="btn btn-primary send_btn" name="register" value="register"> -->
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button class="btn btn-primary send_btn" type="submit" name="register">Tambah</button>
-        </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!-- /.modal register -->
+          <!-- /.modal register -->
 
           <!-- /.card-body -->
           <!-- /.card-footer -->
