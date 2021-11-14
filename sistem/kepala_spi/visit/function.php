@@ -44,10 +44,10 @@ if (isset($_POST["ubahVisit"])) {
 function tambahVisit($data)
 {
     global $conn;
-    $id_visit     = htmlspecialchars($data["id_visit"]);
-    $id_desk      = htmlspecialchars($data["id_desk"]);
-    $tanggal       = htmlspecialchars($data["tanggal"]);
-    $isi = htmlspecialchars($data["isi"]);
+    $id_visit= htmlspecialchars($data["id_visit"]);
+    $id_desk = htmlspecialchars($data["id_desk"]);
+    $tanggal = htmlspecialchars($data["tanggal"]);
+    $isi     = htmlspecialchars($data["isi"]);
     //insert data
     $query = "INSERT INTO tb_visit VALUES ('$id_visit','$id_desk','$tanggal','$isi')";
     mysqli_query($conn, $query);
@@ -57,17 +57,17 @@ function tambahVisit($data)
 function ubahVisit($data)
 {
     global $conn;
-    $id_visit     = htmlspecialchars($data["id_visit"]);
-    $id_desk      = htmlspecialchars($data["id_desk"]);
-    $tanggal       = htmlspecialchars($data["tanggal"]);
-    $isi = htmlspecialchars($data["isi"]);
+    $id_visit= htmlspecialchars($data["id_visit"]);
+    $id_desk = htmlspecialchars($data["id_desk"]);
+    $tanggal = htmlspecialchars($data["tanggal"]);
+    $isi     = htmlspecialchars($data["isi"]);
 
     //update data
     $query="UPDATE tb_visit SET 
 
-      id_desk   = '$id_desk',
-      tanggal         = '$tanggal',
-      isi          = '$isi'
+      id_desk = '$id_desk',
+      tanggal = '$tanggal',
+      isi     = '$isi'
 
       WHERE id_visit = '$id_visit'
       ";
