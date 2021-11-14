@@ -1,6 +1,6 @@
 <?php
 
-$tb_visit = query("SELECT * FROM tb_visit ORDER BY tgl_visit ASC");
+$tb_tha = query("SELECT * FROM tb_tha ORDER BY tgl_tha ASC");
 
 if (isset($_POST["tambahLHA"])) {
     //cek data berhasil tambah atau tidak

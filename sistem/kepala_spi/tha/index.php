@@ -220,8 +220,8 @@ $username = $_SESSION["username"];
                               <!-- /.modal -->
                               <a href="hapus.php?id_tha=<?= $r["id_tha"]; ?>" name="hapus" class="btn btn-outline-danger" onclick="return confirm('Yakin menghapus permanen?');"><i class="fas fa-trash"></i></a>
 
-                                                          </div>
-                                                      </td>
+                            </div>
+                          </td>
                         </tr>
                         <?php $no++;  ?>
                       <?php endforeach; ?>

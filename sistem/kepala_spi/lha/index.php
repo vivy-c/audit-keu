@@ -66,6 +66,124 @@ $username = $_SESSION["username"];
                           <td><?php echo  $r['tgl_lha']; ?></td>
                           <td><?php echo  $r['status']; ?></td>
                           <td><?php echo  $r['keterangan']; ?></td>
+                          <td>
+                              <div class="btn-group btn-group-sm">
+                              <a class="btn btn-outline-warning btn-sm text-warning" data-toggle="modal" data-target="#myModaldetail<?php echo $r['id_lha']; ?>">
+                                  <i class="fas fa-eye"></i>
+                              </a>
+
+                              <!-- tampilan modal jadi-->
+                              <div class="modal fade" id="myModaldetail<?php echo $r['id_lha']; ?>">
+                                  <div class="modal-dialog modal-lg">
+                                      <div class="modal-content">
+                                          <div class="modal-header">
+                                              <h4 class="modal-title">Detail Data LHA</h4>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                  <span aria-hidden="true">&times;</span>
+                                              </button>
+                                          </div>
+
+                                          <div class="modal-body">
+                                            <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
+                                              <div class="form-group">
+                                                <input type="hidden" class="form-control" name="id_lha" autocomplete="off" required>
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="id_tha">Tanggal THA<span style="color: red;">*</span></label>
+                                                <select class="form-control " data-placeholder="Pilih Tanggal THA" style="width: 100%;" name="id_tha"  value="">
+                                                  <option value=""><?= $r['tgl_tha']; ?></option>
+                                                  <?php foreach ($tb_tha as $row) {
+                                                  ?>
+                                                    <option value="<?= $r['id_tha'] ?>"> <?php echo $row['tgl_tha']; ?> (ID THA : <?= $row['id_tha']; ?>)</option>
+                                                  <?php } ?>
+                                                </select>
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="tgl_lha">Tanggal LHA<span style="color: red;">*</span></label>
+                                                <input type="date" class="form-control" id="tgl_lha" name="tgl_lha" autocomplete="off" required value="<?= $r['tgl_lha']; ?>">
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="status">Status<span style="color: red;">*</span></label>
+                                                <input type="text" class="form-control" id="status" name="status" autocomplete="off" required value="<?= $r['status']; ?>">
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="keterangan">Keterangan<span style="color: red;">*</span></label>
+                                                <input type="text" class="form-control" id="keterangan" name="keterangan" autocomplete="off" required value="<?= $r['keterangan']; ?>">
+                                              </div>
+
+                                              <button type="submit" class="btn btn-success mr-2 float-right" name="tambahLHA">Simpan</button>
+                                              <button class="btn btn-secondary mr-2 float-right" data-dismiss="modal">Batal</button>
+                                            </form>
+
+                                          </div>
+                                              <div class="modal-footer float-right">
+                                              <a href="index.php" type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
+                                              
+                                          </div>
+                                      </div>
+                                      <!-- /.modal-content -->
+                                  </div>
+                                  <!-- /.modal-dialog -->
+                              </div>
+                              <!-- /.modal -->
+
+
+                              <a class="btn btn-outline-success btn-sm text-success" data-toggle="modal" data-target="#myModal<?php echo $r['id_lha']; ?>"><i class="fas fa-pen"></i></a>
+
+                              <!-- tampilan modal jadi-->
+                              <div class="modal fade" id="myModal<?php echo $r['id_lha']; ?>">
+                                  <div class="modal-dialog modal-lg">
+                                      <div class="modal-content">
+                                          <div class="modal-header">
+                                              <h4 class="modal-title">Edit Data LHA</h4>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                  <span aria-hidden="true">&times;</span>
+                                              </button>
+                                          </div>
+
+                                          <div class="modal-body">
+                                            <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
+                                              <div class="form-group">
+                                                <input type="hidden" class="form-control" name="id_lha" autocomplete="off" required>
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="id_tha">Tanggal THA<span style="color: red;">*</span></label>
+                                                <select class="form-control " data-placeholder="Pilih Tanggal THA" style="width: 100%;" name="id_tha"  value="">
+                                                  <option value=""><?= $r['tgl_tha']; ?></option>
+                                                  <?php foreach ($tb_tha as $row) {
+                                                  ?>
+                                                    <option value="<?= $r['id_tha'] ?>"> <?php echo $row['tgl_tha']; ?> (ID THA : <?= $row['id_tha']; ?>)</option>
+                                                  <?php } ?>
+                                                </select>
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="tgl_lha">Tanggal LHA<span style="color: red;">*</span></label>
+                                                <input type="date" class="form-control" id="tgl_lha" name="tgl_lha" autocomplete="off" required value="<?= $r['tgl_lha']; ?>">
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="status">Status<span style="color: red;">*</span></label>
+                                                <input type="text" class="form-control" id="status" name="status" autocomplete="off" required value="<?= $r['status']; ?>">
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="keterangan">Keterangan<span style="color: red;">*</span></label>
+                                                <input type="text" class="form-control" id="keterangan" name="keterangan" autocomplete="off" required value="<?= $r['keterangan']; ?>">
+                                              </div>
+
+                                              <button type="submit" class="btn btn-success mr-2 float-right" name="tambahLHA">Simpan</button>
+                                              <button class="btn btn-secondary mr-2 float-right" data-dismiss="modal">Batal</button>
+                                            </form>
+
+                                          </div>
+                                      </div>
+                                      <!-- /.modal-content -->
+                                  </div>
+                                  <!-- /.modal-dialog -->
+                              </div>
+                              <!-- /.modal -->
+                              <a href="hapus.php?id_tha=<?= $r["id_tha"]; ?>" name="hapus" class="btn btn-outline-danger" onclick="return confirm('Yakin menghapus permanen?');"><i class="fas fa-trash"></i></a>
+
+                            </div>
+                          </td>
                         </tr>
                         <?php $no++;  ?>
                       <?php endforeach; ?>
@@ -117,7 +235,6 @@ $username = $_SESSION["username"];
                       <button type="submit" class="btn btn-success mr-2 float-right" name="tambahLHA">Simpan</button>
                       <button class="btn btn-secondary mr-2 float-right" data-dismiss="modal">Batal</button>
                     </form>
-
 
                   </div>
 
