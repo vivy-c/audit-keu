@@ -2,7 +2,7 @@
 <?php 
 error_reporting(0);
 
-$tb_desk= query("SELECT * FROM tb_desk ORDER BY tgl_monitoring.tb_desk ASC");
+$tb_desk= query("SELECT * FROM tb_desk ORDER BY tgl_monitoring ASC");
 
 if (isset($_POST["tambahVisit"])) {
     //cek data berhasil tambah atau tidak

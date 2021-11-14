@@ -84,54 +84,55 @@ $username = $_SESSION["username"];
                                           </div>
 
                                           <div class="modal-body">
-                                              <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
+                                                <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
                                                   <div class="form-group">
-                                                      <input type="hidden" class="form-control" name="id_tha" autocomplete="off" required readonly>
-                                                  </div>
-
-                                                  <div class="form-group">
-                                                      <label for="nama">Nama Auditor</label>
-                                                      <input type="text" class="form-control" id="nama" name="nama" value="<?= $r["nama"]; ?>" readonly>
+                                                    <input type="hidden" class="form-control" name="id_tha" autocomplete="off" required>
                                                   </div>
                                                   <div class="form-group">
-                                                      <label for="nama_unit">Nama Auditee</label>
-                                                      <input type="text" class="form-control" id="nama_unit" name="nama_unit" value="<?= $r["nama_unit"]; ?>" readonly>
+                                                    <label for="id_visit">Tanggal Visit</label>
+                                                    <select class="form-control " data-placeholder="Pilih Tanggal Visit" style="width: 100%;" name="id_visit" readonly>
+                                                      <option value=""><?= $r['tgl_visit']; ?></option>
+                                                    </select>
                                                   </div>
                                                   <div class="form-group">
-                                                      <label for="status">Status</label>
-                                                      <input type="text" class="form-control" id="status" name="status" value="<?= $r["status"]; ?>" readonly>
+                                                    <label for="tgl_tha">Tanggal THA</label>
+                                                    <input type="date" class="form-control" id="tgl_tha" name="tgl_tha" autocomplete="off" required value="<?= $r['tgl_tha']; ?>" readonly>
                                                   </div>
                                                   <div class="form-group">
-                                                      <label for="id_pka">Tanggal PKA</label>
-                                                      <select class="form-control " data-placeholder="Pilih PKA" style="width: 100%;" name="id_pka" readonly>
-                                                          <option value=""><?= $r['tanggal'];?> ( Auditor : <?= $r['nama'];?> )</option>
-
-                                                      </select>
+                                                    <label for="catatan">Catatan</label>
+                                                    <input type="text" class="form-control" id="catatan" name="catatan" autocomplete="off" required value="<?= $r['catatan']; ?>" readonly>
                                                   </div>
                                                   <div class="form-group">
-                                                      <label for="jenis">jenis</label>
-                                                      <input type="text" class="form-control" id="jenis" name="jenis" autocomplete="off" value="<?= $r['jenis'];?>" required readonly>
+                                                    <label for="dasar_hukum">Dasar Hukum</label>
+                                                    <input type="text" class="form-control" id="dasar_hukum" name="dasar_hukum" autocomplete="off" required value="<?= $r['dasar_hukum']; ?>" readonly>
                                                   </div>
                                                   <div class="form-group">
-                                                      <label for="sumber_dana">Sumber Dana</label>
-                                                      <input type="text" class="form-control" id="sumber_dana" name="sumber_dana" autocomplete="off" value="<?= $r['sumber_dana'];?>"  required readonly>
+                                                    <label for="penyebab">Penyebab</label>
+                                                    <input type="text" class="form-control" id="penyebab" name="penyebab" autocomplete="off" required value="<?= $r['penyebab']; ?>" readonly>
                                                   </div>
                                                   <div class="form-group">
-                                                      <label for="nominal">Nominal</label>
-                                                      <input type="number" class="form-control" id="nominal" name="nominal" autocomplete="off" value="<?= $r['nominal'];?>" required readonly>
+                                                    <label for="akibat">Akibat</label>
+                                                    <input type="text" class="form-control" id="akibat" name="akibat" autocomplete="off" required value="<?= $r['akibat']; ?>" readonly>
                                                   </div>
                                                   <div class="form-group">
-                                                      <label for="tgl_monitoring">Tanggal Monitoring</label>
-                                                      <input type="date" class="form-control" id="tgl_monitoring" name="tgl_monitoring" autocomplete="off" value="<?= $r['tgl_monitoring'];?>"  required readonly>
+                                                    <label for="rekomendasi">Rekomendasi</label>
+                                                    <input type="text" class="form-control" id="rekomendasi" name="rekomendasi" autocomplete="off" required value="<?= $r['rekomendasi']; ?>" readonly>
                                                   </div>
                                                   <div class="form-group">
-                                                      <label for="lama_monitoring">Lama Monitoring</label>
-                                                      <input type="number" class="form-control" id="lama_monitoring" name="lama_monitoring" autocomplete="off" value="<?= $r['lama_monitoring'];?>"  required readonly>
+                                                    <label for="tanggapan_auditee">Tanggapan Auditee</label>
+                                                    <input type="text" class="form-control" id="tanggapan_auditee" name="tanggapan_auditee" autocomplete="off" required value="<?= $r['tanggapan_auditee']; ?>" readonly>
                                                   </div>
-                                              </form>
-
-                                          </div>
-                                          <div class="modal-footer float-right">
+                                                  <div class="form-group">
+                                                    <label for="rencana_tindak_lanjut">Rencana Tindak Lanjut</label>
+                                                    <input type="text" class="form-control" id="rencana_tindak_lanjut" name="rencana_tindak_lanjut" autocomplete="off" required value="<?= $r['rencana_tindak_lanjut']; ?>" readonly>
+                                                  </div>
+                                                  <div class="form-group">
+                                                    <label for="persetujuan">Persetujuan</label>
+                                                    <input type="text" class="form-control" id="persetujuan" name="persetujuan" autocomplete="off" required value="<?= $r['persetujuan']; ?>" readonly>
+                                                  </div>
+                                                </form>
+                                              </div>
+                                              <div class="modal-footer float-right">
                                               <a href="index.php" type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
                                               
                                           </div>
@@ -157,46 +158,60 @@ $username = $_SESSION["username"];
                                           </div>
 
                                           <div class="modal-body">
-                                              <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
+                                                <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
                                                   <div class="form-group">
-                                                      <input type="hidden" class="form-control" name="id_tha" autocomplete="off" required>
+                                                    <input type="hidden" class="form-control" name="id_tha" autocomplete="off" required>
                                                   </div>
                                                   <div class="form-group">
-                                                      <label for="id_pka">Tanggal PKA</label>
-                                                      <select class="form-control " data-placeholder="Pilih PKA" style="width: 100%;" name="id_pka">
-                                                          <option value=""><?= $r['tanggal'];?> ( Auditor : <?= $r['nama'];?> )</option>
-                                                          <?php foreach ($tb_pka as $row) {
-                                                          ?>
-                              <option value="<?= $row['id_pka'] ?>"> <?php echo $row['tanggal']; ?> (Auditor : <?= $row['nama']; ?>)</option>
-                                                          <?php } ?>
-                                                      </select>
+                                                    <label for="id_visit">Tanggal Visit</label>
+                                                    <select class="form-control " data-placeholder="Pilih Tanggal Visit" style="width: 100%;" name="id_visit">
+                                                      <option value=""><?= $r['tgl_visit']; ?></option>
+                                                      <?php foreach ($tb_visit as $row) {
+                                                      ?>
+                                                        <option value="<?= $r['id_visit'] ?>"> <?php echo $row['tgl_visit']; ?> (ID Visit : <?= $row['id_visit']; ?>)</option>
+                                                      <?php } ?>
+                                                    </select>
                                                   </div>
                                                   <div class="form-group">
-                                                      <label for="jenis">jenis</label>
-                                                      <input type="text" class="form-control" id="jenis" name="jenis" autocomplete="off" value="<?= $r['jenis'];?>" required>
+                                                    <label for="tgl_tha">Tanggal THA</label>
+                                                    <input type="date" class="form-control" id="tgl_tha" name="tgl_tha" autocomplete="off" required value="<?= $r['tgl_tha']; ?>">
                                                   </div>
                                                   <div class="form-group">
-                                                      <label for="sumber_dana">Sumber Dana</label>
-                                                      <input type="text" class="form-control" id="sumber_dana" name="sumber_dana" autocomplete="off" value="<?= $r['sumber_dana'];?>"  required>
+                                                    <label for="catatan">Catatan</label>
+                                                    <input type="text" class="form-control" id="catatan" name="catatan" autocomplete="off" required value="<?= $r['catatan']; ?>">
                                                   </div>
                                                   <div class="form-group">
-                                                      <label for="nominal">Nominal</label>
-                                                      <input type="number" class="form-control" id="nominal" name="nominal" autocomplete="off" value="<?= $r['nominal'];?>" required>
+                                                    <label for="dasar_hukum">Dasar Hukum</label>
+                                                    <input type="text" class="form-control" id="dasar_hukum" name="dasar_hukum" autocomplete="off" required value="<?= $r['dasar_hukum']; ?>">
                                                   </div>
                                                   <div class="form-group">
-                                                      <label for="tgl_monitoring">Tanggal Monitoring</label>
-                                                      <input type="date" class="form-control" id="tgl_monitoring" name="tgl_monitoring" autocomplete="off" value="<?= $r['tgl_monitoring'];?>"  required>
+                                                    <label for="penyebab">Penyebab</label>
+                                                    <input type="text" class="form-control" id="penyebab" name="penyebab" autocomplete="off" required value="<?= $r['penyebab']; ?>">
                                                   </div>
                                                   <div class="form-group">
-                                                      <label for="lama_monitoring">Lama Monitoring</label>
-                                                      <input type="number" class="form-control" id="lama_monitoring" name="lama_monitoring" autocomplete="off" value="<?= $r['lama_monitoring'];?>"  required>
+                                                    <label for="akibat">Akibat</label>
+                                                    <input type="text" class="form-control" id="akibat" name="akibat" autocomplete="off" required value="<?= $r['akibat']; ?>">
                                                   </div>
-
-                                                  <a href="index.php" type="button" class="btn btn-secondary ml-2 float-right" data-dismiss="modal">Kembali</a>
-                                                  <button type="submit" name="ubahTHA" class="btn btn-success float-right">Perbarui</button>
-                                              </form>
-
-                                          </div>
+                                                  <div class="form-group">
+                                                    <label for="rekomendasi">Rekomendasi</label>
+                                                    <input type="text" class="form-control" id="rekomendasi" name="rekomendasi" autocomplete="off" required value="<?= $r['rekomendasi']; ?>">
+                                                  </div>
+                                                  <div class="form-group">
+                                                    <label for="tanggapan_auditee">Tanggapan Auditee</label>
+                                                    <input type="text" class="form-control" id="tanggapan_auditee" name="tanggapan_auditee" autocomplete="off" required value="<?= $r['tanggapan_auditee']; ?>">
+                                                  </div>
+                                                  <div class="form-group">
+                                                    <label for="rencana_tindak_lanjut">Rencana Tindak Lanjut</label>
+                                                    <input type="text" class="form-control" id="rencana_tindak_lanjut" name="rencana_tindak_lanjut" autocomplete="off" required value="<?= $r['rencana_tindak_lanjut']; ?>">
+                                                  </div>
+                                                  <div class="form-group">
+                                                    <label for="persetujuan">Persetujuan</label>
+                                                    <input type="text" class="form-control" id="persetujuan" name="persetujuan" autocomplete="off" required value="<?= $r['persetujuan']; ?>">
+                                                  </div>
+                                                  <button type="submit" class="btn btn-success mr-2 float-right" name="ubahTHA">Perbarui</button>
+                      <button class="btn btn-secondary mr-2 float-right" data-dismiss="modal">Batal</button>
+                                                </form>
+                                              </div>
                                       </div>
                                       <!-- /.modal-content -->
                                   </div>
