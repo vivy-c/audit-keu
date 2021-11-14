@@ -1,29 +1,9 @@
 <?php
 include('../../template/header.php');
 include('../../template/sidebar_kepala_spi.php');
-
+include('function.php');
 
 $username = $_SESSION["username"];
-
-// $tampil = query("SELECT * FROM tb_user WHERE status = 0 ");
-$tb_lha = query("SELECT * FROM tb_lha");
-// $id_user=$_GET["id_user"];
-// $q=query("SELECT * FROM tb_user WHERE id_user = $id_user")[0];
-
-
-if (isset($_POST["status"])) {
-  if (status($_POST) > 0) {
-     echo "<script>
-     alert('User berhasil diaktifkan');
-     document.location.href='../user/index.php';
-     </script>";
-  } else {
-     echo "<script>
-     alert('User gagal diaktifkan');
-     document.location.href='../user/index.php';
-     </script>";
-  }
-}
 
 ?>
 
