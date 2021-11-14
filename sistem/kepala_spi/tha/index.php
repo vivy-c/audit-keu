@@ -209,7 +209,7 @@ $username = $_SESSION["username"];
                                                     <input type="text" class="form-control" id="persetujuan" name="persetujuan" autocomplete="off" required value="<?= $r['persetujuan']; ?>">
                                                   </div>
                                                   <button type="submit" class="btn btn-success mr-2 float-right" name="ubahTHA">Perbarui</button>
-                      <button class="btn btn-secondary mr-2 float-right" data-dismiss="modal">Batal</button>
+                                                  <button class="btn btn-secondary mr-2 float-right" data-dismiss="modal">Batal</button>
                                                 </form>
                                               </div>
                                       </div>
