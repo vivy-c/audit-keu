@@ -27,6 +27,23 @@ $username = $_SESSION["username"];
             </div>
           </div>
 
+
+          <!-- <button type="button" class="btn btn-success toastsDefaultSuccess">
+                  Launch Success Toast
+                </button>
+                <script>
+                  $('.toastsDefaultSuccess').click(function() {
+                    $(document).Toasts('create', {
+                      class: 'bg-success',
+                      title: 'Toast Title',
+                      subtitle: 'Subtitle',
+                      body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+                    })
+                  });
+                </script> -->
+
+                
+
           <div class="col-md-12">
             <button href="javascript.void(0)" class="btn btn-primary mb-3" data-target="#addVisit" data-toggle="modal"><i class="far fa-plus-square"></i> Tambah data</button>
           </div>
@@ -173,7 +190,7 @@ $username = $_SESSION["username"];
                               <!-- /.modal-dialog -->
                             </div>
                             <!-- /.modal -->
-                            <a href="hapus.php?id_desk=<?= $r["id_desk"]; ?>" name="hapus" class="btn btn-outline-danger" onclick="return confirm('Yakin menghapus permanen?');"><i class="fas fa-trash"></i></a>
+                            <a href="hapus.php?id_visit=<?= $r["id_visit"]; ?>" name="hapus" class="btn btn-outline-danger" onclick="return confirm('Yakin menghapus permanen?');"><i class="fas fa-trash"></i></a>
 
                           </div>
                         </td>

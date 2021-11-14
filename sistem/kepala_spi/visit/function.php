@@ -1,7 +1,7 @@
 
 <?php 
 
-$tb_visit = query("SELECT a.id_visit, b.id_desk, b.tgl_monitoring, a.tanggal,a.isi FROM tb_visit as a, tb_desk as b WHERE a.id_desk=b.id_desk");
+// $tb_visit = query("SELECT a.id_visit, b.id_desk, b.tgl_monitoring, a.tanggal,a.isi FROM tb_visit as a, tb_desk as b WHERE a.id_desk=b.id_desk");
 
 if (isset($_POST["tambahVisit"])) {
     //cek data berhasil tambah atau tidak
