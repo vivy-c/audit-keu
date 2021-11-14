@@ -165,7 +165,7 @@ $username = $_SESSION["username"];
                                         <label for="id_desk">Tanggal monitoring</label>
                                         <select class="form-control " data-placeholder="Pilih Tanggal Monitoring" style="width: 100%;" name="id_desk">
                                           <option value=""><?= $r['tgl_monitoring'];?></option>
-                                          <?php foreach ($tb_visit as $row) {
+                                          <?php foreach ($tb_desk as $row) {
                                           ?>
                                             <option value="<?= $row['id_desk'] ?>"> <?php echo $row['tgl_monitoring']; ?> (ID Desk : <?= $row['id_desk']; ?>)</option>
                                           <?php } ?>
@@ -181,7 +181,7 @@ $username = $_SESSION["username"];
                                       </div>
 
                                       <button class="btn btn-secondary mr-2 float-right" data-dismiss="modal">Batal</button>
-                                      <button type="submit" class="btn btn-success mr-2 float-right" name="tambahVisit">Perbarui</button>
+                                      <button type="submit" class="btn btn-success mr-2 float-right" name="ubahVisit">Perbarui</button>
                                     </form>
                                   </div>
                                 </div>

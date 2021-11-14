@@ -1,7 +1,8 @@
 
 <?php 
+error_reporting(0);
 
-// $tb_visit = query("SELECT a.id_visit, b.id_desk, b.tgl_monitoring, a.tanggal,a.isi FROM tb_visit as a, tb_desk as b WHERE a.id_desk=b.id_desk");
+$tb_desk= query("SELECT * FROM tb_desk ORDER BY tgl_monitoring.tb_desk ASC");
 
 if (isset($_POST["tambahVisit"])) {
     //cek data berhasil tambah atau tidak
