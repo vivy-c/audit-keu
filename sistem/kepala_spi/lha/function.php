@@ -58,30 +58,17 @@ function ubahLHA($data)
 {
     global $conn;
     $id_lha          = htmlspecialchars($data["id_lha"]);
-    $id_visit        = htmlspecialchars($data["id_visit"]);
+    $id_tha        = htmlspecialchars($data["id_tha"]);
     $tgl_lha       = htmlspecialchars($data["tgl_lha"]);
-    $catatan         = htmlspecialchars($data["catatan"]);
-    $dasar_hukum     = htmlspecialchars($data["dasar_hukum"]);
-    $penyebab        = htmlspecialchars($data["penyebab"]);
-    $akibat          = htmlspecialchars($data["akibat"]);
-    $rekomendasi     = htmlspecialchars($data["rekomendasi"]);
-    $tanggapan_auditee      = htmlspecialchars($data["tanggapan_auditee"]);
-    $rencana_tindak_lanjut  = htmlspecialchars($data["rencana_tindak_lanjut"]);
-    $persetujuan     = htmlspecialchars($data["persetujuan"]);
-    
+    $status         = htmlspecialchars($data["status"]);
+    $keterangan     = htmlspecialchars($data["keterangan"]);
     //update data
     $query="UPDATE tb_lha SET 
 
-      id_visit     = '$id_visit',
+      id_tha     = '$id_tha',
       tgl_lha      = '$tgl_lha',
-      catatan      = '$catatan',
-      dasar_hukum  = '$dasar_hukum',
-      penyebab     = '$penyebab',
-      akibat       = '$akibat',
-      rekomendasi  = '$rekomendasi'
-      tanggapan_auditee      = '$tanggapan_auditee'
-      rencana_tindak_lanjut  = '$rencana_tindak_lanjut'
-      persetujuan  = '$persetujuan'
+      status      = '$status',
+      keterangan  = '$keterangan'
 
       WHERE id_lha = '$id_lha'
       ";
