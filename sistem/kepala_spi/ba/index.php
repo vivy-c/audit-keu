@@ -84,9 +84,6 @@ $username = $_SESSION["username"];
                                                 <label for="id_tha">Tanggal THA</label>
                                                 <select class="form-control " data-placeholder="Pilih Tanggal THA" style="width: 100%;" name="id_tha"  value="" readonly>
                                                   <option value=""><?= $r['tgl_lha']; ?></option>
-                                                  <?php foreach ($tb_lha as $row) { ?>
-                                                    <option value="<?= $row['id_lha'] ?>"> <?php echo $row['tgl_lha']; ?> (ID LHA : <?= $row['id_lha']; ?>)</option>
-                                                  <?php } ?>
                                                 </select>
                                               </div>
                                               <div class="form-group">
@@ -128,7 +125,7 @@ $username = $_SESSION["username"];
                                               </div>
                                               <div class="form-group">
                                                 <label for="id_tha">Tanggal THA</label>
-                                                <select class="form-control " data-placeholder="Pilih Tanggal THA" style="width: 100%;" name="id_tha"  value="" readonly>
+                                                <select class="form-control " data-placeholder="Pilih Tanggal THA" style="width: 100%;" name="id_tha"  value="" >
                                                   <option value=""><?= $r['tgl_lha']; ?></option>
                                                   <?php foreach ($tb_lha as $row) { ?>
                                                     <option value="<?= $row['id_lha'] ?>"> <?php echo $row['tgl_lha']; ?> (ID LHA : <?= $row['id_lha']; ?>)</option>
@@ -137,7 +134,7 @@ $username = $_SESSION["username"];
                                               </div>
                                               <div class="form-group">
                                                 <label for="tgl_ba">Tanggal BA</label>
-                                                <input type="date" class="form-control" id="tgl_ba" name="tgl_ba" autocomplete="off" required value="<?= $r['tgl_ba']; ?>" readonly>
+                                                <input type="date" class="form-control" id="tgl_ba" name="tgl_ba" autocomplete="off" required value="<?= $r['tgl_ba']; ?>" >
                                               </div>
                                               <button type="submit" class="btn btn-success mr-2 float-right" name="ubahBA">Perbarui</button>
                                               <button class="btn btn-secondary mr-2 float-right" data-dismiss="modal">Batal</button>
