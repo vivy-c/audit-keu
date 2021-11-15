@@ -42,7 +42,7 @@ if (isset($_POST["status"])) {
               <div class="card">
                 <!-- /.card-header -->
                 <div class="card-body">
-                  <h5>Tabel Konfirmasi User</h5>
+                  <h5>Tabel Berita Acara</h5>
                   <table id="datatable" class="table table-striped table-bordered table-hover table-wrapped">
                     <thead>
                       <tr>
@@ -50,28 +50,32 @@ if (isset($_POST["status"])) {
                           No
                         </th>
                         <th>
-                          BA
+                          Tanggal LHA
                         </th>
                         <th>
-                          LHA
+                          Tanggal Berita Acara
                         </th>
                         <th>
-                          Tanggal
+                          Aksi
                         </th>
                       </tr>
                     </thead>
                     <tbody id="modal-data">
-                      <?php $no = 1; ?>
+                    <?php
+                    $no = 0;
+                      $tb_ba = mysqli_query($conn, "SELECT a.id_ba,a.id_lha,a.tgl_ba,b.id_lha,b.tgl_lha FROM tb_ba as a,tb_lha as b WHERE a.id_lha=b.id_lha");
+                      while ($r = mysqli_fetch_array($tb_ba)) {
+                      $no++;
+                    ?>
                       <?php foreach ($tb_ba as $r) : ?>
                         <tr>
                           <th scope="row"><?= $no; ?></th>
-                          <td><?php echo $r['id_ba']; ?></td>
-                          <td><?php echo  $r['id_lha']; ?></td>
-                          <td><?php echo  $r['tanggal']; ?></td>
+                          <td><?php echo  $r['tgl_lha']; ?></td>
+                          <td><?php echo  $r['tgl_ba']; ?></td>
                         <?php $no++;  ?>
                       <?php endforeach; ?>
                     </tbody>
-                    <?php  ?>
+                    <?php } ?>
                   </table>
 
                 </div>
