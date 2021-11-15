@@ -1,10 +1,10 @@
 <?php
 
-$tb_tha = query("SELECT * FROM tb_tha ORDER BY tgl_tha ASC");
+$tb_lha= query("SELECT * FROM tb_lha ORDER BY tgl_lha ASC");
 
-if (isset($_POST["tambahLHA"])) {
+if (isset($_POST["tambahBA"])) {
     //cek data berhasil tambah atau tidak
-    if (tambahLHA($_POST) > 0) {
+    if (tambahBA($_POST) > 0) {
         echo "
               <script>
               alert('data berhasil ditambahkan');
@@ -20,9 +20,9 @@ if (isset($_POST["tambahLHA"])) {
               ";
     }
 }
-if (isset($_POST["ubahLHA"])) {
+if (isset($_POST["ubahBA"])) {
     //cek data berhasil tambah atau tidak
-    if (ubahLHA($_POST) > 0) {
+    if (ubahBA($_POST) > 0) {
         echo "
               <script>
               alert('data berhasil diubah');
@@ -39,38 +39,32 @@ if (isset($_POST["ubahLHA"])) {
     }
 }
 
-function tambahLHA($data)
+function tambahBA($data)
 {
     global $conn;
+    $id_ba        = htmlspecialchars($data["id_ba"]);
     $id_lha          = htmlspecialchars($data["id_lha"]);
-    $id_tha        = htmlspecialchars($data["id_tha"]);
-    $tgl_lha       = htmlspecialchars($data["tgl_lha"]);
-    $status         = htmlspecialchars($data["status"]);
-    $keterangan     = htmlspecialchars($data["keterangan"]);
+    $tgl_ba       = htmlspecialchars($data["tgl_ba"]);
     //insert data
-    $query = "INSERT INTO tb_lha VALUES 
-    ('$id_lha','$id_tha','$tgl_lha','$status','$keterangan')";
+    $query = "INSERT INTO tb_ba VALUES 
+    ('$id_ba','$id_lha','$tgl_ba')";
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }
 
-function ubahLHA($data)
+function ubahBA($data)
 {
     global $conn;
+    $id_ba        = htmlspecialchars($data["id_ba"]);
     $id_lha          = htmlspecialchars($data["id_lha"]);
-    $id_tha        = htmlspecialchars($data["id_tha"]);
-    $tgl_lha       = htmlspecialchars($data["tgl_lha"]);
-    $status         = htmlspecialchars($data["status"]);
-    $keterangan     = htmlspecialchars($data["keterangan"]);
+    $tgl_ba       = htmlspecialchars($data["tgl_ba"]);
     //update data
-    $query="UPDATE tb_lha SET 
+    $query="UPDATE tb_ba SET 
 
-      id_tha     = '$id_tha',
-      tgl_lha      = '$tgl_lha',
-      status      = '$status',
-      keterangan  = '$keterangan'
+      id_lha     = '$id_lha',
+      tgl_ba      = '$tgl_ba'
 
-      WHERE id_lha = '$id_lha'
+      WHERE id_ba = '$id_ba'
       ";
       mysqli_query($conn,$query);
       return mysqli_affected_rows($conn);
