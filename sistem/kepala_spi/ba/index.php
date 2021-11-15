@@ -147,7 +147,7 @@ $username = $_SESSION["username"];
                                   <!-- /.modal-dialog -->
                               </div>
                               <!-- /.modal -->
-                              <a href="hapus.php?id_tha=<?= $r["id_tha"]; ?>" name="hapus" class="btn btn-outline-danger" onclick="return confirm('Yakin menghapus permanen?');"><i class="fas fa-trash"></i></a>
+                              <a href="hapus.php?id_ba=<?= $r["id_ba"]; ?>" name="hapus" class="btn btn-outline-danger" onclick="return confirm('Yakin menghapus permanen?');"><i class="fas fa-trash"></i></a>
 
                             </div>
                           </td>
