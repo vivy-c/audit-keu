@@ -54,6 +54,8 @@ if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
     $title = 'Ketua | Auditee';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/pka/index.php') {
     $title = 'Ketua | PKA';
+  } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/pka/timeline.php') {
+    $title = 'Ketua | Timeline';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/desk/index.php') {
     $title = 'Ketua | Desk';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/visit/index.php') {

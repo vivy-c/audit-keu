@@ -1,7 +1,28 @@
 <?php
 
 // session_start();
+$sql = query("SELECT * FROM tb_user WHERE username='$username'");
 
+// $foto = $sql['foto'];
+
+if (isset($_POST["ubahData"])) {
+  if (ubah($_POST) > 0) {
+    if (!isset($_SESSION['username'])) {
+      header("Location: ../../session/index.php");
+    } else {
+      header("Location: index.php");
+    }
+    echo "<script>
+      alert('data berhasil diperbarui');
+      document.location.href = '../../session/index.php';
+      </script>";
+  } else {
+    echo "<script>
+    alert('data gagal diperbarui');
+    document.location.href = '../dashboard/index.php';
+  </script>";
+  }
+}
 
 function upload_foto()
     {
@@ -152,12 +173,23 @@ function upload_foto()
       return mysqli_affected_rows($conn);
     }
 
+$rowata_user = mysqli_query($conn,"SELECT * FROM tb_user");
+$jumlah_user = mysqli_num_rows($rowata_user);
+
 $rowata_pka = mysqli_query($conn,"SELECT * FROM tb_pka");
 $jumlah_pka = mysqli_num_rows($rowata_pka);
 
+$rowata_desk = mysqli_query($conn,"SELECT * FROM tb_desk");
+$jumlah_desk = mysqli_num_rows($rowata_desk);
+
+$rowata_visit = mysqli_query($conn,"SELECT * FROM tb_visit");
+$jumlah_visit = mysqli_num_rows($rowata_visit);
+
+$rowata_tha = mysqli_query($conn,"SELECT * FROM tb_tha");
+$jumlah_tha = mysqli_num_rows($rowata_tha);
+
 $rowata_lha = mysqli_query($conn, "SELECT * FROM tb_lha");
 $jumlah_lha = mysqli_num_rows($rowata_lha);
-
 
 $rowata_ba = mysqli_query($conn,"SELECT * FROM tb_ba");
 $jumlah_ba = mysqli_num_rows($rowata_ba);

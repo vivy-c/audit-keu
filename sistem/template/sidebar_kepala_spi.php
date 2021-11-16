@@ -31,8 +31,13 @@
     $dataUser = 'active';
     $konten = 'Data Unit';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/pka/index.php') {
+    $dataPka = 'active';
     $pka = 'active';
     $konten = 'Program Kerja Audit';
+  } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/pka/timeline.php') {
+    $dataPka = 'active';
+    $timeline = 'active';
+    $konten = 'Timeline Audit';
   } elseif ($url == 'http://localhost/audit-keu/sistem/kepala_spi/desk/index.php') {
     $desk = 'active';
     $dataAudit = 'active';
@@ -64,6 +69,7 @@
     $lha = '';
     $ba = '';
     $dataUser = '';
+    $dataPka = '';
     $dataAudit = '';
     $konten = '';
   }
@@ -241,13 +247,27 @@
             </li>
 
             <li class="nav-item ">
-              <a href="../pka/index.php" class="nav-link <?= $pka; ?>">
+              <a href="#" class="nav-link <?= $dataPka; ?>">
                 <i class="nav-icon far fa-calendar-alt"></i>
                 <p>
-                  PKA
-                  <i class=""></i>
+                  Data PKA
+                  <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="../pka/index.php" class="nav-link <?= $pka; ?>">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>PKA</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="../pka/timeline.php" class="nav-link <?= $timeline; ?>">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Timeline Audit</p>
+                  </a>
+                </li>
+              </ul>
             </li>
 
             <li class="nav-item ">
