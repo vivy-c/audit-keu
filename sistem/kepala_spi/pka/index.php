@@ -79,7 +79,7 @@ include('function.php');
                                             <?php
                                             $no = 0;
                                             $modal = mysqli_query($conn, "SELECT a.id_pka,b.id_user,b.nama,c.id_auditee,c.nama_unit,a.status,a.tanggal FROM tb_pka as a,tb_user as b,tb_auditee as c WHERE a.id_user=b.id_user and a.id_auditee=c.id_auditee ORDER BY status ASC");
-                                            while ($r = mysqli_fetch_array($modal)) {
+                                          while ($r = mysqli_fetch_array($modal)) {
                                                 $no++;
                                             ?>
                                                 <?php foreach ($modal as $r) : ?>
