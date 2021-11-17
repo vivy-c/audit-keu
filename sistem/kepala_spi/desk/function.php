@@ -66,10 +66,9 @@ function tambahDesk($data)
     $nominal     = htmlspecialchars($data["nominal"]);
     $tgl_monitoring     = htmlspecialchars($data["tgl_monitoring"]);
     $lama_monitoring    = htmlspecialchars($data["lama_monitoring"]);
-    $tgl_visit          = htmlspecialchars($data["tgl_visit"]);
     
     //insert data
-    $query = "INSERT INTO tb_desk VALUES ('$id_desk','$id_pka','$jenis','$sumber_dana','$nominal','$tgl_monitoring','$lama_monitoring','$tgl_visit')";
+    $query = "INSERT INTO tb_desk VALUES ('$id_desk','$id_pka','$jenis','$sumber_dana','$nominal','$tgl_monitoring','$lama_monitoring')";
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }
@@ -84,7 +83,6 @@ function ubahDesk($data)
     $nominal     = htmlspecialchars($data["nominal"]);
     $tgl_monitoring     = htmlspecialchars($data["tgl_monitoring"]);
     $lama_monitoring    = htmlspecialchars($data["lama_monitoring"]);
-    $tgl_visit          = htmlspecialchars($data["tgl_visit"]);
 
     //update data
     $query="UPDATE tb_desk SET 
@@ -95,8 +93,7 @@ function ubahDesk($data)
       sumber_dana    = '$sumber_dana',
       nominal        = '$nominal',
       tgl_monitoring    = '$tgl_monitoring',
-      lama_monitoring   = '$lama_monitoring',
-      tgl_visit         = '$tgl_visit'
+      lama_monitoring   = '$lama_monitoring'
 
       WHERE id_desk = '$id_desk'
       ";

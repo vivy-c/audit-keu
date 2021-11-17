@@ -21,7 +21,7 @@ $pka = query("SELECT a.id_pka,b.id_user,b.nama,c.id_auditee,c.nama_unit,a.status
 
                 <!-- Timelime example  -->
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-lg-12 col-md-12">
                         <!-- The time line -->
                         <div class="timeline">
                             <?php foreach ($pka as $r) : ?>
@@ -62,6 +62,11 @@ $pka = query("SELECT a.id_pka,b.id_user,b.nama,c.id_auditee,c.nama_unit,a.status
                         </div>
                     </div>
                     <!-- /.col -->
+
+
+                    
+
+
                 </div>
             </div>
         </div>

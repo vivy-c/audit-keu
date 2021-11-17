@@ -147,7 +147,6 @@ include('function.php');
                                                                             </div>
                                                                             <div class="modal-footer float-right">
                                                                                 <a href="index.php" type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
-                                                                                <!-- <button type="edit" id="edit" name="edit" value="edit" class="btn btn-primary">Simpan Perubahan</button> -->
                                                                                 </form>
                                                                             </div>
                                                                         </div>
@@ -181,27 +180,33 @@ include('function.php');
                                                                                     <div class="form-group">
                                                                                         <label for="id_user">Nama Auditor</label>
                                                                                         <select class="form-control " data-placeholder="Pilih Auditor" style="width: 100%;" id="id_user" name="id_user">
-                                                                                            <option><?= $r['nama'] ?></option>
-                                                                                            <?php foreach ($tb_user as $row) {
-                                                                                            ?>
-                                                                                                <option value="<?= $row['id_user'] ?>"><?php echo $row['nama']; ?> </option>
+                                                                                        <option selected value="<?= $r["id_user"]; ?>"><?= $r['nama'] ?></option>
+                                                                                            <?php
+                                                                                            $sql="SELECT * FROM tb_user WHERE status=1 AND level=3";
+                                                                                            $hasil=mysqli_query($conn,$sql);
+                                                                                            while ($data = mysqli_fetch_array($hasil)) {
+                                                                                                ?>
+                                                                                                <option value="<?= $data['id_user'] ?>"><?php echo $data['nama']; ?> </option>
                                                                                             <?php } ?>
                                                                                         </select>
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="id_auditee">Nama Auditee</label>
                                                                                         <select class="form-control " data-placeholder="Pilih Auditee" style="width: 100%;" id="id_auditee" name="id_auditee">
-                                                                                            <option><?= $r['nama_unit'] ?></option>
-                                                                                            <?php foreach ($tb_auditee as $row) {
-                                                                                            ?>
-                                                                                                <option value="<?= $row['id_auditee'] ?>"><?php echo $row['nama_unit']; ?> (<?php echo $row['tanggal']; ?>)</option>
+                                                                                        <option selected value="<?= $r["id_auditee"]; ?>"><?= $r['nama_unit'] ?></option>
+                                                                                        <?php
+                                                                                            $sql="SELECT * FROM tb_auditee";
+                                                                                            $hasil=mysqli_query($conn,$sql);
+                                                                                            while ($data = mysqli_fetch_array($hasil)) {
+                                                                                                ?>
+                                                                                                <option value="<?= $data['id_auditee'] ?>"><?php echo $data['nama_unit']; ?> (<?php echo $data['tanggal']; ?>)</option>
                                                                                             <?php } ?>
                                                                                         </select>
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="status">Status</label>
                                                                                         <select class="form-control " data-placeholder="Pilih Status" style="width: 100%;" id="status" name="status">
-                                                                                            <option value=""><?= $r['status'] ?></option>
+                                                                                            <option value="<?= $r['status'] ?>"><?= $r['status'] ?></option>
                                                                                             <option value="Terealisasi">Terealisasi</option>
                                                                                             <option value="Tidak Terealisasi">Tidak Terealisasi</option>
                                                                                         </select>
@@ -210,14 +215,15 @@ include('function.php');
                                                                                         <label for="tanggal">tanggal</label>
                                                                                         <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= $r["tanggal"]; ?>" required readonly>
                                                                                     </div>
-                                                                            </div>
-                                                                            <div class="modal-footer float-right">
-                                                                                <a href="index.php" type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
-                                                                                <button type="submit" name="ubahDataPka" class="btn btn-success">Perbarui</button>
-
-                                                                                <!-- <a href="" type="submit" class="btn btn-success" name="ubahPka">Ubah Data</a> -->
-                                                                                <!-- <button type="edit" id="edit" name="edit" value="edit" class="btn btn-primary">Simpan Perubahan</button> -->
-                                                                                </form>
+                                                                                    <div class="modal-footer float-right">
+                                                                                        <a href="index.php" type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
+                                                                                        <button type="submit" name="ubahDataPka" class="btn btn-success">Perbarui</button>
+                                                                                        
+                                                                                        <!-- <a href="" type="submit" class="btn btn-success" name="ubahPka">Ubah Data</a> -->
+                                                                                        <!-- <button type="edit" id="edit" name="edit" value="edit" class="btn btn-primary">Simpan Perubahan</button> -->
+                                                                                        </div>
+                                                                                    </form>
+                                                                                
                                                                             </div>
                                                                         </div>
                                                                         <!-- /.modal-content -->
