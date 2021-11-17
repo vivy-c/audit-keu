@@ -178,9 +178,12 @@ include('function.php');
                                                                                         <label for="id_pka">Tanggal PKA</label>
                                                                                         <select class="form-control " data-placeholder="Pilih PKA" style="width: 100%;" name="id_pka">
                                                                                             <option value=""><?= $r['tanggal'];?> ( Auditor : <?= $r['nama'];?> )</option>
-                                                                                            <?php foreach ($tb_pka as $row) {
-                                                                                            ?>
-                                                                                                <option value="<?= $row['id_pka'] ?>"> <?php echo $row['tanggal']; ?> (Auditor : <?= $row['nama']; ?>)</option>
+                                                                                            <?php
+                                                                                            $sql="SELECT a.id_pka,a.tanggal,b.nama from tb_pka as a, tb_user as b where a.id_user=b.id_user";
+                                                                                            $hasil=mysqli_query($conn,$sql);
+                                                                                            while ($data = mysqli_fetch_array($hasil)) {
+                                                                                                ?>
+                                                                                                <option value="<?= $data['id_pka'] ?>"> <?php echo $data['tanggal']; ?> (Auditor : <?= $data['nama']; ?>)</option>
                                                                                             <?php } ?>
                                                                                         </select>
                                                                                     </div>
