@@ -156,10 +156,10 @@ include('function.php');
                                                                 <!-- /.modal -->
 
 
-                                                                <a class="btn btn-outline-success btn-sm text-success" data-toggle="modal" data-target="#myModal<?php echo $r['id_pka']; ?>"><i class="fas fa-pen"></i></a>
+                                                                <a class="btn btn-outline-success btn-sm text-success" data-toggle="modal" data-target="#myModal<?php echo $r['id_desk']; ?>"><i class="fas fa-pen"></i></a>
 
                                                                 <!-- tampilan modal jadi-->
-                                                                <div class="modal fade" id="myModal<?php echo $r['id_pka']; ?>">
+                                                                <div class="modal fade" id="myModal<?php echo $r['id_desk']; ?>">
                                                                     <div class="modal-dialog modal-lg">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
@@ -172,14 +172,14 @@ include('function.php');
                                                                             <div class="modal-body">
                                                                                 <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
                                                                                     <div class="form-group">
-                                                                                        <input type="hidden" class="form-control" name="id_desk" autocomplete="off" required>
+                                                                                        <input type="hidden" class="form-control" name="id_desk" autocomplete="off" value="<?= $r["id_desk"]; ?>" required>
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="id_pka">Tanggal PKA</label>
                                                                                         <select class="form-control " data-placeholder="Pilih PKA" style="width: 100%;" name="id_pka">
-                                                                                            <option value=""><?= $r['tanggal'];?> ( Auditor : <?= $r['nama'];?> )</option>
+                                                                                            <option selected value="<?= $r["id_pka"]; ?>"><?= $r['tanggal'];?> ( Auditor : <?= $r['nama'];?> )</option>
                                                                                             <?php
-                                                                                            $sql="SELECT a.id_pka,a.tanggal,b.nama from tb_pka as a, tb_user as b where a.id_user=b.id_user";
+                                                                                            $sql="SELECT a.id_pka,a.id_user,a.tanggal,b.nama,b.id_user FROM tb_pka as a, tb_user as b WHERE a.id_user=b.id_user";
                                                                                             $hasil=mysqli_query($conn,$sql);
                                                                                             while ($data = mysqli_fetch_array($hasil)) {
                                                                                                 ?>
@@ -188,7 +188,7 @@ include('function.php');
                                                                                         </select>
                                                                                     </div>
                                                                                     <div class="form-group">
-                                                                                        <label for="jenis">jenis</label>
+                                                                                        <label for="jenis">Jenis</label>
                                                                                         <input type="text" class="form-control" id="jenis" name="jenis" autocomplete="off" value="<?= $r['jenis'];?>" required>
                                                                                     </div>
                                                                                     <div class="form-group">
@@ -207,9 +207,14 @@ include('function.php');
                                                                                         <label for="lama_monitoring">Lama Monitoring</label>
                                                                                         <input type="number" class="form-control" id="lama_monitoring" name="lama_monitoring" autocomplete="off" value="<?= $r['lama_monitoring'];?>"  required>
                                                                                     </div>
+                                                                                    <div class="modal-footer float-right">
+                                                                                        <a href="index.php" type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</a>
+                                                                                        <button type="submit" name="ubahDesk" class="btn btn-success">Perbarui</button>
+                                                                                        
+                                                                                    </div>
 
-                                                                                    <a href="index.php" type="button" class="btn btn-secondary ml-2 float-right" data-dismiss="modal">Kembali</a>
-                                                                                    <button type="submit" name="ubahDesk" class="btn btn-success float-right">Perbarui</button>
+                                                                                    <!-- <a href="index.php" type="button" class="btn btn-secondary ml-2 float-right" data-dismiss="modal">Kembali</a>
+                                                                                    <button type="submit" name="ubahDesk" class="btn btn-success float-right">Perbarui</button> -->
                                                                                 </form>
 
                                                                             </div>
