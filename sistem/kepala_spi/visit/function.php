@@ -47,10 +47,10 @@ function tambahVisit($data)
     global $conn;
     $id_visit= htmlspecialchars($data["id_visit"]);
     $id_desk = htmlspecialchars($data["id_desk"]);
-    $tanggal = htmlspecialchars($data["tanggal"]);
+    $tgl_visit = htmlspecialchars($data["tgl_visit"]);
     $isi     = htmlspecialchars($data["isi"]);
     //insert data
-    $query = "INSERT INTO tb_visit VALUES ('$id_visit','$id_desk','$tanggal','$isi')";
+    $query = "INSERT INTO tb_visit VALUES ('$id_visit','$id_desk','$tgl_visit','$isi')";
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
 }
@@ -60,14 +60,14 @@ function ubahVisit($data)
     global $conn;
     $id_visit= htmlspecialchars($data["id_visit"]);
     $id_desk = htmlspecialchars($data["id_desk"]);
-    $tanggal = htmlspecialchars($data["tanggal"]);
+    $tgl_visit = htmlspecialchars($data["tgl_visit"]);
     $isi     = htmlspecialchars($data["isi"]);
 
     //update data
     $query="UPDATE tb_visit SET 
 
       id_desk = '$id_desk',
-      tanggal = '$tanggal',
+      tgl_visit = '$tgl_visit',
       isi     = '$isi'
 
       WHERE id_visit = '$id_visit'

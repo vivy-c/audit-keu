@@ -159,15 +159,18 @@ $username = $_SESSION["username"];
                                   <div class="modal-body">
                                     <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
                                       <div class="form-group">
-                                        <input type="hidden" class="form-control" name="id_visit" autocomplete="off" required>
+                                        <input type="hidden" class="form-control" name="id_visit" autocomplete="off" value="<?= $r["id_visit"]; ?>" required>
                                       </div>
                                       <div class="form-group">
                                         <label for="id_desk">Tanggal monitoring</label>
                                         <select class="form-control " data-placeholder="Pilih Tanggal Monitoring" style="width: 100%;" name="id_desk">
-                                          <option value=""><?= $r['tgl_monitoring'];?></option>
-                                          <?php foreach ($tb_desk as $row) {
-                                          ?>
-                                            <option value="<?= $row['id_desk'] ?>"> <?php echo $row['tgl_monitoring']; ?> (ID Desk : <?= $row['id_desk']; ?>)</option>
+                                          <option selected value="<?= $r["id_desk"]; ?>"><?= $r['tgl_monitoring'];?></option>
+                                          <?php
+                                            $sql="SELECT * FROM tb_desk ORDER BY tgl_monitoring ASC";
+                                            $hasil=mysqli_query($conn,$sql);
+                                            while ($data = mysqli_fetch_array($hasil)) {
+                                                ?>
+                                            <option value="<?= $data['id_desk'] ?>"> <?php echo $data['tgl_monitoring']; ?> (ID Desk : <?= $data['id_desk']; ?>)</option>
                                           <?php } ?>
                                         </select>
                                       </div>
@@ -177,7 +180,7 @@ $username = $_SESSION["username"];
                                       </div>
                                       <div class="form-group">
                                         <label for="isi">Isi</label>
-                                        <input type="textbox" class="form-control" id="isi" name="isi" autocomplete="off" value="<?= $r['isi']; ?>" required>
+                                        <input type="text" class="form-control" id="isi" name="isi" autocomplete="off" value="<?= $r['isi']; ?>" required>
                                       </div>
 
                                       <button class="btn btn-secondary mr-2 float-right" data-dismiss="modal">Batal</button>
@@ -225,7 +228,7 @@ $username = $_SESSION["username"];
                         <label for="id_desk">Tanggal monitoring<span style="color: red;">*</span></label>
                         <select class="form-control " data-placeholder="Pilih Tanggal Monitoring" style="width: 100%;" name="id_desk">
                           <option value=""></option>
-                          <?php foreach ($tb_visit as $row) {
+                          <?php foreach ($tb_desk as $row) {
                           ?>
                             <option value="<?= $row['id_desk'] ?>"> <?php echo $row['tgl_monitoring']; ?> (ID Desk : <?= $row['id_desk']; ?>)</option>
                           <?php } ?>
